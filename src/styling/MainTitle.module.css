@@ -1,0 +1,43 @@
+/*Styling for the grey segment on the title section.*/
+.mainSegment {
+  position: absolute;
+  width: 20vw;
+  left: 0;
+  top: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border-bottom: 100vh solid #333333;
+  border-top: 0;
+  border-right: 75vw solid transparent;
+  border-left: 0;
+  z-index: 1;
+}
+
+/*Styling for the main title page when in landscape orientation*/
+@media (orientation: landscape) {
+  /*Styling for the drop shadow behind the grey segment. It's rotation angle had to be calculated
+    in the applicable vue file due to the angle being based on the screen height/width.*/
+  .dropShadow {
+    left: -170vw;
+    position: absolute;
+    z-index: 0;
+    width: 400vw;
+    height: 17vh;
+    background: linear-gradient(#e7e0ae, #00000066);
+  }
+}
+
+/*Styling for the main title page when in portrait orientation*/
+@media (orientation: portrait) {
+  /*Styling for the drop shadow behind the grey segment. It's rotation angle had to be calculated
+    in the applicable vue file due to the angle being based on the screen height/width.*/
+  .dropShadow {
+    left: -370vw;
+    position: absolute;
+    z-index: 0;
+    width: 800vw;
+    height: 17vh;
+    background: linear-gradient(#e7e0ae, #00000066);
+  }
+}
