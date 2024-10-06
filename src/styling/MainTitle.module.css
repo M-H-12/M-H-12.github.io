@@ -14,6 +14,16 @@
   z-index: 1;
 }
 
+/*Intro animation for the title/name block.*/
+@keyframes shift {
+  from {
+    left: -75vw;
+  }
+  to {
+    left: 0vw;
+  }
+}
+
 /*Styling for the main title page when in landscape orientation*/
 @media (orientation: landscape) {
   /*Styling for the drop shadow behind the grey segment. It's rotation angle had to be calculated
@@ -32,10 +42,13 @@
     z-index: 2;
     position: absolute;
     top: 35vh;
+    left: 0vw;
     height: 30vh;
     width: 70vw;
     background-color: #363349;
     filter: drop-shadow(0 0 0.8rem #00000077);
+    animation-name: shift;
+    animation-duration: 1.5s;
   }
 }
 
@@ -57,9 +70,12 @@
     z-index: 2;
     position: absolute;
     top: 35vh;
+    left: 0vw;
     height: 30vh;
     width: 70vw;
     background-color: #363349;
     filter: drop-shadow(0 0 0.8rem #00000077);
+    animation-name: shift;
+    animation-duration: 1.5s;
   }
 }
