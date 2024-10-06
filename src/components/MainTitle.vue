@@ -50,6 +50,9 @@ function getAngle() {
       </div>
     </div>
   </div>
+  <div :class="$style.arrowContainer">
+    <div :class="$style.downArrow">↓</div>
+  </div>
   <div :class="$style.dropShadow" :style="{ transform: `rotate(${shadowAngle}rad)` }"></div>
   <div :class="$style.mainSegment"></div>
 </template>

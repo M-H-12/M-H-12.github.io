@@ -14,6 +14,26 @@
   z-index: 1;
 }
 
+/*Animation for the arrow bobbing in the bottom right corner.*/
+@keyframes bob {
+  0% {
+    margin-bottom: 0vh;
+  }
+  50% {
+    margin-bottom: 1.5vh;
+  }
+}
+
+/*Animation for the arrow appearing in the bottom right corner.*/
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /*Intro animation for the title/name block.*/
 @keyframes shift {
   from {
@@ -22,6 +42,32 @@
   to {
     left: 0vw;
   }
+}
+
+/*Styling for the container which hold the arrow - mostly used to control the *appear* animation.*/
+.arrowContainer {
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  animation-name: appear;
+  animation-duration: 1.5s;
+  animation-delay: 1.6s;
+  animation-fill-mode: forwards;
+}
+
+/*Styling for the arrow in the bottom right corner of the title page.*/
+.downArrow {
+  font:
+    5vh 'Calibri',
+    sans-serif;
+  color: #363349;
+  padding: 0.5rem;
+  animation-name: bob;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
 }
 
 /*Styling for the main title page when in landscape orientation*/
