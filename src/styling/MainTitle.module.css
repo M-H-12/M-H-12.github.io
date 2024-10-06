@@ -26,6 +26,17 @@
     height: 17vh;
     background: linear-gradient(#e5e1bd, #00000066);
   }
+
+  /*Styling for the block behind the title text.*/
+  .nameBlock {
+    z-index: 2;
+    position: absolute;
+    top: 35vh;
+    height: 30vh;
+    width: 70vw;
+    background-color: #363349;
+    filter: drop-shadow(0 0 0.8rem #00000077);
+  }
 }
 
 /*Styling for the main title page when in portrait orientation*/
@@ -39,5 +50,16 @@
     width: 800vw;
     height: 17vh;
     background: linear-gradient(#e5e1bd, #00000066);
+  }
+
+  /*Styling for the block behind the title text.*/
+  .nameBlock {
+    z-index: 2;
+    position: absolute;
+    top: 35vh;
+    height: 30vh;
+    width: 70vw;
+    background-color: #363349;
+    filter: drop-shadow(0 0 0.8rem #00000077);
   }
 }

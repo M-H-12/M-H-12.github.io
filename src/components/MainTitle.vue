@@ -42,6 +42,14 @@ function getAngle() {
 </script>
 
 <template>
+  <div :class="$style.nameBlock">
+    <div class="vert-centre">
+      <div class="text-box">
+        <div class="title-text">Madison Hill</div>
+        <div class="sub-text">Software Developer</div>
+      </div>
+    </div>
+  </div>
   <div :class="$style.dropShadow" :style="{ transform: `rotate(${shadowAngle}rad)` }"></div>
   <div :class="$style.mainSegment"></div>
 </template>

@@ -6,3 +6,62 @@ body {
   height: 100vh;
   margin: 0rem;
 }
+
+/*Styling for centred boxes of text.*/
+.text-box {
+  width: fit-content;
+  margin: auto;
+}
+
+/*Styling to vertically centre a div.*/
+.vert-centre {
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+/*Styling for the main title page when in landscape orientation*/
+@media (orientation: landscape) {
+  /*Styling for title text.*/
+  .title-text {
+    font:
+      11vh 'Yu Gothic',
+      sans-serif;
+    color: #e5e1bd;
+    text-align: center;
+  }
+
+  /*Styling for sub text.*/
+  .sub-text {
+    font:
+      6vh 'Calibri',
+      sans-serif;
+    color: #8e8a83;
+    margin: auto;
+    text-align: center;
+  }
+}
+
+/*Styling for the main title page when in portrait orientation*/
+@media (orientation: portrait) {
+  /*Styling for title text.*/
+  .title-text {
+    font:
+      11vw 'Yu Gothic',
+      sans-serif;
+    color: #e5e1bd;
+    text-align: center;
+  }
+
+  /*Styling for sub text.*/
+  .sub-text {
+    font:
+      6vw 'Calibri',
+      sans-serif;
+    color: #8e8a83;
+    margin: auto;
+    text-align: center;
+  }
+}
