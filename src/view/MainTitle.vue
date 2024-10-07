@@ -1,54 +1,17 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
-import { useGlobalVariables } from '@/stores/globalVariables'
+import { useScrollUtil } from '@/stores/scrollUtil'
 import { storeToRefs } from 'pinia'
 import { ScreenType } from '@/model/ScreenType'
 
-/**
- * The global variables for the app - kept in a pinia store.
- */
-const globalVariables = useGlobalVariables()
+const scrollUtil = useScrollUtil()
 
-/**
- * The app's current screen - kept as a ref so the page can react to any changes
- * in the variable.
- */
-const { currentScreen } = storeToRefs(globalVariables)
+const { pagePosition } = storeToRefs(scrollUtil)
 
 /**
  * The angle for the drop shadow, in radians.
  */
 const shadowAngle = ref(0)
-
-/**
- * The vertical position of the title page (in vh)
- */
-const pagePosition = ref(0)
-
-/**
- * The input value for the closing animation. This is used to
- * position the div based on a parabolic function. This gives the
- * animation a smoother look, as opposed to letting it slide up
- * linearly.
- */
-const count = ref(0)
-
-/**
- * The interval for the closing animation. The interval runs
- * every 8 ms, and is responsible for changing the main div's
- * vertical position.
- */
-var interval: NodeJS.Timeout
-
-/**
- * The y-position of the user's initial touch.
- */
-var touchStartYPos = 0
-
-/**
- * The y-position of the user's final touch.
- */
-var touchEndYPos = 0
 
 /**
  * Code to run when the page is mounted.
@@ -59,30 +22,9 @@ var touchEndYPos = 0
  */
 onMounted(() => {
   window.addEventListener('resize', getAngle)
-  window.onwheel = function (event: any) {
-    checkScroll(event.wheelDelta < 0)
-  }
-  document.addEventListener('touchstart', (e) => {
-    touchStartYPos = e.changedTouches[0].screenY
-  })
-  document.addEventListener('touchend', (e) => {
-    touchEndYPos = e.changedTouches[0].screenY
-    checkScroll(checkScrollDirection())
-  })
+  scrollUtil.setupScroll(ScreenType.PROJECTS_INTRO, ScreenType.TITLE)
   getAngle()
 })
-
-/**
- * Used to determine which direction the user has swiped if they're
- * on mobile.
- */
-function checkScrollDirection() {
-  if (touchEndYPos < touchStartYPos) {
-    return true
-  } else {
-    return false
-  }
-}
 
 /**
  * Code to run when the page is unmounted.
@@ -92,34 +34,8 @@ function checkScrollDirection() {
  */
 onUnmounted(() => {
   window.removeEventListener('resize', getAngle)
+  scrollUtil.takedownScroll()
 })
-
-/**
- * The function used to re-position the main div. It is called
- * by the interval every 8 ms. The div's vertical position is
- * calculated using a parabolic function in order to give it a
- * smoother transition.
- */
-function slideToNextPage() {
-  if (pagePosition.value >= -100) {
-    count.value += 1
-    pagePosition.value = (count.value * count.value) / -50
-  } else {
-    clearInterval(interval)
-    currentScreen.value = ScreenType.RESIDENCE_INTRO
-  }
-}
-
-/**
- * The function called by the onwheel event. This function
- * sets the interval if it hasn't been set already.
- * @param scrollingDown Used to indicate if the user is scrolling down.
- */
-function checkScroll(scrollingDown: boolean) {
-  if (pagePosition.value == 0 && scrollingDown) {
-    interval = setInterval(slideToNextPage, 8)
-  }
-}
 
 /**
  * Function to get the drop shadow's rotation angle. It has to be calculated due to
