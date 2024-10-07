@@ -1,5 +1,19 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
+import { useGlobalVariables } from '@/stores/globalVariables'
+import { storeToRefs } from 'pinia'
+import { ScreenType } from '@/model/ScreenType'
+
+/**
+ * The global variables for the app - kept in a pinia store.
+ */
+const globalVariables = useGlobalVariables()
+
+/**
+ * The app's current screen - kept as a ref so the page can react to any changes
+ * in the variable.
+ */
+const { currentScreen } = storeToRefs(globalVariables)
 
 /**
  * The angle for the drop shadow, in radians.
@@ -34,8 +48,8 @@ var interval: NodeJS.Timeout
  */
 onMounted(() => {
   window.addEventListener('resize', getAngle)
-  window.onwheel = function () {
-    checkScroll()
+  window.onwheel = function (event: any) {
+    checkScroll(event.wheelDelta < 0)
   }
   getAngle()
 })
@@ -62,15 +76,17 @@ function slideToNextPage() {
     pagePosition.value = (count.value * count.value) / -50
   } else {
     clearInterval(interval)
+    currentScreen.value = ScreenType.RESIDENCE_INTRO
   }
 }
 
 /**
  * The function called by the onwheel event. This function
  * sets the interval if it hasn't been set already.
+ * @param scrollingDown Used to indicate if the user is scrolling down.
  */
-function checkScroll() {
-  if (pagePosition.value == 0) {
+function checkScroll(scrollingDown: boolean) {
+  if (pagePosition.value == 0 && scrollingDown) {
     interval = setInterval(slideToNextPage, 8)
   }
 }
