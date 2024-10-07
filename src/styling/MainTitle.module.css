@@ -21,8 +21,10 @@
   left: 0;
   background-color: #e5e1bd;
   overflow: hidden;
+  box-sizing: border-box;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  min-height: 100%;
   margin: 0rem;
 }
 

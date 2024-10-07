@@ -41,18 +41,48 @@ const count = ref(0)
 var interval: NodeJS.Timeout
 
 /**
+ * The y-position of the user's initial touch.
+ */
+var touchStartYPos = 0
+
+/**
+ * The y-position of the user's final touch.
+ */
+var touchEndYPos = 0
+
+/**
  * Code to run when the page is mounted.
  * Contains:
  * - The initialization of an event listener, so we know when the page is resized.
  * - The calling of the getAngle function, so the drop shadow will have the correct angle on load.
+ * - The setup for the scrolling/swipe event listeners
  */
 onMounted(() => {
   window.addEventListener('resize', getAngle)
   window.onwheel = function (event: any) {
     checkScroll(event.wheelDelta < 0)
   }
+  document.addEventListener('touchstart', (e) => {
+    touchStartYPos = e.changedTouches[0].screenY
+  })
+  document.addEventListener('touchend', (e) => {
+    touchEndYPos = e.changedTouches[0].screenY
+    checkScroll(checkScrollDirection())
+  })
   getAngle()
 })
+
+/**
+ * Used to determine which direction the user has swiped if they're
+ * on mobile.
+ */
+function checkScrollDirection() {
+  if (touchEndYPos < touchStartYPos) {
+    return true
+  } else {
+    return false
+  }
+}
 
 /**
  * Code to run when the page is unmounted.
