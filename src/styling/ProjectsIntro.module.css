@@ -1,0 +1,16 @@
+/*Animation keyframes for the view's main fade-in*/
+@keyframes fadeInMain {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*Styling for the outermost div in the view.*/
+.mainSegment {
+  animation-name: fadeInMain;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}

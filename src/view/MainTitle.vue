@@ -109,7 +109,7 @@ function getAngle() {
   <div :class="$style.pageBacking" :style="{ top: `${pagePosition}vh` }">
     <div :class="$style.nameBlock">
       <div class="vert-centre">
-        <div class="text-box">
+        <div class="text-box-centre">
           <div class="title-text">Madison Hill</div>
           <div class="sub-text">Software Developer</div>
         </div>

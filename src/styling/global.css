@@ -8,9 +8,14 @@ body {
 }
 
 /*Styling for centred boxes of text.*/
-.text-box {
+.text-box-centre {
   width: fit-content;
   margin: auto;
+}
+
+/*Styling for boxes of text on the left.*/
+.text-box-left {
+  width: fit-content;
 }
 
 /*Styling to vertically centre a div.*/
@@ -42,6 +47,18 @@ body {
     margin: auto;
     text-align: center;
   }
+
+  /*Styling for section titles.*/
+  .section-text {
+    font:
+      9vh 'Segoe UI',
+      sans-serif;
+    color: #e5e1bd;
+    text-align: center;
+    text-decoration: underline;
+    padding: 1.5rem;
+    padding-top: 0rem;
+  }
 }
 
 /*Styling for the main title page when in portrait orientation*/
@@ -63,5 +80,17 @@ body {
     color: #8e8a83;
     margin: auto;
     text-align: center;
+  }
+
+  /*Styling for section titles.*/
+  .section-text {
+    font:
+      9vw 'Segoe UI',
+      sans-serif;
+    color: #e5e1bd;
+    text-align: center;
+    text-decoration: underline;
+    padding: 1.5rem;
+    padding-top: 0rem;
   }
 }
