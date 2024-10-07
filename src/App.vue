@@ -5,6 +5,7 @@ import '@/styling/global.css'
 import { useGlobalVariables } from '@/stores/globalVariables'
 import { ScreenType } from './model/ScreenType'
 import { storeToRefs } from 'pinia'
+import ResidenceIntro from './view/Residence/ResidenceIntro.vue'
 
 /**
  * The global variables for the app - kept in a pinia store.
@@ -20,5 +21,6 @@ const { currentScreen } = storeToRefs(globalVariables)
 
 <template>
   <MainTitle v-if="currentScreen == ScreenType.TITLE"></MainTitle>
-  <ProjectsIntro v-else></ProjectsIntro>
+  <ProjectsIntro v-else-if="currentScreen == ScreenType.PROJECTS_INTRO"></ProjectsIntro>
+  <ResidenceIntro v-else></ResidenceIntro>
 </template>

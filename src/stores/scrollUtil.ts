@@ -76,6 +76,8 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
   function takedownScroll() {
     document.removeEventListener('touchstart', startTouch)
     document.removeEventListener('touchend', endTouch)
+    pagePosition.value = 0
+    count.value = 0
   }
 
   /**
