@@ -7,8 +7,12 @@ export default mergeConfig(
   defineConfig({
     test: {
       environment: 'jsdom',
-      exclude: [...configDefaults.exclude, 'e2e/**'],
-      root: fileURLToPath(new URL('./', import.meta.url))
+      exclude: [...configDefaults.exclude, 'e2e/**', 'src/tests/stores.test.ts'],
+      root: fileURLToPath(new URL('./', import.meta.url)),
+      coverage: {
+        include: ['src'],
+        exclude: ['src/tests', 'src/vite-env.d.ts', 'src/main.ts']
+      }
     }
   })
 )

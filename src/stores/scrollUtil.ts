@@ -68,9 +68,7 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
   function setupScroll(nextScreenType: ScreenType, previousScreenType: ScreenType) {
     nextScreen.value = nextScreenType
     previousScreen.value = previousScreenType
-    window.onwheel = function (event: any) {
-      checkScroll(event.wheelDelta < 0)
-    }
+    document.addEventListener('wheel', wheelScroll)
     document.addEventListener('touchstart', startTouch)
     document.addEventListener('touchend', endTouch)
   }
@@ -81,8 +79,13 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
   function takedownScroll() {
     document.removeEventListener('touchstart', startTouch)
     document.removeEventListener('touchend', endTouch)
+    document.removeEventListener('wheel', wheelScroll)
     pagePosition.value = 0
     count.value = 0
+  }
+
+  function wheelScroll(event: any) {
+    checkScroll(event.wheelDelta < 0)
   }
 
   /**

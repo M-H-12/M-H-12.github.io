@@ -56,7 +56,11 @@ function getAngle() {
 </script>
 
 <template>
-  <div :class="$style.pageBacking" :style="{ top: `${pagePosition}vh` }">
+  <div
+    id="mainTitleMainComponent"
+    :class="$style.pageBacking"
+    :style="{ top: `${pagePosition}vh` }"
+  >
     <div :class="$style.nameBlock">
       <div class="vert-centre">
         <div class="text-box-centre">
