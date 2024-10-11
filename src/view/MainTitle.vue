@@ -4,8 +4,14 @@ import { useScrollUtil } from '@/stores/scrollUtil'
 import { storeToRefs } from 'pinia'
 import { ScreenType } from '@/model/ScreenType'
 
+/**
+ * Utility for setting up and taking down the scrolling/scrolling animations.
+ */
 const scrollUtil = useScrollUtil()
 
+/**
+ * Variable to keep track of the page's vertical position on for the "scroll down" animation.
+ */
 const { pagePosition } = storeToRefs(scrollUtil)
 
 /**
@@ -28,9 +34,7 @@ onMounted(() => {
 
 /**
  * Code to run when the page is unmounted.
- * Contains:
- * - The removal of an event listener (cleanup).
- * -
+ * Contains the removal of an event listener (cleanup).
  */
 onUnmounted(() => {
   window.removeEventListener('resize', getAngle)

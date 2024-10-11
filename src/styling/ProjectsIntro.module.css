@@ -8,6 +8,16 @@
   }
 }
 
+/*Animation for the right-side section of the screen.*/
+@keyframes slideInRight {
+  from {
+    right: -70vw;
+  }
+  to {
+    right: 0vw;
+  }
+}
+
 /*Styling for the outermost div in the view.*/
 .mainSegment {
   position: absolute;
@@ -22,4 +32,37 @@
   animation-name: fadeInMain;
   animation-duration: 1.5s;
   animation-fill-mode: forwards;
+}
+
+/*Styling for the right, light-coloured section of the screen.*/
+.rightSegment {
+  position: absolute;
+  right: 0vw;
+  top: 0vh;
+  width: 70vw;
+  height: 100vh;
+  background-color: #e5e1bd;
+  z-index: 10;
+  animation-name: slideInRight;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+/*Styling for the left, light-coloured section of the screen.*/
+.rightSegment {
+  position: absolute;
+  right: 0vw;
+  top: 0vh;
+  width: 70vw;
+  height: 100vh;
+  background-color: #e5e1bd;
+  z-index: 10;
+  animation-name: slideInRight;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+/*Styling for the right, dark-coloured section of the screen.*/
+.leftSegment {
+  width: 30vw;
 }

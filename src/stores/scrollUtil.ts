@@ -5,6 +5,11 @@ import { ScreenType } from '@/model/ScreenType'
 
 export const useScrollUtil = defineStore('scrollUtil', () => {
   /**
+   * Indicates if the page is already scrolling - prevents the view from getting stuck.
+   */
+  let actionInProgress = false
+
+  /**
    * The vertical position of the title page (in vh)
    */
   const pagePosition = ref(0)
@@ -103,8 +108,16 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
    * @param scrollingDown Used to indicate if the user is scrolling down.
    */
   function checkScroll(scrollingDown: boolean) {
+    if (actionInProgress) {
+      return
+    }
     if (pagePosition.value == 0 && scrollingDown) {
+      actionInProgress = true
       interval = setInterval(slideToNextPage, 8)
+    } else if (!scrollingDown) {
+      actionInProgress = true
+      currentScreen.value = previousScreen.value
+      actionInProgress = false
     }
   }
 
@@ -121,6 +134,7 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
     } else {
       clearInterval(interval)
       currentScreen.value = nextScreen.value
+      actionInProgress = false
     }
   }
 

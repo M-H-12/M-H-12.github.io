@@ -35,9 +35,10 @@ onUnmounted(() => {
 <template>
   <div :class="$style.mainSegment" :style="{ top: `${pagePosition}vh` }">
     <br />
-    <div class="text-box-left">
+    <div :class="$style.leftSegment">
       <div class="section-text">About</div>
     </div>
+    <div :class="$style.rightSegment"></div>
   </div>
 </template>
 
