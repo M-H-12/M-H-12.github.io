@@ -5,6 +5,8 @@ import App from '@/App.vue'
 import { useGlobalVariables } from '@/stores/globalVariables'
 import { ScreenType } from '@/model/ScreenType'
 
+/**This testing file is used to ensure that all components/views render properly. */
+
 beforeEach(() => {
   setActivePinia(createPinia())
 })
