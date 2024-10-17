@@ -14,20 +14,6 @@
   z-index: 1;
 }
 
-/*Styling for the main backing on the title page.*/
-.pageBacking {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #e5e1bd;
-  overflow: hidden;
-  box-sizing: border-box;
-  width: 100vw;
-  height: 100%;
-  min-height: 100%;
-  margin: 0rem;
-}
-
 /*Animation for the arrow bobbing in the bottom right corner.*/
 @keyframes bob {
   0% {
@@ -86,6 +72,20 @@
 
 /*Styling for the main title page when in landscape orientation*/
 @media (orientation: landscape) {
+  /*Styling for the main backing on the title page.*/
+  .pageBacking {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('@/assets/background.png');
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100%;
+    min-height: 100%;
+    margin: 0rem;
+  }
+
   /*Styling for the drop shadow behind the grey segment. It's rotation angle had to be calculated
     in the applicable vue file due to the angle being based on the screen height/width.*/
   .dropShadow {
@@ -94,7 +94,7 @@
     z-index: 0;
     width: 400vw;
     height: 17vh;
-    background: linear-gradient(#e5e1bd, #00000066);
+    background: linear-gradient(#00000000, #00000066);
   }
 
   /*Styling for the block behind the title text.*/
@@ -114,6 +114,20 @@
 
 /*Styling for the main title page when in portrait orientation*/
 @media (orientation: portrait) {
+  /*Styling for the main backing on the title page.*/
+  .pageBacking {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('@/assets/background.png');
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100%;
+    margin: 0rem;
+  }
+
   /*Styling for the drop shadow behind the grey segment. It's rotation angle had to be calculated
     in the applicable vue file due to the angle being based on the screen height/width.*/
   .dropShadow {
@@ -122,7 +136,7 @@
     z-index: 0;
     width: 800vw;
     height: 17vh;
-    background: linear-gradient(#e5e1bd, #00000066);
+    background: linear-gradient(#00000000, #00000066);
   }
 
   /*Styling for the block behind the title text.*/

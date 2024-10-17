@@ -41,7 +41,7 @@
   top: 0vh;
   width: 70vw;
   height: 100vh;
-  background-color: #e5e1bd;
+  background: url('@/assets/background.png');
   z-index: 10;
   animation-name: slideInRight;
   animation-duration: 1.5s;
