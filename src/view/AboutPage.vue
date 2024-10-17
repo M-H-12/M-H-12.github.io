@@ -96,5 +96,5 @@ function getTimeGreeting() {
 </template>
 
 <style module>
-@import '@/styling/ProjectsIntro.module.css';
+@import '@/styling/AboutPage.module.css';
 </style>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MainTitle from '@/view/MainTitle.vue'
-import ProjectsIntro from '@/view/ProjectsIntro.vue'
+import AboutPage from '@/view/AboutPage.vue'
 import '@/styling/global.css'
 import { useGlobalVariables } from '@/stores/globalVariables'
 import { ScreenType } from './model/ScreenType'
@@ -21,6 +21,6 @@ const { currentScreen } = storeToRefs(globalVariables)
 
 <template>
   <MainTitle v-if="currentScreen == ScreenType.TITLE"></MainTitle>
-  <ProjectsIntro v-else-if="currentScreen == ScreenType.PROJECTS_INTRO"></ProjectsIntro>
+  <AboutPage v-else-if="currentScreen == ScreenType.PROJECTS_INTRO"></AboutPage>
   <ResidenceIntro v-else></ResidenceIntro>
 </template>
