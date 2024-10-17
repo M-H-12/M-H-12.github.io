@@ -1,14 +1,22 @@
-import { expect, it, beforeEach } from 'vitest'
+import { expect, it, beforeEach, vi, afterEach } from 'vitest'
 import { flushPromises, mount } from '@vue/test-utils'
 import { createPinia, setActivePinia, storeToRefs } from 'pinia'
 import App from '@/App.vue'
 import { useGlobalVariables } from '@/stores/globalVariables'
 import { ScreenType } from '@/model/ScreenType'
+import ProjectsIntro from '@/view/ProjectsIntro.vue'
+import { nextTick } from 'vue'
 
 /**This testing file is used to ensure that all components/views render properly. */
 
 beforeEach(() => {
   setActivePinia(createPinia())
+})
+
+afterEach(async () => {
+  vi.useRealTimers()
+  await nextTick()
+  await flushPromises()
 })
 
 it('Renders main title on load', async () => {
@@ -51,4 +59,28 @@ it('Renders residence intro when currentScreen global variable is set to "RESIDE
   expect(wrapper.text().includes('Residence')).toBe(true)
 
   wrapper.unmount()
+})
+
+it('Projects Intro screen says "Good Morning!" when loaded in the morning', async () => {
+  vi.setSystemTime(new Date('2024-10-17T14:34:39Z'))
+
+  const wrapper = mount(ProjectsIntro)
+
+  expect(wrapper.text().includes('Good Morning!')).toBe(true)
+})
+
+it('Projects Intro screen says "Good Afternoon!" when loaded in the afternoon', async () => {
+  vi.setSystemTime(new Date('2024-10-17T20:34:39Z'))
+
+  const wrapper = mount(ProjectsIntro)
+
+  expect(wrapper.text().includes('Good Afternoon!')).toBe(true)
+})
+
+it('Projects Intro screen says "Good Evening!" when loaded in the evening', async () => {
+  vi.setSystemTime(new Date('2024-10-17T02:34:39Z'))
+
+  const wrapper = mount(ProjectsIntro)
+
+  expect(wrapper.text().includes('Good Evening!')).toBe(true)
 })

@@ -30,6 +30,41 @@ onMounted(() => {
 onUnmounted(() => {
   scrollUtil.takedownScroll()
 })
+
+/**
+ * Function used to get the greeting for the page.
+ * The greeting changes depending on if it's morning, afternoon, or evening.
+ * Morning is defined as before noon, afternoon is defined as before 6PM, and evening is defined as before midnight.
+ */
+function getTimeGreeting() {
+  var currentTime = new Date()
+
+  var morningEnd = new Date(
+    currentTime.getFullYear(),
+    currentTime.getMonth(),
+    currentTime.getDate(),
+    12,
+    0,
+    0
+  )
+
+  var afternoonEnd = new Date(
+    currentTime.getFullYear(),
+    currentTime.getMonth(),
+    currentTime.getDate(),
+    18,
+    0,
+    0
+  )
+
+  if (currentTime < morningEnd) {
+    return 'Morning!'
+  } else if (currentTime < afternoonEnd) {
+    return 'Afternoon!'
+  } else {
+    return 'Evening!'
+  }
+}
 </script>
 
 <template>
@@ -38,7 +73,25 @@ onUnmounted(() => {
     <div :class="$style.leftSegment">
       <div class="section-text">About</div>
     </div>
-    <div :class="$style.rightSegment"></div>
+    <div :class="$style.rightSegment">
+      <div :class="$style.introParagraphs">
+        <div :class="$style.introParagraphsTitle">Good {{ getTimeGreeting() }}</div>
+        <br />
+        My name is Madison, and I'm a software developer. The majority of my development experience
+        lies in libraries and frameworks such as
+        <span :class="$style.vueJSText">Vue.js</span> and
+        <span :class="$style.reactText">React</span>, however, I've also had the opportunity to work
+        on projects in C#, SwiftUI, Java, and Python (among a few others).
+        <br />
+        <br />
+        I'm always up for learning something new, and always eager to try my hand at unique and
+        challenging projects.
+        <br />
+        <br />
+        Currently, I'm focused on one main passion project, which can be viewed on the following
+        pages.
+      </div>
+    </div>
   </div>
 </template>
 
