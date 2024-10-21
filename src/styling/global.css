@@ -18,11 +18,6 @@ html {
   margin: auto;
 }
 
-/*Styling for boxes of text on the left.*/
-.text-box-left {
-  width: fit-content;
-}
-
 /*Styling to vertically centre a div.*/
 .vert-centre {
   position: absolute;
