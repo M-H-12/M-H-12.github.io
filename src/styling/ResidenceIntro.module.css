@@ -8,6 +8,7 @@
   }
 }
 
+/*Container for the title at the top of the page.*/
 .titleContainer {
   padding-top: 1vh;
 }
@@ -29,6 +30,10 @@
       min(1.9vw, 3vh) 'Segoe UI',
       sans-serif;
   }
+  /*Styling for the lower section of text on the page. 
+  Depending on the device orientation, this text may be 
+  the full width of the screen (portrait) or just half 
+  of it (landscape).*/
   .textLower {
     width: 50vw;
     height: 100%;
@@ -37,9 +42,19 @@
       min(1.9vw, 3vh) 'Segoe UI',
       sans-serif;
   }
+  /*Container for the image on the page. Depending 
+  on the device orientation, the image may cover 
+  the full width of the screen and be pushed to 
+  the bottom of the view (portrait), or it may be 
+  next to the "lower text" (landscape).*/
   .imageContainer {
     width: 50vw;
   }
+  /*Styling for the image on the page. Depending 
+  on the device orientation, the image may cover 
+  the full width of the screen and be pushed to 
+  the bottom of the view (portrait), or it may be 
+  next to the "lower text" (landscape).*/
   .image {
     max-width: 40vw;
     max-height: 24vw;
@@ -48,6 +63,7 @@
     margin: auto;
     display: block;
   }
+  /*Styling for the lower content. In landscape, the image is next to the text.*/
   .lowerContent {
     display: flex;
   }
@@ -74,6 +90,10 @@
       2vh 'Segoe UI',
       sans-serif;
   }
+  /*Styling for the lower section of text on the page. 
+  Depending on the device orientation, this text may be 
+  the full width of the screen (portrait) or just half 
+  of it (landscape).*/
   .textLower {
     width: 100%;
     height: 100%;
@@ -83,10 +103,24 @@
       2vh 'Segoe UI',
       sans-serif;
   }
+  /*Container for the image on the page. Depending 
+  on the device orientation, the image may cover 
+  the full width of the screen and be pushed to 
+  the bottom of the view (portrait), or it may be 
+  next to the "lower text" (landscape).*/
+  .imageContainer {
+    width: 100%;
+  }
+  /*Styling for the image on the page. Depending 
+  on the device orientation, the image may cover 
+  the full width of the screen and be pushed to 
+  the bottom of the view (portrait), or it may be 
+  next to the "lower text" (landscape).*/
   .image {
     width: 100%;
     height: 100%;
   }
+  /*Styling for the lower content. In landscape, the image is below the text.*/
   .lowerContent {
     display: block;
   }
