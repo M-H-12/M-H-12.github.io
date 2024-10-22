@@ -6,5 +6,6 @@
 export enum ScreenType {
   TITLE,
   PROJECTS_INTRO,
-  RESIDENCE_INTRO
+  RESIDENCE_INTRO,
+  RESIDENCE_TECH
 }

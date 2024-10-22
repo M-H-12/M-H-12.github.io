@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ScreenType } from '@/model/ScreenType'
 import { useScrollUtil } from '@/stores/scrollUtil'
+import { storeToRefs } from 'pinia'
 import { onMounted, onUnmounted } from 'vue'
 
 /**
@@ -9,11 +10,17 @@ import { onMounted, onUnmounted } from 'vue'
 const scrollUtil = useScrollUtil()
 
 /**
+ * The position of the view - kept within the scroll util store
+ * for code reuse.
+ */
+const { pagePosition } = storeToRefs(scrollUtil)
+
+/**
  * Code to run when the page is mounted.
  * Contains the setup for the scrolling/swipe event listeners
  */
 onMounted(() => {
-  scrollUtil.setupScroll(ScreenType.RESIDENCE_INTRO, ScreenType.PROJECTS_INTRO)
+  scrollUtil.setupScroll(ScreenType.RESIDENCE_TECH, ScreenType.PROJECTS_INTRO)
 })
 
 /**
@@ -26,7 +33,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div :class="$style.mainSegment">
+  <div :class="$style.mainSegment" :style="{ top: `${pagePosition}vh` }">
     <br />
     <div>
       <div :class="$style.titleContainer">
@@ -34,16 +41,16 @@ onUnmounted(() => {
       </div>
       <div :class="$style.bottomSegment">
         <div :class="$style.bodyText">
-          Residence is a passion project of mine that began several months ago. I started on this
-          project as a way to expand my skills with Vue.js, as well as to take on a project which
-          would have unique variety of programming challenges.
+          Residence is a passion project of mine that began several months ago. It began as a way to
+          expand my skills with Vue.js, as well as to take on a unique variety of programming
+          challenges.
           <br />
           <br />
           <div :class="$style.lowerContent">
             <div :class="$style.textLower">
               Like many people, my first introduction to programming came in my early teens through
               video games. I was fascinated by how they worked, and hoped to create one of my own
-              one day. Thinking back to this memory, I started designing this project, and gave it
+              one day. Thinking back on this memory, I started designing the project, and gave it
               the working title of "Residence".
               <br />
               <br />
