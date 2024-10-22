@@ -51,8 +51,9 @@ html {
   /*Styling for section titles.*/
   .section-text {
     font:
-      9vh 'Segoe UI',
+      9vh 'Yu Gothic',
       sans-serif;
+    font-weight: 500;
     color: #e5e1bd;
     text-align: center;
     text-decoration: underline;
@@ -84,8 +85,9 @@ html {
   /*Styling for section titles.*/
   .section-text {
     font:
-      9vw 'Segoe UI',
+      9vw 'Yu Gothic',
       sans-serif;
+    font-weight: 500;
     color: #e5e1bd;
     text-align: center;
     text-decoration: underline;

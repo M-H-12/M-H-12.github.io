@@ -29,8 +29,9 @@
 /*Styling for the dark-coloured title text*/
 .titleText {
   font:
-    9vh 'Segoe UI',
+    9vh 'Yu Gothic',
     sans-serif;
+  font-weight: 500;
   color: #19062a;
   text-align: center;
   text-decoration: underline;
@@ -63,13 +64,13 @@
 
 /*Styling for the container that holds both the title and the sub-title text.*/
 .titleContainer {
-  height: 20vh;
+  height: 25vh;
   margin: 2vh;
 }
 
 /*Styling for the bottom left segment of the screen.*/
 .bottomLeftSegment {
-  height: 80vh;
+  height: 75vh;
   background-color: #19062a;
   filter: drop-shadow(0 0 2rem #00000077);
 }

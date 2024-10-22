@@ -34,10 +34,11 @@ onUnmounted(() => {
 
 <template>
   <div :class="$style.mainSegment" :style="{ top: `${pagePosition}vh` }">
-    <br />
     <div>
       <div :class="$style.titleContainer">
-        <div class="section-text">Residence</div>
+        <div :class="$style.additionalPadding">
+          <div class="section-text">Residence</div>
+        </div>
       </div>
       <div :class="$style.bottomSegment">
         <div :class="$style.bodyText">
@@ -59,7 +60,11 @@ onUnmounted(() => {
               expertise.
             </div>
             <div :class="$style.imageContainer">
-              <img :class="$style.image" src="@/assets/residenceIntro/titleImage.png" />
+              <img
+                :class="$style.image"
+                src="@/assets/residenceIntro/titleImage.png"
+                alt="Menu screen for the 'Residence' project."
+              />
             </div>
           </div>
         </div>
