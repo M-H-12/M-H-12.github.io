@@ -1,18 +1,6 @@
-# web-portfolio
+# Madison's Web Portfolio
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+This repository holds the code for Madison's Web Portfolio.
 
 ## Project Setup
 
@@ -35,7 +23,13 @@ npm run build
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-npm run test:unit
+npm run test
+```
+
+### Run Unit Test Coverage with [Vitest](https://vitest.dev/guide/coverage) (v8)
+
+```sh
+npm run coverage
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
@@ -43,3 +37,52 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+## Project Organization
+
+The code in this repo is organized into several different directories, which are covered below.
+
+### src/assets
+
+The directory which holds any image files needed for the project.
+
+### src/model
+
+The directory holding any custom enums or classes used within the project.
+
+### src/stores
+
+The directory holding Pinia stores used throughout the project. Currently, there are two stores. One (globalVariables.ts) is used to hold global variables that are needed on various views throughout the project. The second (scrollUtil.ts) holds variables which are needed for the scrolling function between views.
+
+### src/styling
+
+The directory which holds all the .css files. Every view has it's own .module.css file, in addition to there being a global.css file. The global file holds styling which is used on multiple pages, or in the main _App.vue_, while each module has styling which is only on it's own view.
+
+### src/tests
+
+The directory which holds all the unit tests for the project. The tests are separated into 2 files. One (stores.test.ts) is mainly used to test functionality within the Pinia stores. The second (views.test.ts) is used to test views rendering.
+
+### src/view
+
+The directory which holds all of the project's views.
+
+## Project Test Coverage
+
+The following is a report of the current project test coverage according to Vitest (v8).
+
+| File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s |
+| ------------------------ | ------- | -------- | ------- | ------- | ----------------- |
+| All files                | 100     | 100      | 100     | 100     |
+| src                      | 100     | 100      | 100     | 100     |
+| &ensp;App.vue            | 100     | 100      | 100     | 100     |
+| src/model                | 100     | 100      | 100     | 100     |
+| &ensp;ScreenType.ts      | 100     | 100      | 100     | 100     |
+| src/stores               | 100     | 100      | 100     | 100     |
+| &ensp;globalVariables.ts | 100     | 100      | 100     | 100     |
+| &ensp;scrollUtil.ts      | 100     | 100      | 100     | 100     |
+| src/view                 | 100     | 100      | 100     | 100     |
+| &ensp;AboutPage.vue      | 100     | 100      | 100     | 100     |
+| &ensp;MainTitle.vue      | 100     | 100      | 100     | 100     |
+| src/view/Residence       | 100     | 100      | 100     | 100     |
+| &ensp;ResidenceIntro.vue | 100     | 100      | 100     | 100     |
+| &ensp;ResidenceTech.vue  | 100     | 100      | 100     | 100     |
