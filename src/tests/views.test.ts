@@ -72,7 +72,7 @@ it('Renders residence tech/summary when currentScreen global variable is set to 
 
   await flushPromises()
 
-  expect(wrapper.text().includes('Summary and Technology')).toBe(true)
+  expect(wrapper.text().includes('Idea and Technology')).toBe(true)
 
   wrapper.unmount()
 })

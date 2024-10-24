@@ -1,3 +1,11 @@
+/*Styling to make hyperlinks the default colour in the Technology seciton*/
+a {
+  color: #e5e1bd;
+  font:
+    2.4vh 'Yu Gothic',
+    sans-serif;
+}
+
 /*Animation keyframes for the view's main fade-in*/
 @keyframes fadeInMain {
   from {
@@ -51,13 +59,13 @@
 /*Styling for the left side of the screen.*/
 .leftSegment {
   display: block;
-  width: 45vw;
+  width: 50vw;
 }
 
 /*Styling for the right side of the screen.*/
 .rightSegment {
   height: 100vh;
-  width: 55vw;
+  width: 50vw;
   background-color: #363349;
   filter: drop-shadow(0 0 2rem #00000077);
 }
@@ -73,4 +81,15 @@
   height: 75vh;
   background-color: #19062a;
   filter: drop-shadow(0 0 2rem #00000077);
+}
+
+/*Styling for the main body text sections in the page.*/
+.bodyText {
+  height: 92%;
+  width: 92%;
+  padding: 4%;
+  color: #e5e1bd;
+  font:
+    2.4vh 'Yu Gothic',
+    sans-serif;
 }
