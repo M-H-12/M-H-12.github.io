@@ -81,7 +81,10 @@ function getTimeGreeting() {
         lies in libraries and frameworks such as
         <span :class="$style.vueJSText">Vue.js</span> and
         <span :class="$style.reactText">React</span>, however, I've also had the opportunity to work
-        on projects in C#, SwiftUI, Java, and Python (among a few others).
+        on projects in <span :class="$style.cSharpText">C#</span>,
+        <span :class="$style.swiftUIText">SwiftUI</span>,
+        <span :class="$style.javaText">Java</span>, and
+        <span :class="$style.pythonText">Python</span> (among a few others).
         <br />
         <br />
         I'm always up for learning something new, and always eager to try my hand at unique and
