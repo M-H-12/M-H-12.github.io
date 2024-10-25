@@ -49,10 +49,10 @@ onUnmounted(() => {
           <br />
           <div :class="$style.lowerContent">
             <div :class="$style.textLower">
-              Like many people, my first introduction to programming came in my early teens through
-              video games. I was fascinated by how they worked, and hoped to create one of my own
-              one day. Thinking back on this memory, I started designing the project, and gave it
-              the working title of "Residence".
+              Like many people, my introduction to programming came in my early teens through video
+              games. I was fascinated by how they worked, and hoped to create one of my own one day.
+              Thinking back on this memory, I started designing the project, and gave it the working
+              title of "Residence".
               <br />
               <br />
               While the project is still very much in progress, it's come a long way from the

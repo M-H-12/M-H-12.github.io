@@ -87,8 +87,8 @@ function getTimeGreeting() {
         <span :class="$style.pythonText">Python</span> (among a few others).
         <br />
         <br />
-        I'm always up for learning something new, and always eager to try my hand at unique and
-        challenging projects.
+        I'm always up for learning something new, and eager to try my hand at unique and challenging
+        projects.
         <br />
         <br />
         Currently, I'm focused on one main passion project, which can be viewed on the following

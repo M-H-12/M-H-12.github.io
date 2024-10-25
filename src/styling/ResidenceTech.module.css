@@ -1,11 +1,3 @@
-/*Styling to make hyperlinks the default colour in the Technology seciton*/
-a {
-  color: #e5e1bd;
-  font:
-    2.4vh 'Yu Gothic',
-    sans-serif;
-}
-
 /*Animation keyframes for the view's main fade-in*/
 @keyframes fadeInMain {
   from {
@@ -16,80 +8,182 @@ a {
   }
 }
 
-/*Styling for the outermost div in the view.*/
-.mainSegment {
-  position: absolute;
-  display: flex;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  box-sizing: border-box;
-  width: 100vw;
-  height: 100%;
-  min-height: 100%;
-  margin: 0rem;
-  background: url('@/assets/background.png');
-  animation-name: fadeInMain;
-  animation-duration: 1.5s;
-  animation-fill-mode: forwards;
+@media (orientation: landscape) {
+  /*Styling for the dark-coloured title text*/
+  .titleText {
+    font:
+      9vh 'Yu Gothic',
+      sans-serif;
+    font-weight: 500;
+    color: #19062a;
+    text-align: center;
+    text-decoration: underline;
+    margin: auto;
+  }
+
+  /*Styling for the dark-coloured sub-title text*/
+  .subTitle {
+    font:
+      5vh 'Calibri',
+      sans-serif;
+    color: #291f31;
+    margin: auto;
+    text-align: center;
+  }
+
+  /*Styling for the outermost div in the view.*/
+  .mainSegment {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100%;
+    min-height: 100%;
+    margin: 0rem;
+    background: url('@/assets/background.png');
+    animation-name: fadeInMain;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+  }
+
+  /*Styling to make hyperlinks the default colour in the Technology section*/
+  a {
+    color: #e5e1bd;
+    font:
+      2.4vh 'Yu Gothic',
+      sans-serif;
+  }
+
+  /*Styling for the main body text sections in the page.*/
+  .bodyText {
+    height: 92%;
+    width: 92%;
+    padding: 4%;
+    color: #e5e1bd;
+    font:
+      2.4vh 'Yu Gothic',
+      sans-serif;
+  }
+
+  /*Styling for the container that holds both the title and the sub-title text.*/
+  .titleContainer {
+    height: 25vh;
+    margin: 2vh;
+  }
+
+  /*Styling for the left side of the screen.*/
+  .leftSegment {
+    display: block;
+    width: 50vw;
+  }
+
+  /*Styling for the bottom left segment of the screen.*/
+  .bottomLeftSegment {
+    height: 75vh;
+    background-color: #19062a;
+    filter: drop-shadow(0 0 2rem #00000077);
+  }
+
+  /*Styling for the right side of the screen.*/
+  .rightSegment {
+    height: 100vh;
+    width: 50vw;
+    background-color: #363349;
+    filter: drop-shadow(0 0 2rem #00000077);
+  }
 }
 
-/*Styling for the dark-coloured title text*/
-.titleText {
-  font:
-    9vh 'Yu Gothic',
-    sans-serif;
-  font-weight: 500;
-  color: #19062a;
-  text-align: center;
-  text-decoration: underline;
-  margin: auto;
-}
+@media (orientation: portrait) {
+  /*Styling for the dark-coloured title text*/
+  .titleText {
+    font:
+      6vh 'Yu Gothic',
+      sans-serif;
+    font-weight: 500;
+    color: #19062a;
+    text-align: center;
+    text-decoration: underline;
+    margin: auto;
+  }
 
-/*Styling for the dark-coloured sub-title text*/
-.subTitle {
-  font:
-    5vh 'Calibri',
-    sans-serif;
-  color: #291f31;
-  margin: auto;
-  text-align: center;
-}
+  /*Styling for the dark-coloured sub-title text*/
+  .subTitle {
+    font:
+      3.2vh 'Calibri',
+      sans-serif;
+    color: #291f31;
+    margin: auto;
+    text-align: center;
+  }
 
-/*Styling for the left side of the screen.*/
-.leftSegment {
-  display: block;
-  width: 50vw;
-}
+  /*Styling for the outermost div in the view.*/
+  .mainSegment {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100%;
+    min-height: 100%;
+    margin: 0rem;
+    background: url('@/assets/background.png');
+    animation-name: fadeInMain;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+  }
 
-/*Styling for the right side of the screen.*/
-.rightSegment {
-  height: 100vh;
-  width: 50vw;
-  background-color: #363349;
-  filter: drop-shadow(0 0 2rem #00000077);
-}
+  /*Styling to make hyperlinks the default colour in the Technology section*/
+  a {
+    color: #e5e1bd;
+    font:
+      min(2vh, 3.8vw) 'Yu Gothic',
+      sans-serif;
+  }
 
-/*Styling for the container that holds both the title and the sub-title text.*/
-.titleContainer {
-  height: 25vh;
-  margin: 2vh;
-}
+  h3 {
+    margin-bottom: 0.2rem;
+  }
 
-/*Styling for the bottom left segment of the screen.*/
-.bottomLeftSegment {
-  height: 75vh;
-  background-color: #19062a;
-  filter: drop-shadow(0 0 2rem #00000077);
-}
+  /*Styling for the main body text sections in the page.*/
+  .bodyText {
+    height: 96%;
+    width: 96%;
+    padding: 2%;
+    color: #e5e1bd;
+    font:
+      min(2vh, 3.8vw) 'Yu Gothic',
+      sans-serif;
+  }
 
-/*Styling for the main body text sections in the page.*/
-.bodyText {
-  height: 92%;
-  width: 92%;
-  padding: 4%;
-  color: #e5e1bd;
-  font:
-    2.4vh 'Yu Gothic',
-    sans-serif;
+  /*Styling for the container that holds both the title and the sub-title text.*/
+  .titleContainer {
+    height: 13vh;
+    margin: 1vh;
+  }
+
+  /*Styling for the left side of the screen.*/
+  .leftSegment {
+    display: block;
+    width: 100vw;
+  }
+
+  /*Styling for the bottom left segment of the screen.*/
+  .bottomLeftSegment {
+    height: 32.5vh;
+    background-color: #19062a;
+    filter: drop-shadow(0 0 2rem #00000077);
+  }
+
+  /*Styling for the right side of the screen.*/
+  .rightSegment {
+    height: 53.5vh;
+    width: 100vw;
+    background-color: #363349;
+    filter: drop-shadow(0 0 2rem #00000077);
+  }
 }
