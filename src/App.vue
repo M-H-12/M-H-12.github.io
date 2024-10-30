@@ -7,6 +7,7 @@ import { ScreenType } from './model/ScreenType'
 import { storeToRefs } from 'pinia'
 import ResidenceIntro from './view/Residence/ResidenceIntro.vue'
 import ResidenceTech from './view/Residence/ResidenceTech.vue'
+import ResidenceGen from './view/Residence/ResidenceGen.vue'
 
 /**
  * The global variables for the app - kept in a pinia store.
@@ -24,5 +25,6 @@ const { currentScreen } = storeToRefs(globalVariables)
   <MainTitle v-if="currentScreen == ScreenType.TITLE"></MainTitle>
   <AboutPage v-else-if="currentScreen == ScreenType.PROJECTS_INTRO"></AboutPage>
   <ResidenceIntro v-else-if="currentScreen == ScreenType.RESIDENCE_INTRO"></ResidenceIntro>
-  <ResidenceTech v-else></ResidenceTech>
+  <ResidenceTech v-else-if="currentScreen == ScreenType.RESIDENCE_TECH"></ResidenceTech>
+  <ResidenceGen v-else></ResidenceGen>
 </template>

@@ -1,0 +1,126 @@
+<script setup lang="ts">
+import { ScreenType } from '@/model/ScreenType'
+import { useScrollUtil } from '@/stores/scrollUtil'
+import { storeToRefs } from 'pinia'
+import { onMounted, onUnmounted } from 'vue'
+
+/**
+ * The store for the scrolling utility.
+ */
+const scrollUtil = useScrollUtil()
+
+/**
+ * The position of the view - kept within the scroll util store
+ * for code reuse.
+ */
+const { pagePosition } = storeToRefs(scrollUtil)
+
+/**
+ * Code to run when the page is mounted.
+ * Contains the setup for the scrolling/swipe event listeners
+ */
+onMounted(() => {
+  scrollUtil.setupScroll(ScreenType.RESIDENCE_GEN, ScreenType.RESIDENCE_TECH)
+})
+
+/**
+ * Code to run when the page is unmounted.
+ * Contains the removal of event listeners (cleanup).
+ */
+onUnmounted(() => {
+  scrollUtil.takedownScroll()
+})
+</script>
+
+<template>
+  <div :class="$style.mainSegment" :style="{ top: `${pagePosition}vh` }">
+    <div :class="$style.leftBackingTriangle"></div>
+    <div :class="$style.rightBackingTriangle"></div>
+    <div :class="$style.genSteps">
+      <div :class="$style.genStepsTitle">Steps</div>
+      I determined that the world generation needed to meet 3 main criteria:
+      <br />
+      - There needed to be enough rooms in the world (25-35).
+      <br />
+      - All rooms needed to be accessible from the starting room.
+      <br />
+      - The "goal" room needed to be far enough away from the starting room.
+      <br />
+      <br />
+      <div :class="$style.widerTextBox">
+        With these things in mind, I was able to break the world generation process into 9 main
+        steps.
+        <div :class="$style.thinSpacer"></div>
+        <table :class="$style.stepsTable">
+          <tbody>
+            <tr>
+              <td style="white-space: nowrap">Step 1:</td>
+              <td>Start with an empty 7x10 grid.</td>
+            </tr>
+            <tr>
+              <td>Step 2:</td>
+              <td>Randomly pick one of the cells as the "starting room".</td>
+            </tr>
+            <tr>
+              <td>Step 3:</td>
+              <td>
+                Go through each cell, and mark whether a cell should be a room based on the 8 cells
+                around it. Ex: Cells with no rooms around them have a 0% chance of being a room,
+                cells with 1 room have a 90% chance of being a room, etc...
+                <div :class="$style.thinSpacer"></div>
+                While this step generated rooms correctly, it made the map lopsided, favoring the
+                bottom right corner over the rest of the map. This had to be rectified in step 4.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div :class="$style.bottomTextBox">
+        <table :class="$style.stepsTable">
+          <tbody>
+            <tr>
+              <td style="white-space: nowrap">Step 4:</td>
+              <td>Run the generation algorithm backwards. (Bottom Right --> Top Left)</td>
+            </tr>
+            <tr>
+              <td>Step 5:</td>
+              <td>
+                Run a recursive algorithm from the starting room, and mark every reachable room.
+              </td>
+            </tr>
+            <tr>
+              <td>Step 6:</td>
+              <td>Remove rooms which are not reachable.</td>
+            </tr>
+            <tr>
+              <td>Step 7:</td>
+              <td>
+                Pick a room to be the goal room. If it's too close to the starting room, pick
+                another one.
+              </td>
+            </tr>
+            <tr>
+              <td>Step 8:</td>
+              <td>Count the number of rooms.</td>
+            </tr>
+            <tr>
+              <td>Step 9:</td>
+              <td>If there are too many or too few rooms, re-run the algorithm.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div :class="$style.titleContainer">
+      <div :class="$style.titleText">Residence</div>
+      <div :class="$style.subTitle">World Generation</div>
+    </div>
+    <div :class="$style.gifBox">
+      <img src="@/assets/roomGeneration/diagram.gif" :class="$style.gif" />
+    </div>
+  </div>
+</template>
+
+<style module>
+@import '@/styling/ResidenceGen.module.css';
+</style>

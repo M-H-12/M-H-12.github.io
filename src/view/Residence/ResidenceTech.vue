@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ScreenType } from '@/model/ScreenType'
 import { useScrollUtil } from '@/stores/scrollUtil'
+import { storeToRefs } from 'pinia'
 import { onMounted, onUnmounted } from 'vue'
 
 /**
@@ -9,11 +10,17 @@ import { onMounted, onUnmounted } from 'vue'
 const scrollUtil = useScrollUtil()
 
 /**
+ * The position of the view - kept within the scroll util store
+ * for code reuse.
+ */
+const { pagePosition } = storeToRefs(scrollUtil)
+
+/**
  * Code to run when the page is mounted.
  * Contains the setup for the scrolling/swipe event listeners
  */
 onMounted(() => {
-  scrollUtil.setupScroll(ScreenType.RESIDENCE_TECH, ScreenType.RESIDENCE_INTRO)
+  scrollUtil.setupScroll(ScreenType.RESIDENCE_GEN, ScreenType.RESIDENCE_INTRO)
 })
 
 /**
@@ -26,7 +33,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div :class="$style.mainSegment">
+  <div :class="$style.mainSegment" :style="{ top: `${pagePosition}vh` }">
     <div :class="$style.leftSegment">
       <div :class="$style.titleContainer">
         <div :class="$style.titleText">Residence</div>
@@ -59,8 +66,8 @@ onUnmounted(() => {
         random questions at the start of the game, and their answers shaped the dungeon's features?
         <br />
         <br />
-        I figured that a good place to start would be on the dungeon generation algorithm, and to
-        work my way forwards from there.
+        I figured that a good place to start would be on the world generation algorithm, and to work
+        my way forwards from there.
       </div>
     </div>
   </div>

@@ -77,6 +77,22 @@ it('Renders residence tech/summary when currentScreen global variable is set to 
   wrapper.unmount()
 })
 
+it('Renders residence world generation screen when currentScreen global variable is set to "RESIDENCE_GEN"', async () => {
+  const wrapper = mount(App)
+
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  currentScreen.value = ScreenType.RESIDENCE_GEN
+
+  await flushPromises()
+
+  expect(wrapper.text().includes('World Generation')).toBe(true)
+
+  wrapper.unmount()
+})
+
 it('Projects Intro screen says "Good Morning!" when loaded in the morning', async () => {
   vi.setSystemTime(new Date('2024-10-17T14:34:39Z'))
 
