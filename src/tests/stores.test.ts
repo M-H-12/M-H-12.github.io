@@ -250,3 +250,36 @@ it('Scrolling twice quickly does not change the page twice.', async () => {
 
   wrapper.unmount()
 })
+
+it('"Tapping" on the title screen (mobile) results in the intro screen', async () => {
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  currentScreen.value = ScreenType.TITLE
+
+  const wrapper = mount(App, { attachTo: document.body })
+
+  await flushPromises()
+
+  console.log(wrapper.text())
+
+  const startEvent = new TouchEvent('touchstart', {
+    changedTouches: [{ screenY: 200 } as any]
+  }) as any
+
+  document.dispatchEvent(startEvent)
+
+  const endEvent = new TouchEvent('touchend', { changedTouches: [{ screenY: 195 } as any] }) as any
+
+  document.dispatchEvent(endEvent)
+
+  //Wait 3 seconds for the scroll animation to finish.
+  await new Promise((resolve) => setTimeout(resolve, 3000))
+
+  await flushPromises()
+
+  expect(wrapper.text().includes('About')).toBe(true)
+
+  wrapper.unmount()
+})

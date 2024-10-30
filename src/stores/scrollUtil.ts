@@ -102,7 +102,7 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
    */
   function endTouch(e: TouchEvent) {
     touchEndYPos = e.changedTouches[0].screenY
-    checkScroll(checkScrollDirection())
+    checkScroll(checkScrollingDown())
   }
 
   /**
@@ -143,10 +143,15 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
 
   /**
    * Used to determine which direction the user has swiped if they're
-   * on mobile.
+   * on mobile. "Tapping" on the screen (i.e. a user moving their finger
+   * less than 7px) will result in the page scrolling down.
    */
-  function checkScrollDirection() {
-    if (touchEndYPos < touchStartYPos) {
+  function checkScrollingDown() {
+    if (Math.abs(touchEndYPos - touchStartYPos) < 7) {
+      return true
+    }
+
+    if (touchEndYPos <= touchStartYPos) {
       return true
     } else {
       return false
