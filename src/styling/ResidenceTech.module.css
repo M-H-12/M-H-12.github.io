@@ -8,6 +8,47 @@
   }
 }
 
+/*Animation keyframes to allow the right element to slide in from the right.*/
+@keyframes slideInRight {
+  from {
+    margin-left: 50vw;
+  }
+  to {
+    margin-left: 0vw;
+  }
+}
+
+/*Animation keyframes to allow the bottom left element to slide in from the bottom.*/
+@keyframes slideInBottom {
+  from {
+    margin-top: 75vh;
+  }
+  to {
+    margin-top: 0vh;
+  }
+}
+
+/*Animation keyframes to allow the bottom element to slide in from the right. (Mobile)*/
+@keyframes slideInRightMobile {
+  from {
+    margin-left: 100vw;
+  }
+  to {
+    margin-left: 0vw;
+  }
+}
+
+/*Animation keyframes to allow the top element to slide in from the left. (Mobile)*/
+@keyframes slideInLeftMobile {
+  from {
+    margin-left: -100vw;
+  }
+  to {
+    margin-left: 0vw;
+  }
+}
+
+/*Styling for the screen when it's in landscape orientation.*/
 @media (orientation: landscape) {
   /*Styling for the dark-coloured title text*/
   .titleText {
@@ -82,9 +123,20 @@
 
   /*Styling for the bottom left segment of the screen.*/
   .bottomLeftSegment {
+    margin-top: 0vh;
     height: 75vh;
+    width: 100vw;
     background-color: #19062a;
     filter: drop-shadow(0 0 2rem #00000077);
+    animation-name: slideInBottom;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.42, 0.89, 0.47, 0.98);
+  }
+
+  /*Styling for elements which should take up half the screen in landscape mode.*/
+  .sectionWidth {
+    display: block;
+    width: 50vw;
   }
 
   /*Styling for the right side of the screen.*/
@@ -93,9 +145,13 @@
     width: 50vw;
     background-color: #363349;
     filter: drop-shadow(0 0 2rem #00000077);
+    animation-name: slideInRight;
+    animation-duration: 1.2s;
+    animation-timing-function: cubic-bezier(0.27, 0.46, 0.51, 0.99);
   }
 }
 
+/*Styling for the screen when it's in portrait orientation.*/
 @media (orientation: portrait) {
   /*Styling for the dark-coloured title text*/
   .titleText {
@@ -145,6 +201,7 @@
       sans-serif;
   }
 
+  /*Styling for the header.*/
   h3 {
     margin-bottom: 0.2rem;
   }
@@ -175,8 +232,17 @@
   /*Styling for the bottom left segment of the screen.*/
   .bottomLeftSegment {
     height: 32.5vh;
+    width: 100vw;
     background-color: #19062a;
     filter: drop-shadow(0 0 2rem #00000077);
+    animation-name: slideInLeftMobile;
+    animation-duration: 1.2s;
+  }
+
+  /*Styling for elements which should take up the full screen in portrait mode.*/
+  .sectionWidth {
+    display: block;
+    width: 100vw;
   }
 
   /*Styling for the right side of the screen.*/
@@ -185,5 +251,7 @@
     width: 100vw;
     background-color: #363349;
     filter: drop-shadow(0 0 2rem #00000077);
+    animation-name: slideInRightMobile;
+    animation-duration: 1.2s;
   }
 }

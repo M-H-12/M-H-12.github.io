@@ -262,8 +262,6 @@ it('"Tapping" on the title screen (mobile) results in the intro screen', async (
 
   await flushPromises()
 
-  console.log(wrapper.text())
-
   const startEvent = new TouchEvent('touchstart', {
     changedTouches: [{ screenY: 200 } as any]
   }) as any
