@@ -44,7 +44,7 @@ onUnmounted(() => {
           <div :class="$style.bodyText">
             <h3 style="margin-top: 0">Technology</h3>
             Residence is written using a framework called <a href="https://v2.tauri.app/">Tauri</a>.
-            I chose this framework because it allows developers to create a desktop app using the
+            I chose this framework because it allows developers to create a native app using the
             frontend framework of their choice while still providing a fast and sleek experience
             overall.
             <br />

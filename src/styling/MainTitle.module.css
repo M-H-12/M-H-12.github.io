@@ -12,6 +12,7 @@
   border-right: 75vw solid transparent;
   border-left: 0;
   z-index: 1;
+  filter: drop-shadow(0 0 4rem #000000d0);
 }
 
 /*Animation for the arrow bobbing in the bottom right corner.*/
@@ -86,17 +87,6 @@
     margin: 0rem;
   }
 
-  /*Styling for the drop shadow behind the grey segment. It's rotation angle had to be calculated
-    in the applicable vue file due to the angle being based on the screen height/width.*/
-  .dropShadow {
-    left: -170vw;
-    position: absolute;
-    z-index: 0;
-    width: 400vw;
-    height: 17vh;
-    background: linear-gradient(#00000000, #00000066);
-  }
-
   /*Styling for the block behind the title text.*/
   .nameBlock {
     z-index: 2;
@@ -126,17 +116,6 @@
     height: 100%;
     min-height: 100%;
     margin: 0rem;
-  }
-
-  /*Styling for the drop shadow behind the grey segment. It's rotation angle had to be calculated
-    in the applicable vue file due to the angle being based on the screen height/width.*/
-  .dropShadow {
-    left: -370vw;
-    position: absolute;
-    z-index: 0;
-    width: 800vw;
-    height: 17vh;
-    background: linear-gradient(#00000000, #00000066);
   }
 
   /*Styling for the block behind the title text.*/
