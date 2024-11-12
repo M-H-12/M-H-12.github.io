@@ -70,20 +70,21 @@ The directory which holds all of the project's views.
 
 The following is a report of the current project test coverage according to Vitest (v8).
 
-| File                           | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s |
-| ------------------------------ | ------- | -------- | ------- | ------- | ----------------- |
-| All files                      | 100     | 100      | 100     | 100     |
-| &ensp;src                      | 100     | 100      | 100     | 100     |
-| &ensp;&ensp;App.vue            | 100     | 100      | 100     | 100     |
-| &ensp;src/model                | 100     | 100      | 100     | 100     |
-| &ensp;&ensp;ScreenType.ts      | 100     | 100      | 100     | 100     |
-| &ensp;src/stores               | 100     | 100      | 100     | 100     |
-| &ensp;&ensp;globalVariables.ts | 100     | 100      | 100     | 100     |
-| &ensp;&ensp;scrollUtil.ts      | 100     | 100      | 100     | 100     |
-| &ensp;src/view                 | 100     | 100      | 100     | 100     |
-| &ensp;&ensp;AboutPage.vue      | 100     | 100      | 100     | 100     |
-| &ensp;&ensp;MainTitle.vue      | 100     | 100      | 100     | 100     |
-| &ensp;src/view/Residence       | 100     | 100      | 100     | 100     |
-| &ensp;&ensp;ResidenceGen.vue   | 100     | 100      | 100     | 100     |
-| &ensp;&ensp;ResidenceIntro.vue | 100     | 100      | 100     | 100     |
-| &ensp;&ensp;ResidenceTech.vue  | 100     | 100      | 100     | 100     |
+| File                                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s |
+| ------------------------------------ | ------- | -------- | ------- | ------- | ----------------- |
+| All files                            | 100     | 100      | 100     | 100     |
+| &ensp;src                            | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;App.vue                  | 100     | 100      | 100     | 100     |
+| &ensp;src/model                      | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;ScreenType.ts            | 100     | 100      | 100     | 100     |
+| &ensp;src/stores                     | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;globalVariables.ts       | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;scrollUtil.ts            | 100     | 100      | 100     | 100     |
+| &ensp;src/view                       | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;AboutPage.vue            | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;MainTitle.vue            | 100     | 100      | 100     | 100     |
+| &ensp;src/view/Residence             | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;ResidenceGen.vue         | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;ResidenceInteraction.vue | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;ResidenceIntro.vue       | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;ResidenceTech.vue        | 100     | 100      | 100     | 100     |

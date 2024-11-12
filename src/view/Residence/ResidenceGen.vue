@@ -20,7 +20,7 @@ const { pagePosition } = storeToRefs(scrollUtil)
  * Contains the setup for the scrolling/swipe event listeners
  */
 onMounted(() => {
-  scrollUtil.setupScroll(ScreenType.RESIDENCE_GEN, ScreenType.RESIDENCE_TECH)
+  scrollUtil.setupScroll(ScreenType.RESIDENCE_INTERACTION, ScreenType.RESIDENCE_TECH)
 })
 
 /**
@@ -116,7 +116,11 @@ onUnmounted(() => {
       <div :class="$style.subTitle">World Generation</div>
     </div>
     <div :class="$style.gifBox">
-      <img src="@/assets/roomGeneration/diagram.gif" :class="$style.gif" />
+      <img
+        src="@/assets/residenceGen/diagram.gif"
+        :class="$style.gif"
+        alt="A gif showing the 9 steps detailed in the world generation process."
+      />
     </div>
   </div>
 </template>

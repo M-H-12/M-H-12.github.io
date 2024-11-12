@@ -72,7 +72,7 @@ it('Renders residence tech/summary when currentScreen global variable is set to 
 
   await flushPromises()
 
-  expect(wrapper.text().includes('Idea and Technology')).toBe(true)
+  expect(wrapper.text().includes('Technology and Summary')).toBe(true)
 
   wrapper.unmount()
 })
@@ -89,6 +89,22 @@ it('Renders residence world generation screen when currentScreen global variable
   await flushPromises()
 
   expect(wrapper.text().includes('World Generation')).toBe(true)
+
+  wrapper.unmount()
+})
+
+it('Renders residence user interaction screen when currentScreen global variable is set to "RESIDENCE_INTERACTION"', async () => {
+  const wrapper = mount(App)
+
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  currentScreen.value = ScreenType.RESIDENCE_INTERACTION
+
+  await flushPromises()
+
+  expect(wrapper.text().includes('Interaction')).toBe(true)
 
   wrapper.unmount()
 })
