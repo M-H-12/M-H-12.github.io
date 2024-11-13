@@ -34,6 +34,17 @@ onUnmounted(() => {
 
 <template>
   <div :class="$style.mainSegment">
+    <div :class="$style.topBar">
+      <div :class="$style.titleContainer">
+        <div :class="$style.titleText">Residence</div>
+        <div :class="$style.subTitle">User Interaction</div>
+      </div>
+    </div>
+    <img
+      src="@/assets/residenceInteraction/gameplay.gif"
+      :class="$style.gif"
+      alt="A gif showing a player moving through different rooms before opening up a treasure chest."
+    />
     <div :class="$style.rightBar">
       <div :class="$style.bodyText">
         <div :class="$style.secondSubTitle">Interaction</div>
@@ -55,17 +66,6 @@ onUnmounted(() => {
         inventory), or by clicking on interactable objects (such as treasure chests).
       </div>
     </div>
-    <div :class="$style.topBar">
-      <div :class="$style.titleContainer">
-        <div :class="$style.titleText">Residence</div>
-        <div :class="$style.subTitle">User Interaction</div>
-      </div>
-    </div>
-    <img
-      src="@/assets/residenceInteraction/gameplay.gif"
-      :class="$style.gif"
-      alt="A gif showing a player moving through different rooms before opening up a treasure chest."
-    />
   </div>
 </template>
 
