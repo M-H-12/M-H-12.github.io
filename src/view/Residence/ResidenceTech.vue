@@ -43,10 +43,10 @@ onUnmounted(() => {
         <div :class="$style.sectionWidth">
           <div :class="$style.bodyText">
             <h3 style="margin-top: 0">Technology</h3>
-            Residence is written using a framework called <a href="https://v2.tauri.app/">Tauri</a>.
-            I chose this framework because it allows developers to create a native app using the
-            frontend framework of their choice while at the same time providing a Rust backend to
-            allow for window and system interaction.
+            Residence is written using a framework called
+            <a href="https://v2.tauri.app/">Tauri</a>. I chose this framework because it allows
+            developers to create a native app using the frontend framework of their choice while at
+            the same time providing a Rust backend to allow for window and system interaction.
             <br />
             <br />
             As mentioned already, I wanted to work on a project that would heighten my abilities

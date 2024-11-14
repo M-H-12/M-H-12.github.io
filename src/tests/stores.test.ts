@@ -68,7 +68,9 @@ it('Swiping up on the title screen (mobile) results in the project intro screen'
 
   document.dispatchEvent(startEvent)
 
-  const endEvent = new TouchEvent('touchend', { changedTouches: [{ screenY: 200 } as any] }) as any
+  const endEvent = new TouchEvent('touchend', {
+    changedTouches: [{ screenY: 200 } as any]
+  }) as any
 
   document.dispatchEvent(endEvent)
 
@@ -99,7 +101,9 @@ it('Swiping down on the project intro screen (mobile) results in the title scree
 
   document.dispatchEvent(startEvent)
 
-  const endEvent = new TouchEvent('touchend', { changedTouches: [{ screenY: 300 } as any] }) as any
+  const endEvent = new TouchEvent('touchend', {
+    changedTouches: [{ screenY: 300 } as any]
+  }) as any
 
   document.dispatchEvent(endEvent)
 
@@ -182,7 +186,9 @@ it('Swiping up on the project intro screen (mobile) results in the Residence int
 
   document.dispatchEvent(startEvent)
 
-  const endEvent = new TouchEvent('touchend', { changedTouches: [{ screenY: 200 } as any] }) as any
+  const endEvent = new TouchEvent('touchend', {
+    changedTouches: [{ screenY: 200 } as any]
+  }) as any
 
   document.dispatchEvent(endEvent)
 
@@ -213,7 +219,9 @@ it('Swiping down on the Residence intro screen (mobile) results in the project i
 
   document.dispatchEvent(startEvent)
 
-  const endEvent = new TouchEvent('touchend', { changedTouches: [{ screenY: 300 } as any] }) as any
+  const endEvent = new TouchEvent('touchend', {
+    changedTouches: [{ screenY: 300 } as any]
+  }) as any
 
   document.dispatchEvent(endEvent)
 
@@ -268,7 +276,9 @@ it('"Tapping" on the title screen (mobile) results in the intro screen', async (
 
   document.dispatchEvent(startEvent)
 
-  const endEvent = new TouchEvent('touchend', { changedTouches: [{ screenY: 195 } as any] }) as any
+  const endEvent = new TouchEvent('touchend', {
+    changedTouches: [{ screenY: 195 } as any]
+  }) as any
 
   document.dispatchEvent(endEvent)
 

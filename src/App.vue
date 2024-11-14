@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import MainTitle from '@/view/MainTitle.vue'
 import AboutPage from '@/view/AboutPage.vue'
-import '@/styling/global.css'
-import { useGlobalVariables } from '@/stores/globalVariables'
-import { ScreenType } from './model/ScreenType'
 import { storeToRefs } from 'pinia'
-import ResidenceIntro from './view/Residence/ResidenceIntro.vue'
-import ResidenceTech from './view/Residence/ResidenceTech.vue'
-import ResidenceGen from './view/Residence/ResidenceGen.vue'
-import ResidenceInteraction from './view/Residence/ResidenceInteraction.vue'
-import OtherPage from './view/OtherPage.vue'
+import { useGlobalVariables } from '@/stores/globalVariables'
+import { ScreenType } from '@/model/ScreenType'
+import '@/styling/global.css'
+import ResidenceIntro from '@/view/Residence/ResidenceIntro.vue'
+import ResidenceTech from '@/view/Residence/ResidenceTech.vue'
+import ResidenceGen from '@/view/Residence/ResidenceGen.vue'
+import ResidenceInteraction from '@/view/Residence/ResidenceInteraction.vue'
+import OtherPage from '@/view/OtherPage.vue'
 
 /**
  * The global variables for the app - kept in a pinia store.
