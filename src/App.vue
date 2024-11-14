@@ -9,6 +9,7 @@ import ResidenceIntro from './view/Residence/ResidenceIntro.vue'
 import ResidenceTech from './view/Residence/ResidenceTech.vue'
 import ResidenceGen from './view/Residence/ResidenceGen.vue'
 import ResidenceInteraction from './view/Residence/ResidenceInteraction.vue'
+import OtherPage from './view/OtherPage.vue'
 
 /**
  * The global variables for the app - kept in a pinia store.
@@ -28,5 +29,8 @@ const { currentScreen } = storeToRefs(globalVariables)
   <ResidenceIntro v-else-if="currentScreen == ScreenType.RESIDENCE_INTRO"></ResidenceIntro>
   <ResidenceTech v-else-if="currentScreen == ScreenType.RESIDENCE_TECH"></ResidenceTech>
   <ResidenceGen v-else-if="currentScreen == ScreenType.RESIDENCE_GEN"></ResidenceGen>
-  <ResidenceInteraction v-else></ResidenceInteraction>
+  <ResidenceInteraction
+    v-else-if="currentScreen == ScreenType.RESIDENCE_INTERACTION"
+  ></ResidenceInteraction>
+  <OtherPage v-else></OtherPage>
 </template>

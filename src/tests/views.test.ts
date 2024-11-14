@@ -109,6 +109,22 @@ it('Renders residence user interaction screen when currentScreen global variable
   wrapper.unmount()
 })
 
+it('Renders other screen when currentScreen global variable is set to "OTHER"', async () => {
+  const wrapper = mount(App)
+
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  currentScreen.value = ScreenType.OTHER
+
+  await flushPromises()
+
+  expect(wrapper.text().includes('Other')).toBe(true)
+
+  wrapper.unmount()
+})
+
 it('Projects Intro screen says "Good Morning!" when loaded in the morning', async () => {
   vi.setSystemTime(new Date('2024-10-17T14:34:39Z'))
 

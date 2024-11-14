@@ -20,7 +20,7 @@ const { pagePosition } = storeToRefs(scrollUtil)
  * Contains the setup for the scrolling/swipe event listeners
  */
 onMounted(() => {
-  scrollUtil.setupScroll(ScreenType.RESIDENCE_INTERACTION, ScreenType.RESIDENCE_GEN)
+  scrollUtil.setupScroll(ScreenType.OTHER, ScreenType.RESIDENCE_GEN)
 })
 
 /**
@@ -33,7 +33,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div :class="$style.mainSegment">
+  <div :class="$style.mainSegment" :style="{ top: `${pagePosition}vh` }">
     <div :class="$style.topBar">
       <div :class="$style.titleContainer">
         <div :class="$style.titleText">Residence</div>
