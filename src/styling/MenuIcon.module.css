@@ -1,0 +1,52 @@
+/*Animation keyframes for the view's main fade-in.*/
+@keyframes fadeInMain {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*Styling for the hamburger menu icon container.*/
+.menuContainer {
+  position: absolute;
+  opacity: 0;
+  top: 0rem;
+  right: 0rem;
+  margin: 0.8rem;
+  width: 38px;
+  height: 33px;
+  animation-name: fadeInMain;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  z-index: 10;
+}
+
+/*Styling for the top line in the icon.*/
+.topLine {
+  position: absolute;
+  width: 38px;
+  height: 6px;
+  border-radius: 0.5rem;
+  top: 0;
+}
+
+/*Styling for the middle line in the icon.*/
+.middleLine {
+  position: absolute;
+  width: 38px;
+  height: 6px;
+  border-radius: 0.5rem;
+  top: 0.7rem;
+}
+
+/*Styling for the bottom line in the icon.*/
+.bottomLine {
+  position: absolute;
+  width: 38px;
+  height: 6px;
+  border-radius: 0.5rem;
+  top: 1.4rem;
+}

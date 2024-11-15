@@ -1,3 +1,4 @@
+import { MenuColour } from '@/model/MenuColour'
 import { ScreenType } from '@/model/ScreenType'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
@@ -11,7 +12,25 @@ export const useGlobalVariables = defineStore('globalVariables', () => {
    */
   const currentScreen = ref(ScreenType.TITLE)
 
+  /**
+   * Indicates if the hamburger menu is open.
+   */
+  const menuOpen = ref(false)
+
+  /**
+   * Used to change the hamburger menu colour depending on the page.
+   */
+  const menuIconColour = ref(MenuColour.DARK)
+
+  /**
+   * The colour for the menu background.
+   */
+  const menuColour = ref(MenuColour.LIGHT)
+
   return {
-    currentScreen
+    currentScreen,
+    menuOpen,
+    menuIconColour,
+    menuColour
   }
 })

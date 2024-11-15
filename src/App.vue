@@ -10,6 +10,7 @@ import ResidenceTech from '@/view/Residence/ResidenceTech.vue'
 import ResidenceGen from '@/view/Residence/ResidenceGen.vue'
 import ResidenceInteraction from '@/view/Residence/ResidenceInteraction.vue'
 import OtherPage from '@/view/OtherPage.vue'
+import PageMenu from './components/PageMenu.vue'
 
 /**
  * The global variables for the app - kept in a pinia store.
@@ -33,4 +34,5 @@ const { currentScreen } = storeToRefs(globalVariables)
     v-else-if="currentScreen == ScreenType.RESIDENCE_INTERACTION"
   ></ResidenceInteraction>
   <OtherPage v-else></OtherPage>
+  <PageMenu v-if="currentScreen != ScreenType.TITLE"></PageMenu>
 </template>

@@ -181,9 +181,10 @@
   .titleContainer {
     position: absolute;
     right: 0;
-    width: fit-content;
+    width: 100%;
+    margin: auto;
     height: 36vh;
-    padding: 0.3vh 4vw;
+    padding: 0.8vh;
   }
 
   /*Styling for the triangle behind the page title.*/

@@ -2,8 +2,28 @@ import { defineStore, storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useGlobalVariables } from '@/stores/globalVariables'
 import { ScreenType } from '@/model/ScreenType'
+import { MenuColour } from '@/model/MenuColour'
+import { useMenuUtil } from './menuUtil'
 
 export const useScrollUtil = defineStore('scrollUtil', () => {
+  const colourDictionaryDesktop = {
+    PROJECTS_INTRO: MenuColour.DARK,
+    RESIDENCE_INTRO: MenuColour.LIGHT,
+    RESIDENCE_TECH: MenuColour.LIGHT,
+    RESIDENCE_GEN: MenuColour.LIGHT,
+    RESIDENCE_INTERACTION: MenuColour.LIGHT,
+    OTHER: MenuColour.DARK
+  } as any
+
+  const colourDictionaryMobile = {
+    PROJECTS_INTRO: MenuColour.DARK,
+    RESIDENCE_INTRO: MenuColour.LIGHT,
+    RESIDENCE_TECH: MenuColour.DARK,
+    RESIDENCE_GEN: MenuColour.LIGHT,
+    RESIDENCE_INTERACTION: MenuColour.LIGHT,
+    OTHER: MenuColour.DARK
+  } as any
+
   /**
    * Indicates if the page is already scrolling - prevents the view from getting stuck.
    */
@@ -40,8 +60,20 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
   /**
    * The app's current screen - kept as a ref so the page can react to any changes
    * in the variable.
+   * The menu icon colour, and the menu (background) colour. Set on scroll - I.E. as
+   * soon as the page loads.
    */
-  const { currentScreen } = storeToRefs(globalVariables)
+  const { currentScreen, menuIconColour, menuColour } = storeToRefs(globalVariables)
+
+  /**
+   * Utilities relating to the opening/closing of the side menu.
+   */
+  const menuUtil = useMenuUtil()
+
+  /**
+   * Boolean value indicating if a user is on mobile.
+   */
+  const mobile = ref(false)
 
   /**
    * The interval for the closing animation. The interval runs
@@ -84,7 +116,13 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
     count.value = 0
   }
 
+  /**
+   * Function triggered on wheel scroll. Used to
+   * transition to the next screen.
+   * @param event The wheel scroll event.
+   */
   function wheelScroll(event: any) {
+    mobile.value = false
     checkScroll(event.wheelDelta < 0)
   }
 
@@ -102,6 +140,7 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
    */
   function endTouch(e: TouchEvent) {
     touchEndYPos = e.changedTouches[0].screenY
+    mobile.value = true
     checkScroll(checkScrollingDown())
   }
 
@@ -120,7 +159,27 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
     } else if (!scrollingDown) {
       actionInProgress = true
       currentScreen.value = previousScreen.value
+      refreshMenu(currentScreen.value)
+      menuUtil.resetMenu()
       actionInProgress = false
+    }
+  }
+
+  /**
+   * This function is used to change the colours of the side menu & icon
+   * when the view changes.
+   */
+  function refreshMenu(newScreen: ScreenType) {
+    if (mobile.value) {
+      menuIconColour.value = colourDictionaryMobile[newScreen]
+    } else {
+      menuIconColour.value = colourDictionaryDesktop[newScreen]
+    }
+
+    if (menuIconColour.value == MenuColour.DARK) {
+      menuColour.value = MenuColour.LIGHT
+    } else {
+      menuColour.value = MenuColour.DARK
     }
   }
 
@@ -136,6 +195,8 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
       pagePosition.value = (count.value * count.value) / -50
     } else {
       clearInterval(interval)
+      refreshMenu(nextScreen.value)
+      menuUtil.resetMenu()
       currentScreen.value = nextScreen.value
       actionInProgress = false
     }

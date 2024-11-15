@@ -1,0 +1,7 @@
+/*Styling for the side menu container.*/
+.menuContainer {
+  position: absolute;
+  width: 20rem;
+  height: 100vh;
+  filter: drop-shadow(0 0 0.8rem #00000055);
+}
