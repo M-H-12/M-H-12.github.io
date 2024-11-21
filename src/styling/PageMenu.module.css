@@ -4,4 +4,72 @@
   width: 20rem;
   height: 100vh;
   filter: drop-shadow(0 0 0.8rem #00000055);
+  z-index: 8;
+}
+
+/*Styling for the container which holds all the titles in the menu.*/
+.titleContainer {
+  padding: 2rem;
+  margin-top: 1rem;
+}
+
+/*Styling which is only applied to landscape screens (desktop)*/
+@media only screen and (orientation: landscape) {
+  /*Styling for the main titles in the side menu.*/
+  .majorTitle {
+    font:
+      2rem 'Yu Gothic',
+      sans-serif;
+    font-weight: 500;
+  }
+
+  /*Styling for the more minor titles in the side menu.*/
+  .minorTitle {
+    padding-left: 1rem;
+    font:
+      1.5rem 'Yu Gothic',
+      sans-serif;
+    font-weight: 500;
+  }
+
+  /*Styling for the major titles on hover.*/
+  .majorTitle:hover {
+    font:
+      2rem 'Yu Gothic',
+      sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /*Styling for the minor titles on hover.*/
+  .minorTitle:hover {
+    padding-left: 1rem;
+    font:
+      1.5rem 'Yu Gothic',
+      sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+/*Styling which is only applied to portrait screens (mobile)*/
+@media only screen and (orientation: portrait) {
+  /*Styling for the main titles in the side menu.*/
+  .majorTitle {
+    font:
+      2rem 'Yu Gothic',
+      sans-serif;
+    font-weight: 500;
+    padding-bottom: 0.6rem;
+  }
+
+  /*Styling for the more minor titles in the side menu.*/
+  .minorTitle {
+    padding-left: 1rem;
+    font:
+      1.5rem 'Yu Gothic',
+      sans-serif;
+    font-weight: 500;
+    padding-bottom: 0.6rem;
+  }
 }

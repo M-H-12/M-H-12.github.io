@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import MenuIcon from '@/components/MenuIcon.vue'
+import { ScreenType } from '@/model/ScreenType'
 import { useGlobalVariables } from '@/stores/globalVariables'
 import { useMenuUtil } from '@/stores/menuUtil'
+import { useScrollUtil } from '@/stores/scrollUtil'
 import { storeToRefs } from 'pinia'
 
 /**
@@ -10,9 +12,17 @@ import { storeToRefs } from 'pinia'
 const globalVariables = useGlobalVariables()
 
 /**
- * The menu's background colour - changes depending on the current view.
+ * Global variables used on this page. Contains:
+ * currentScreen: The current screen that the user is on
+ * menuColour: The menu's background colour - changes depending on the current view.
+ * menuIconColour: The colour of the icon in the top right corner. Inverse of the menuColour.
  */
-const { menuColour } = storeToRefs(globalVariables)
+const { currentScreen, menuColour, menuIconColour } = storeToRefs(globalVariables)
+
+/**
+ * The store for the scrolling utility.
+ */
+const scrollUtil = useScrollUtil()
 
 /**
  * The menu util store - used to control the sliding in/out of the menu.
@@ -23,14 +33,48 @@ const menuUtil = useMenuUtil()
  * The position of the menu in reference to the right side of the screen.
  */
 const { menuPosition } = storeToRefs(menuUtil)
+
+/**
+ * Function used to change the view when the user clicks on a menu option.
+ * @param newScreen The new screen to navigate to.
+ */
+function navigateToPage(newScreen: ScreenType) {
+  currentScreen.value = newScreen
+  menuUtil.toggleMenu()
+  scrollUtil.refreshMenu(newScreen)
+}
 </script>
 
 <template>
   <MenuIcon @click="menuUtil.toggleMenu"></MenuIcon>
   <div
     :class="$style.menuContainer"
-    :style="{ backgroundColor: `${menuColour}`, right: `${menuPosition}rem` }"
-  ></div>
+    :style="{
+      backgroundColor: `${menuColour}`,
+      right: `${menuPosition}rem`
+    }"
+  >
+    <div
+      :class="$style.titleContainer"
+      :style="{ color: `${menuIconColour}`, textDecorationColor: `${menuIconColour}` }"
+    >
+      <div :class="$style.majorTitle" @click="navigateToPage(ScreenType.TITLE)">Title</div>
+      <div :class="$style.majorTitle" @click="navigateToPage(ScreenType.PROJECTS_INTRO)">About</div>
+      <div :class="$style.majorTitle" @click="navigateToPage(ScreenType.RESIDENCE_INTRO)">
+        Residence
+      </div>
+      <div :class="$style.minorTitle" @click="navigateToPage(ScreenType.RESIDENCE_TECH)">
+        Tech and Summary
+      </div>
+      <div :class="$style.minorTitle" @click="navigateToPage(ScreenType.RESIDENCE_GEN)">
+        World Generation
+      </div>
+      <div :class="$style.minorTitle" @click="navigateToPage(ScreenType.RESIDENCE_INTERACTION)">
+        User Interaction
+      </div>
+      <div :class="$style.majorTitle" @click="navigateToPage(ScreenType.OTHER)">Other</div>
+    </div>
+  </div>
 </template>
 
 <style module>

@@ -13,6 +13,15 @@ html {
   image-rendering: pixelated;
 }
 
+/*Styling used to fix the app's formatting on mobile. Without it, users could scroll to the right
+and see the closed menu.*/
+.app-wrapper {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
 /*Styling for centred boxes of text.*/
 .text-box-centre {
   width: fit-content;

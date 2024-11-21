@@ -11,6 +11,7 @@ import ResidenceGen from '@/view/Residence/ResidenceGen.vue'
 import ResidenceInteraction from '@/view/Residence/ResidenceInteraction.vue'
 import OtherPage from '@/view/OtherPage.vue'
 import PageMenu from './components/PageMenu.vue'
+import BackgroundDimmer from './components/BackgroundDimmer.vue'
 
 /**
  * The global variables for the app - kept in a pinia store.
@@ -25,14 +26,17 @@ const { currentScreen } = storeToRefs(globalVariables)
 </script>
 
 <template>
-  <MainTitle v-if="currentScreen == ScreenType.TITLE"></MainTitle>
-  <AboutPage v-else-if="currentScreen == ScreenType.PROJECTS_INTRO"></AboutPage>
-  <ResidenceIntro v-else-if="currentScreen == ScreenType.RESIDENCE_INTRO"></ResidenceIntro>
-  <ResidenceTech v-else-if="currentScreen == ScreenType.RESIDENCE_TECH"></ResidenceTech>
-  <ResidenceGen v-else-if="currentScreen == ScreenType.RESIDENCE_GEN"></ResidenceGen>
-  <ResidenceInteraction
-    v-else-if="currentScreen == ScreenType.RESIDENCE_INTERACTION"
-  ></ResidenceInteraction>
-  <OtherPage v-else></OtherPage>
-  <PageMenu v-if="currentScreen != ScreenType.TITLE"></PageMenu>
+  <div class="app-wrapper">
+    <MainTitle v-if="currentScreen == ScreenType.TITLE"></MainTitle>
+    <AboutPage v-else-if="currentScreen == ScreenType.PROJECTS_INTRO"></AboutPage>
+    <ResidenceIntro v-else-if="currentScreen == ScreenType.RESIDENCE_INTRO"></ResidenceIntro>
+    <ResidenceTech v-else-if="currentScreen == ScreenType.RESIDENCE_TECH"></ResidenceTech>
+    <ResidenceGen v-else-if="currentScreen == ScreenType.RESIDENCE_GEN"></ResidenceGen>
+    <ResidenceInteraction
+      v-else-if="currentScreen == ScreenType.RESIDENCE_INTERACTION"
+    ></ResidenceInteraction>
+    <OtherPage v-else></OtherPage>
+    <BackgroundDimmer></BackgroundDimmer>
+    <PageMenu v-if="currentScreen != ScreenType.TITLE"></PageMenu>
+  </div>
 </template>

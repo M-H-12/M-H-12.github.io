@@ -6,6 +6,10 @@ import { MenuColour } from '@/model/MenuColour'
 import { useMenuUtil } from './menuUtil'
 
 export const useScrollUtil = defineStore('scrollUtil', () => {
+  /**
+   * Dictionary used to define the menu colour for each
+   * screen on desktop.
+   */
   const colourDictionaryDesktop = {
     PROJECTS_INTRO: MenuColour.DARK,
     RESIDENCE_INTRO: MenuColour.LIGHT,
@@ -15,6 +19,10 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
     OTHER: MenuColour.DARK
   } as any
 
+  /**
+   * Dictionary used to define the menu colour for each
+   * screen on mobile.
+   */
   const colourDictionaryMobile = {
     PROJECTS_INTRO: MenuColour.DARK,
     RESIDENCE_INTRO: MenuColour.LIGHT,
@@ -141,6 +149,14 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
   function endTouch(e: TouchEvent) {
     touchEndYPos = e.changedTouches[0].screenY
     mobile.value = true
+
+    //Note: This conditional is used to prevent the screen from scrolling when the user
+    //tries to click on the menu on mobile. A "tap" where the user moves less that 50px
+    //will open the menu, but won't scroll.
+    if (Math.abs(touchEndYPos - touchStartYPos) < 50) {
+      return
+    }
+
     checkScroll(checkScrollingDown())
   }
 
@@ -219,5 +235,5 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
     }
   }
 
-  return { pagePosition, setupScroll, takedownScroll }
+  return { pagePosition, setupScroll, takedownScroll, refreshMenu }
 })
