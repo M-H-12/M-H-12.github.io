@@ -46,6 +46,10 @@ The code in this repo is organized into several different directories, which are
 
 The directory which holds any image files needed for the project.
 
+### src/components
+
+The directory for .vue files that are components of other views.
+
 ### src/model
 
 The directory holding any custom enums or classes used within the project.

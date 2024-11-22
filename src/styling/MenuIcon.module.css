@@ -37,7 +37,6 @@
   width: 38px;
   height: 6px;
   border-radius: 0.5rem;
-  top: 0;
 }
 
 /*Styling for the middle line in the icon.*/
@@ -55,5 +54,4 @@
   width: 38px;
   height: 6px;
   border-radius: 0.5rem;
-  top: 1.4rem;
 }

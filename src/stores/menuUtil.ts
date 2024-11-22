@@ -8,11 +8,13 @@ export const useMenuUtil = defineStore('menuUtil', () => {
    * I.e. The menu's x position is based on a parabolic function
    * to facilitate smooth opening/closing. A linear x is input to get the
    * output position (y). The "count" variable is the x.
+   * Please Note: 20 means the menu is closed, 0 means the menu is open.
    */
   const count = ref(20)
 
   /**
    * The current position of the side menu.
+   * Please Note: -20 is closed, 0 is open.
    */
   const menuPosition = ref(-20)
 
@@ -103,5 +105,5 @@ export const useMenuUtil = defineStore('menuUtil', () => {
     dimmerOpacity.value = (20 - count.value) / 50
   }
 
-  return { menuPosition, dimmerOpacity, toggleMenu, resetMenu }
+  return { menuPosition, dimmerOpacity, count, toggleMenu, resetMenu }
 })
