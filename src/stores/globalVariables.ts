@@ -27,10 +27,18 @@ export const useGlobalVariables = defineStore('globalVariables', () => {
    */
   const menuColour = ref(MenuColour.LIGHT)
 
+  /**
+   * Used to indicate when the dimmer should be present.
+   * The dimmer should not be present when the menu is closed. Even if it is invisible,
+   * it will prevent links from being clicked.
+   */
+  const dimmerPresent = ref(false)
+
   return {
     currentScreen,
     menuOpen,
     menuIconColour,
-    menuColour
+    menuColour,
+    dimmerPresent
   }
 })

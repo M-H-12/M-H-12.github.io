@@ -22,7 +22,7 @@ const globalVariables = useGlobalVariables()
  * The app's current screen - kept as a ref so the page can react to any changes
  * in the variable.
  */
-const { currentScreen } = storeToRefs(globalVariables)
+const { currentScreen, dimmerPresent } = storeToRefs(globalVariables)
 </script>
 
 <template>
@@ -36,7 +36,7 @@ const { currentScreen } = storeToRefs(globalVariables)
       v-else-if="currentScreen == ScreenType.RESIDENCE_INTERACTION"
     ></ResidenceInteraction>
     <OtherPage v-else></OtherPage>
-    <BackgroundDimmer></BackgroundDimmer>
+    <BackgroundDimmer v-if="dimmerPresent"></BackgroundDimmer>
     <PageMenu v-if="currentScreen != ScreenType.TITLE"></PageMenu>
   </div>
 </template>

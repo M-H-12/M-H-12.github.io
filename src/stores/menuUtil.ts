@@ -42,7 +42,7 @@ export const useMenuUtil = defineStore('menuUtil', () => {
   /**
    * The boolean value used to indicate if the hamburger menu is open or not.
    */
-  const { menuOpen } = storeToRefs(globalVariables)
+  const { menuOpen, dimmerPresent } = storeToRefs(globalVariables)
 
   /**
    * Function used to reset the side menu to it's default state - closed.
@@ -76,6 +76,7 @@ export const useMenuUtil = defineStore('menuUtil', () => {
    * to make the slide smooth.
    */
   function slideMenuOpen() {
+    dimmerPresent.value = true
     if (menuPosition.value < 0) {
       count.value -= 1
       menuPosition.value = Math.pow(count.value, 2) / -20
@@ -97,6 +98,7 @@ export const useMenuUtil = defineStore('menuUtil', () => {
     } else {
       clearInterval(interval)
       animationInProgress = false
+      dimmerPresent.value = false
     }
     dimmerOpacity.value = (20 - count.value) / 50
   }
