@@ -129,8 +129,15 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
    * transition to the next screen.
    * @param event The wheel scroll event.
    */
-  function wheelScroll(event: any) {
+  async function wheelScroll(event: any) {
     mobile.value = false
+
+    // This conditional filters out most lingering track pad scroll events,
+    // and prevents unintentional double scrolls.
+    if (Math.abs(event.wheelDelta) < 60) {
+      return
+    }
+
     checkScroll(event.wheelDelta < 0)
   }
 

@@ -5,7 +5,6 @@ import App from '@/App.vue'
 import { useGlobalVariables } from '@/stores/globalVariables'
 import { ScreenType } from '@/model/ScreenType'
 import { useMenuUtil } from '@/stores/menuUtil'
-import { useScrollUtil } from '@/stores/scrollUtil'
 
 /**This testing file is used to test that the variables and functions within global stores work properly. */
 
@@ -19,7 +18,7 @@ it('Scrolling down on the title screen results in the project intro screen', asy
   await flushPromises()
 
   const event = new WheelEvent('wheel') as any
-  event.wheelDelta = -10
+  event.wheelDelta = -70
 
   document.dispatchEvent(event)
 
@@ -45,7 +44,7 @@ it('Scrolling up on the project intro screen results in the title screen', async
   await flushPromises()
 
   const event = new WheelEvent('wheel') as any
-  event.wheelDelta = 10
+  event.wheelDelta = 70
 
   document.dispatchEvent(event)
 
@@ -243,11 +242,11 @@ it('Scrolling twice quickly does not change the page twice.', async () => {
   await flushPromises()
 
   const event = new WheelEvent('wheel') as any
-  event.wheelDelta = -10
+  event.wheelDelta = -70
 
   document.dispatchEvent(event)
 
-  event.wheelDelta = -10
+  event.wheelDelta = -70
 
   document.dispatchEvent(event)
 
