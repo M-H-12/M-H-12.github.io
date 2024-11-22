@@ -46,7 +46,7 @@ function navigateToPage(newScreen: ScreenType) {
 </script>
 
 <template>
-  <MenuIcon @click="menuUtil.toggleMenu"></MenuIcon>
+  <MenuIcon id="hamburgerMenu" @click="menuUtil.toggleMenu"></MenuIcon>
   <div
     :class="$style.menuContainer"
     :style="{
@@ -58,21 +58,51 @@ function navigateToPage(newScreen: ScreenType) {
       :class="$style.titleContainer"
       :style="{ color: `${menuIconColour}`, textDecorationColor: `${menuIconColour}` }"
     >
-      <div :class="$style.majorTitle" @click="navigateToPage(ScreenType.TITLE)">Title</div>
-      <div :class="$style.majorTitle" @click="navigateToPage(ScreenType.PROJECTS_INTRO)">About</div>
-      <div :class="$style.majorTitle" @click="navigateToPage(ScreenType.RESIDENCE_INTRO)">
+      <div
+        id="mainTitleButton"
+        :class="$style.majorTitle"
+        @click="navigateToPage(ScreenType.TITLE)"
+      >
+        Title
+      </div>
+      <div
+        id="aboutButton"
+        :class="$style.majorTitle"
+        @click="navigateToPage(ScreenType.PROJECTS_INTRO)"
+      >
+        About
+      </div>
+      <div
+        id="introButton"
+        :class="$style.majorTitle"
+        @click="navigateToPage(ScreenType.RESIDENCE_INTRO)"
+      >
         Residence
       </div>
-      <div :class="$style.minorTitle" @click="navigateToPage(ScreenType.RESIDENCE_TECH)">
+      <div
+        id="techButton"
+        :class="$style.minorTitle"
+        @click="navigateToPage(ScreenType.RESIDENCE_TECH)"
+      >
         Tech and Summary
       </div>
-      <div :class="$style.minorTitle" @click="navigateToPage(ScreenType.RESIDENCE_GEN)">
+      <div
+        id="genButton"
+        :class="$style.minorTitle"
+        @click="navigateToPage(ScreenType.RESIDENCE_GEN)"
+      >
         World Generation
       </div>
-      <div :class="$style.minorTitle" @click="navigateToPage(ScreenType.RESIDENCE_INTERACTION)">
+      <div
+        id="interactionButton"
+        :class="$style.minorTitle"
+        @click="navigateToPage(ScreenType.RESIDENCE_INTERACTION)"
+      >
         User Interaction
       </div>
-      <div :class="$style.majorTitle" @click="navigateToPage(ScreenType.OTHER)">Other</div>
+      <div id="otherButton" :class="$style.majorTitle" @click="navigateToPage(ScreenType.OTHER)">
+        Other
+      </div>
     </div>
   </div>
 </template>

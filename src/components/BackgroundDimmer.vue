@@ -37,6 +37,7 @@ function closeMenu() {
 <template>
   <div
     :class="$style.background"
+    id="backgroundDimmer"
     @click="closeMenu()"
     :style="{ opacity: `${dimmerOpacity}` }"
   ></div>

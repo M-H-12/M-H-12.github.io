@@ -224,10 +224,6 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
    * less than 7px) will result in the page scrolling down.
    */
   function checkScrollingDown() {
-    if (Math.abs(touchEndYPos - touchStartYPos) < 7) {
-      return true
-    }
-
     if (touchEndYPos <= touchStartYPos) {
       return true
     } else {

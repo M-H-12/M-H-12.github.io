@@ -10,8 +10,8 @@ import ResidenceTech from '@/view/Residence/ResidenceTech.vue'
 import ResidenceGen from '@/view/Residence/ResidenceGen.vue'
 import ResidenceInteraction from '@/view/Residence/ResidenceInteraction.vue'
 import OtherPage from '@/view/OtherPage.vue'
-import PageMenu from './components/PageMenu.vue'
-import BackgroundDimmer from './components/BackgroundDimmer.vue'
+import PageMenu from '@/components/PageMenu.vue'
+import BackgroundDimmer from '@/components/BackgroundDimmer.vue'
 
 /**
  * The global variables for the app - kept in a pinia store.

@@ -70,15 +70,21 @@ The directory which holds all of the project's views.
 
 The following is a report of the current project test coverage according to Vitest (v8).
 
-| File                                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s |
-| ------------------------------------ | ------- | -------- | ------- | ------- | ----------------- |
+| File                                 | % Stmts | % Branch | % Funcs | % Lines |
+| ------------------------------------ | ------- | -------- | ------- | ------- |
 | All files                            | 100     | 100      | 100     | 100     |
 | &ensp;src                            | 100     | 100      | 100     | 100     |
 | &ensp;&ensp;App.vue                  | 100     | 100      | 100     | 100     |
+| &ensp;src/components                 | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;BackgroundDimmer.vue     | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;MenuIcon.vue             | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;PageMenu.vue             | 100     | 100      | 100     | 100     |
 | &ensp;src/model                      | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;MenuColour.ts            | 100     | 100      | 100     | 100     |
 | &ensp;&ensp;ScreenType.ts            | 100     | 100      | 100     | 100     |
 | &ensp;src/stores                     | 100     | 100      | 100     | 100     |
 | &ensp;&ensp;globalVariables.ts       | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;menuUtil.ts              | 100     | 100      | 100     | 100     |
 | &ensp;&ensp;scrollUtil.ts            | 100     | 100      | 100     | 100     |
 | &ensp;src/view                       | 100     | 100      | 100     | 100     |
 | &ensp;&ensp;AboutPage.vue            | 100     | 100      | 100     | 100     |
