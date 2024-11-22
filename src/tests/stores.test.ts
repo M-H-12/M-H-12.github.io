@@ -254,12 +254,14 @@ it('Scrolling twice quickly does not change the page twice.', async () => {
 
   await flushPromises()
 
-  expect(wrapper.text().includes('Residence')).not.toBe(true)
+  console.log(wrapper.text())
+
+  expect(wrapper.text().includes('introduction')).not.toBe(true)
 
   wrapper.unmount()
 })
 
-it('"Tapping" on the title screen (mobile) results in the intro screen', async () => {
+it('"Tapping" on the title screen (mobile) does not change the screen.', async () => {
   const globalVariables = useGlobalVariables()
 
   const { currentScreen } = storeToRefs(globalVariables)
@@ -287,7 +289,7 @@ it('"Tapping" on the title screen (mobile) results in the intro screen', async (
 
   await flushPromises()
 
-  expect(wrapper.text().includes('About')).toBe(true)
+  expect(wrapper.text().includes('Software')).toBe(true)
 
   wrapper.unmount()
 })
