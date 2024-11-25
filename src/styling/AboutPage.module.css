@@ -71,16 +71,80 @@
     color: #19062a;
     white-space: no-wrap;
     font:
-      1.64rem 'Segoe UI',
+      1.3vw 'Segoe UI',
+      sans-serif;
+  }
+
+  /*Styling for the Vue.js word on the About page.*/
+  .vueJSText:hover {
+    color: #35495e;
+    background-color: #42b883;
+    padding: 0rem 0.11rem;
+    border-radius: 0.3rem;
+    font:
+      1.5vw 'Segoe UI',
+      sans-serif;
+  }
+
+  /*Styling for the C# word on the About page.*/
+  .cSharpText:hover {
+    color: #953dac;
+    background-color: #ffffff;
+    padding: 0rem 0.3rem;
+    border-radius: 0.3rem;
+    font:
+      1.5vw 'Segoe UI',
+      sans-serif;
+  }
+
+  /*Styling for the SwiftUI word on the About page.*/
+  .swiftUIText:hover {
+    color: #0092fd;
+    background-color: #000000;
+    padding: 0rem 0.15rem;
+    border-radius: 0.3rem;
+    font:
+      1.5vw 'Segoe UI',
+      sans-serif;
+  }
+
+  /*Styling for the SwiftUI word on the About page.*/
+  .javaText:hover {
+    color: #ffffff;
+    background-color: #ca3132;
+    padding: 0rem 0.26rem;
+    border-radius: 0.3rem;
+    font:
+      1.5vw 'Segoe UI',
+      sans-serif;
+  }
+
+  /*Styling for the SwiftUI word on the About page.*/
+  .pythonText:hover {
+    color: #356f9f;
+    background-color: #ffe468;
+    padding: 0rem 0.16rem;
+    border-radius: 0.3rem;
+    font:
+      1.5vw 'Segoe UI',
+      sans-serif;
+  }
+
+  /*Styling for the React word on the About page.*/
+  .reactText:hover {
+    color: #23272f;
+    background-color: #00dcff;
+    padding: 0rem 0.2rem;
+    border-radius: 0.3rem;
+    font:
+      1.5vw 'Segoe UI',
       sans-serif;
   }
 }
 
 @media (orientation: portrait) {
   .introParagraphsTitle {
-    font:
-      10vw 'Segoe UI',
-      sans-serif;
+    font: 10vw sans-serif;
   }
 
   /*Styling for the test in the intro paragraphs on the "About" page.*/
@@ -89,9 +153,61 @@
     height: 100%;
     padding: 6vh 4vw;
     color: #19062a;
-    font:
-      1.2rem 'Segoe UI',
-      sans-serif;
+    font: 1.2rem sans-serif;
+  }
+
+  /*Styling for the Vue.js word on the About page.*/
+  .vueJSText:hover {
+    color: #35495e;
+    background-color: #42b883;
+    padding: 0rem 0.11rem;
+    border-radius: 0.3rem;
+    font: 1.35rem sans-serif;
+  }
+
+  /*Styling for the C# word on the About page.*/
+  .cSharpText:hover {
+    color: #953dac;
+    background-color: #ffffff;
+    padding: 0rem 0.3rem;
+    border-radius: 0.3rem;
+    font: 1.35rem sans-serif;
+  }
+
+  /*Styling for the SwiftUI word on the About page.*/
+  .swiftUIText:hover {
+    color: #0092fd;
+    background-color: #000000;
+    padding: 0rem 0.15rem;
+    border-radius: 0.3rem;
+    font: 1.35rem sans-serif;
+  }
+
+  /*Styling for the SwiftUI word on the About page.*/
+  .javaText:hover {
+    color: #ffffff;
+    background-color: #ca3132;
+    padding: 0rem 0.26rem;
+    border-radius: 0.3rem;
+    font: 1.35rem sans-serif;
+  }
+
+  /*Styling for the SwiftUI word on the About page.*/
+  .pythonText:hover {
+    color: #356f9f;
+    background-color: #ffe468;
+    padding: 0rem 0.16rem;
+    border-radius: 0.3rem;
+    font: 1.35rem sans-serif;
+  }
+
+  /*Styling for the React word on the About page.*/
+  .reactText:hover {
+    color: #23272f;
+    background-color: #00dcff;
+    padding: 0rem 0.2rem;
+    border-radius: 0.3rem;
+    font: 1.35rem sans-serif;
   }
 }
 
@@ -147,70 +263,4 @@
   padding: 0rem 0.4rem;
   border-radius: 0.3rem;
   transition: 0.5s;
-}
-
-/*Styling for the Vue.js word on the About page.*/
-.vueJSText:hover {
-  color: #35495e;
-  background-color: #42b883;
-  padding: 0rem 0.11rem;
-  border-radius: 0.3rem;
-  font:
-    1.8rem 'Segoe UI',
-    sans-serif;
-}
-
-/*Styling for the C# word on the About page.*/
-.cSharpText:hover {
-  color: #953dac;
-  background-color: #ffffff;
-  padding: 0rem 0.3rem;
-  border-radius: 0.3rem;
-  font:
-    1.8rem 'Segoe UI',
-    sans-serif;
-}
-
-/*Styling for the SwiftUI word on the About page.*/
-.swiftUIText:hover {
-  color: #0092fd;
-  background-color: #000000;
-  padding: 0rem 0.15rem;
-  border-radius: 0.3rem;
-  font:
-    1.8rem 'Segoe UI',
-    sans-serif;
-}
-
-/*Styling for the SwiftUI word on the About page.*/
-.javaText:hover {
-  color: #ffffff;
-  background-color: #ca3132;
-  padding: 0rem 0.26rem;
-  border-radius: 0.3rem;
-  font:
-    1.8rem 'Segoe UI',
-    sans-serif;
-}
-
-/*Styling for the SwiftUI word on the About page.*/
-.pythonText:hover {
-  color: #356f9f;
-  background-color: #ffe468;
-  padding: 0rem 0.16rem;
-  border-radius: 0.3rem;
-  font:
-    1.8rem 'Segoe UI',
-    sans-serif;
-}
-
-/*Styling for the React word on the About page.*/
-.reactText:hover {
-  color: #23272f;
-  background-color: #00dcff;
-  padding: 0rem 0.2rem;
-  border-radius: 0.3rem;
-  font:
-    1.8rem 'Segoe UI',
-    sans-serif;
 }

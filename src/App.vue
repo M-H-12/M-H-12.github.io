@@ -19,8 +19,10 @@ import BackgroundDimmer from '@/components/BackgroundDimmer.vue'
 const globalVariables = useGlobalVariables()
 
 /**
- * The app's current screen - kept as a ref so the page can react to any changes
+ * currentScreen: The app's current screen - kept as a ref so the page can react to any changes
  * in the variable.
+ * dimmerPresent: Boolean value used to indicate if the screen dimmer should be present (I.e. is the
+ * menu partially or completely open)
  */
 const { currentScreen, dimmerPresent } = storeToRefs(globalVariables)
 </script>

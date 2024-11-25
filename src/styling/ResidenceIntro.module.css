@@ -68,8 +68,8 @@
   the bottom of the view (portrait), or it may be 
   next to the "lower text" (landscape).*/
   .image {
-    max-width: 40vw;
-    max-height: 24vw;
+    max-width: 70vh;
+    max-height: 42vh;
     width: 40rem;
     height: 24rem;
     margin: auto;
@@ -107,9 +107,7 @@
     height: 100%;
     padding: 3vh 4vw;
     color: #19062a;
-    font:
-      2.2vh 'Segoe UI',
-      sans-serif;
+    font: 2.2vh sans-serif;
   }
   /*Styling for the lower section of text on the page. 
   Depending on the device orientation, this text may be 
@@ -120,9 +118,7 @@
     height: 100%;
     color: #19062a;
     padding-bottom: 0.5rem;
-    font:
-      2vh 'Segoe UI',
-      sans-serif;
+    font: 2vh sans-serif;
   }
   /*Container for the image on the page. Depending 
   on the device orientation, the image may cover 

@@ -50,6 +50,7 @@ watch(count, () => {
 <template>
   <div :class="$style.menuContainer">
     <div
+      id="menuTopLine"
       :class="$style.topLine"
       :style="{
         backgroundColor: `${menuIconColour}`,

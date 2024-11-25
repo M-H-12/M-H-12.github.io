@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import { ScreenType } from '@/model/ScreenType'
+import { useGlobalVariables } from '@/stores/globalVariables'
 import { useScrollUtil } from '@/stores/scrollUtil'
 import { storeToRefs } from 'pinia'
 import { onMounted, onUnmounted } from 'vue'
+
+/**
+ * The global variables for the app - kept in a pinia store.
+ */
+const globalVariables = useGlobalVariables()
+
+/**
+ * The app's current screen.
+ */
+const { currentScreen } = storeToRefs(globalVariables)
 
 /**
  * The store for the scrolling utility.
@@ -16,11 +27,25 @@ const scrollUtil = useScrollUtil()
 const { pagePosition } = storeToRefs(scrollUtil)
 
 /**
+ * Function to change the menu icon's colour should the user switch
+ * from landscape to portrait or visa-versa. In the event that the
+ * event listener doesn't get removed on page dismount, an if
+ * statement prevents the function from fully running on other pages.
+ */
+function adjustMenuIconColour() {
+  if (currentScreen.value === ScreenType.RESIDENCE_TECH) {
+    scrollUtil.refreshMenu(ScreenType.RESIDENCE_TECH)
+  }
+}
+
+/**
  * Code to run when the page is mounted.
- * Contains the setup for the scrolling/swipe event listeners
+ * Contains the setup for the scrolling/swipe event listeners, and event listener
+ * for the menu icon colour change.
  */
 onMounted(() => {
   scrollUtil.setupScroll(ScreenType.RESIDENCE_GEN, ScreenType.RESIDENCE_INTRO)
+  addEventListener('resize', adjustMenuIconColour)
 })
 
 /**
@@ -29,6 +54,7 @@ onMounted(() => {
  */
 onUnmounted(() => {
   scrollUtil.takedownScroll()
+  removeEventListener('resize', adjustMenuIconColour)
 })
 </script>
 

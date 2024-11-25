@@ -95,7 +95,7 @@ and see the closed menu.*/
   /*Styling for section titles.*/
   .section-text {
     font:
-      9vw 'Yu Gothic',
+      min(9vw, 6.5vh) 'Yu Gothic',
       sans-serif;
     font-weight: 500;
     color: #e5e1bd;

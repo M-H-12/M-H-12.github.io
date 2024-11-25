@@ -518,3 +518,33 @@ it('Clicking on the "Other" button in the side menu navigates to that page', asy
 
   expect(wrapper.text()).toContain('Other')
 })
+
+it('Changing from landscape to portrait on the residence tech page will change the menu icon colour', async () => {
+  const wrapper = mount(App, { attachTo: document.body })
+
+  global.innerWidth = 1800
+  global.innerHeight = 1000
+
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  currentScreen.value = ScreenType.RESIDENCE_TECH
+
+  await flushPromises()
+
+  global.innerWidth = 600
+  window.dispatchEvent(new Event('resize'))
+
+  await flushPromises()
+
+  const menuTopLine = wrapper.find('#menuTopLine')
+
+  await flushPromises()
+
+  console.log(getComputedStyle(menuTopLine.element))
+
+  expect(getComputedStyle(menuTopLine.element).getPropertyValue('background-color')).toBe(
+    'rgb(25, 6, 42)'
+  )
+})

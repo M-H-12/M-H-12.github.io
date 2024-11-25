@@ -8,9 +8,9 @@ import { useMenuUtil } from './menuUtil'
 export const useScrollUtil = defineStore('scrollUtil', () => {
   /**
    * Dictionary used to define the menu colour for each
-   * screen on desktop.
+   * screen in landscape mode.
    */
-  const colourDictionaryDesktop = {
+  const colourDictionaryLandscape = {
     PROJECTS_INTRO: MenuColour.DARK,
     RESIDENCE_INTRO: MenuColour.LIGHT,
     RESIDENCE_TECH: MenuColour.LIGHT,
@@ -21,9 +21,9 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
 
   /**
    * Dictionary used to define the menu colour for each
-   * screen on mobile.
+   * screen in portrait mode.
    */
-  const colourDictionaryMobile = {
+  const colourDictionaryPortrait = {
     PROJECTS_INTRO: MenuColour.DARK,
     RESIDENCE_INTRO: MenuColour.LIGHT,
     RESIDENCE_TECH: MenuColour.DARK,
@@ -193,10 +193,10 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
    * when the view changes.
    */
   function refreshMenu(newScreen: ScreenType) {
-    if (mobile.value) {
-      menuIconColour.value = colourDictionaryMobile[newScreen]
+    if (window.innerHeight > window.innerWidth) {
+      menuIconColour.value = colourDictionaryPortrait[newScreen]
     } else {
-      menuIconColour.value = colourDictionaryDesktop[newScreen]
+      menuIconColour.value = colourDictionaryLandscape[newScreen]
     }
 
     if (menuIconColour.value == MenuColour.DARK) {
