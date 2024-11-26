@@ -7,6 +7,7 @@ import { ScreenType } from '@/model/ScreenType'
 import { useMenuUtil } from '@/stores/menuUtil'
 import { useBallUtil } from '@/stores/ballUtil'
 import FinalPage from '@/view/FinalPage.vue'
+import { useScrollUtil } from '@/stores/scrollUtil'
 
 /**This testing file is used to test that the variables and functions within global stores work properly. */
 
@@ -733,6 +734,45 @@ it('Dropping the ball slowly will result in it coming to a stop.', async () => {
   //in this case.
   expect(ballUtil.xAcceleration).toBe(0)
   expect(ballUtil.yAcceleration).toBe(0)
+
+  wrapper.unmount()
+})
+
+it('Swiping down on the other screen (mobile) results in the page not changing.', async () => {
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  const scrollUtil = useScrollUtil()
+
+  const { mobile } = storeToRefs(scrollUtil)
+
+  mobile.value = true
+
+  currentScreen.value = ScreenType.OTHER
+
+  const wrapper = mount(App, { attachTo: document.body })
+
+  await flushPromises()
+
+  const startEvent = new TouchEvent('touchstart', {
+    changedTouches: [{ screenY: 200 } as any]
+  }) as any
+
+  document.dispatchEvent(startEvent)
+
+  const endEvent = new TouchEvent('touchend', {
+    changedTouches: [{ screenY: 300 } as any]
+  }) as any
+
+  document.dispatchEvent(endEvent)
+
+  //Wait 3 seconds for the scroll animation to finish.
+  await new Promise((resolve) => setTimeout(resolve, 3000))
+
+  await flushPromises()
+
+  expect(wrapper.text().includes('Other')).toBe(true)
 
   wrapper.unmount()
 })

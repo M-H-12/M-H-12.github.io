@@ -240,5 +240,5 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
     }
   }
 
-  return { pagePosition, setupScroll, takedownScroll, refreshMenu }
+  return { pagePosition, mobile, setupScroll, takedownScroll, refreshMenu }
 })

@@ -13,14 +13,18 @@ const scrollUtil = useScrollUtil()
  * The position of the view - kept within the scroll util store
  * for code reuse.
  */
-const { pagePosition } = storeToRefs(scrollUtil)
+const { pagePosition, mobile } = storeToRefs(scrollUtil)
 
 /**
  * Code to run when the page is mounted.
  * Contains the setup for the scrolling/swipe event listeners
  */
 onMounted(() => {
-  scrollUtil.setupScroll(ScreenType.FINAL, ScreenType.RESIDENCE_INTERACTION)
+  if (mobile.value) {
+    scrollUtil.setupScroll(ScreenType.OTHER, ScreenType.RESIDENCE_INTERACTION)
+  } else {
+    scrollUtil.setupScroll(ScreenType.FINAL, ScreenType.RESIDENCE_INTERACTION)
+  }
 })
 
 /**
@@ -33,7 +37,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div :class="$style.mainSegment" :style="{ top: `${pagePosition}vh` }">
+  <div :class="$style.mainSegment" :style="{ top: `${mobile ? 0 : pagePosition}vh` }">
     <div :class="$style.topTriangle"></div>
     <div :class="$style.titleText">Other</div>
     <div :class="$style.mainText">
