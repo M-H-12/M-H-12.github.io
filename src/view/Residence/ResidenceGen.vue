@@ -38,17 +38,17 @@ onUnmounted(() => {
     <div :class="$style.rightBackingTriangle"></div>
     <div :class="$style.genSteps">
       <div :class="$style.genStepsTitle">Steps</div>
-      I determined that the world generation needed to meet 3 main criteria:
+      I determined the dungeon needed 3 criteria in order to be effective:
       <br />
-      - There needed to be enough rooms in the world (25-35).
+      &ensp;1. There needed to be enough rooms in the dungeon (25-35).
       <br />
-      - All rooms needed to be accessible from the starting room.
+      &ensp;2. All rooms needed to be accessible from the starting room.
       <br />
-      - The "goal" room needed to be far enough away from the starting room.
+      &ensp;3. The "goal" room needed to be far enough away from the starting room.
       <br />
       <br />
       <div :class="$style.widerTextBox">
-        With these things in mind, I was able to break the world generation process into 9 main
+        With these things in mind, I was able to break the level generation process into 9 main
         steps.
         <div :class="$style.thinSpacer"></div>
         <table :class="$style.stepsTable">
@@ -65,8 +65,9 @@ onUnmounted(() => {
               <td>Step 3:</td>
               <td>
                 Go through each cell, and mark whether a cell should be a room based on the 8 cells
-                around it. Ex: Cells with no rooms around them have a 0% chance of being a room,
-                cells with 1 room have a 90% chance of being a room, etc...
+                around it. <br />For example, cells with no rooms around them have a 0% chance of
+                being a room, cells with 1 room around them have a 90% chance of being a room,
+                etc...
                 <div :class="$style.thinSpacer"></div>
                 While this step generated rooms correctly, it made the map lopsided, favoring the
                 bottom right corner over the rest of the map. This had to be rectified in step 4.
@@ -85,12 +86,13 @@ onUnmounted(() => {
             <tr>
               <td>Step 5:</td>
               <td>
-                Run a recursive algorithm from the starting room, and mark every reachable room.
+                Run a recursive traversal algorithm from the starting room, and mark every reachable
+                room.
               </td>
             </tr>
             <tr>
               <td>Step 6:</td>
-              <td>Remove rooms which are not reachable.</td>
+              <td>Remove rooms which are not marked reachable.</td>
             </tr>
             <tr>
               <td>Step 7:</td>
@@ -113,13 +115,13 @@ onUnmounted(() => {
     </div>
     <div :class="$style.titleContainer">
       <div :class="$style.titleText">Residence</div>
-      <div :class="$style.subTitle">World Generation</div>
+      <div :class="$style.subTitle">Level Generation</div>
     </div>
     <div :class="$style.gifBox">
       <img
         src="@/assets/residenceGen/diagram.gif"
         :class="$style.gif"
-        alt="A gif showing the 9 steps detailed in the world generation process."
+        alt="A gif showing the 9 steps detailed in the level generation process."
       />
     </div>
   </div>

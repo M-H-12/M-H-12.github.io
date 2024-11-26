@@ -52,15 +52,15 @@ The directory for .vue files that are components of other views.
 
 ### src/model
 
-The directory holding any custom enums or classes used within the project.
+The directory for custom enums that are used in the project.
 
 ### src/stores
 
-The directory holding Pinia stores used throughout the project. Currently, there are two stores. One (globalVariables.ts) is used to hold global variables that are needed on various views throughout the project. The second (scrollUtil.ts) holds variables which are needed for the scrolling function between views.
+The directory holding Pinia stores used throughout the project. There are four stores. The first (globalVariables.ts) is used to hold global variables that are needed on various views throughout the project. The second (scrollUtil.ts) holds variables and functions which are used to facilitate scrolling between views. The third (menuUtil.ts) holds variables and functions needed for the side menu. The fourth (ballUtil.ts) holds the variables and functions needed to run FinalPage.vue.
 
 ### src/styling
 
-The directory which holds all the .css files. Every view has it's own .module.css file, in addition to there being a global.css file. The global file holds styling which is used on multiple pages, or in the main _App.vue_, while each module has styling which is only on it's own view.
+The directory which holds all the .css files. Every view/component has it's own .module.css file, in addition to there being a global.css file. The global file holds styling which is used on multiple pages, or in _App.vue_, while each module has styling which is only used in it's own view.
 
 ### src/tests
 
@@ -69,6 +69,10 @@ The directory which holds all the unit tests for the project. The tests are sepa
 ### src/view
 
 The directory which holds all of the project's views.
+
+<ul> <h4> /residence </h4> </ul>
+
+<ul>The directory which holds all the views pertaining to the Residence project.</ul>
 
 ## Project Test Coverage
 

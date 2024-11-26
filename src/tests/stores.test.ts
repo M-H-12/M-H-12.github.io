@@ -454,7 +454,7 @@ it('Clicking on the "Residence" button in the side menu navigates to that page',
   wrapper.unmount()
 })
 
-it('Clicking on the "Tech and Summary" button in the side menu navigates to that page', async () => {
+it('Clicking on the "Tech and Concept" button in the side menu navigates to that page', async () => {
   const wrapper = mount(App, { attachTo: document.body })
 
   const globalVariables = useGlobalVariables()
@@ -471,12 +471,12 @@ it('Clicking on the "Tech and Summary" button in the side menu navigates to that
 
   await flushPromises()
 
-  expect(wrapper.text()).toContain('Summary')
+  expect(wrapper.text()).toContain('Concept')
 
   wrapper.unmount()
 })
 
-it('Clicking on the "World Generation" button in the side menu navigates to that page', async () => {
+it('Clicking on the "Level Generation" button in the side menu navigates to that page', async () => {
   const wrapper = mount(App, { attachTo: document.body })
 
   const globalVariables = useGlobalVariables()

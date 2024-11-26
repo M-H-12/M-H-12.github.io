@@ -61,7 +61,7 @@ it('Renders residence intro when currentScreen global variable is set to "RESIDE
   wrapper.unmount()
 })
 
-it('Renders residence tech/summary when currentScreen global variable is set to "RESIDENCE_TECH"', async () => {
+it('Renders residence tech/concept when currentScreen global variable is set to "RESIDENCE_TECH"', async () => {
   const wrapper = mount(App)
 
   const globalVariables = useGlobalVariables()
@@ -72,12 +72,12 @@ it('Renders residence tech/summary when currentScreen global variable is set to 
 
   await flushPromises()
 
-  expect(wrapper.text().includes('Technology and Summary')).toBe(true)
+  expect(wrapper.text().includes('Technology and Concept')).toBe(true)
 
   wrapper.unmount()
 })
 
-it('Renders residence world generation screen when currentScreen global variable is set to "RESIDENCE_GEN"', async () => {
+it('Renders residence level generation screen when currentScreen global variable is set to "RESIDENCE_GEN"', async () => {
   const wrapper = mount(App)
 
   const globalVariables = useGlobalVariables()
@@ -88,7 +88,7 @@ it('Renders residence world generation screen when currentScreen global variable
 
   await flushPromises()
 
-  expect(wrapper.text().includes('World Generation')).toBe(true)
+  expect(wrapper.text().includes('Level Generation')).toBe(true)
 
   wrapper.unmount()
 })

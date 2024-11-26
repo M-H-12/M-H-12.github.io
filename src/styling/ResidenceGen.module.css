@@ -76,7 +76,7 @@
     filter: drop-shadow(0 0 1rem #00000077);
   }
 
-  /*Styling for the container which holds the world generation steps gif.*/
+  /*Styling for the container which holds the level generation steps gif.*/
   .gifBox {
     position: absolute;
     right: 0vw;
@@ -85,7 +85,7 @@
     height: fit-content;
   }
 
-  /*Styling for the world generation steps gif.*/
+  /*Styling for the level generation steps gif.*/
   .gif {
     max-width: 30vw;
     max-height: 18vw;
@@ -210,7 +210,7 @@
     filter: drop-shadow(0 0 1rem #00000077);
   }
 
-  /*Styling for the container which holds the world generation steps gif.*/
+  /*Styling for the container which holds the level generation steps gif.*/
   .gifBox {
     position: absolute;
     right: 0vw;
@@ -219,7 +219,7 @@
     height: fit-content;
   }
 
-  /*Styling for the world generation steps gif.*/
+  /*Styling for the level generation steps gif.*/
   .gif {
     max-width: 35vh;
     max-height: 22vh;

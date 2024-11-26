@@ -123,7 +123,7 @@
 
   /*Styling for the animated gif in the bottom left corner.*/
   .gif {
-    width: min(40vw, 70vh);
+    width: min(40vw, 80vh);
     padding: 0rem 5vw;
     transform: translateY(18%);
     filter: drop-shadow(0 0 1rem #000000e8);

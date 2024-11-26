@@ -63,7 +63,7 @@ onUnmounted(() => {
     <div :class="$style.leftSegment">
       <div :class="$style.titleContainer">
         <div :class="$style.titleText">Residence</div>
-        <div :class="$style.subTitle">Technology and Summary</div>
+        <div :class="$style.subTitle">Technology and Concept</div>
       </div>
       <div :class="$style.bottomLeftSegment">
         <div :class="$style.sectionWidth">
@@ -71,12 +71,12 @@ onUnmounted(() => {
             <h3 style="margin-top: 0">Technology</h3>
             Residence is written using a framework called
             <a href="https://v2.tauri.app/">Tauri</a>. I chose this framework because it allows
-            developers to create a native app using the frontend framework of their choice while at
-            the same time providing a Rust backend to allow for window and system interaction.
+            developers to create a native app using the frontend framework of their choice, while at
+            the same time providing a Rust backend to allow for system interaction.
             <br />
             <br />
-            As mentioned already, I wanted to work on a project that would heighten my abilities
-            with Vue.js, so Tauri seemed a good choice.
+            Because I wanted to work on a project that would heighten my abilities with Vue.js,
+            Tauri seemed an ideal choice.
           </div>
         </div>
       </div>
@@ -84,20 +84,20 @@ onUnmounted(() => {
     <div :class="$style.rightSegment">
       <div :class="$style.sectionWidth">
         <div :class="$style.bodyText">
-          <h3 style="margin-top: 0">Summary</h3>
-          The idea for the game was that it should be a simple dungeon-crawler with a pixelated art
-          style. The player would be placed in a dungeon, collect items in different rooms, and
+          <h3 style="margin-top: 0">Concept</h3>
+          The main idea for the game was that it would be a simple dungeon-crawler with a pixelated
+          art style. The player would be placed in a dungeon, collect items in different rooms, and
           would eventually make their way to the boss room to finish the level.
           <br />
           <br />
-          As time went on, I started to add in more details. I wanted the dungeons to be randomly
-          generated, but I also wanted the player to have some input. What if the player was asked
-          random questions at the start of the game, and their answers shaped the dungeon's
-          features?
+          As time went on, I started to add in more details regarding how the game should function.
+          I wanted the dungeons to be randomly generated, but I also wanted the player to have some
+          input into each level. This idea would go on to shape the game's start, where the player
+          is asked random questions, and their answers affect the dungeon's features.
           <br />
           <br />
-          I figured that a good place to start would be on the world generation algorithm, and to
-          work my way forwards from there.
+          Because level design would be the most important part of my game, I decided to start on
+          the dungeon generation algorithm, and work my way forwards from there.
         </div>
       </div>
     </div>

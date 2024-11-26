@@ -84,14 +84,14 @@ function navigateToPage(newScreen: ScreenType) {
         :class="$style.minorTitle"
         @click="navigateToPage(ScreenType.RESIDENCE_TECH)"
       >
-        Tech and Summary
+        Tech and Concept
       </div>
       <div
         id="genButton"
         :class="$style.minorTitle"
         @click="navigateToPage(ScreenType.RESIDENCE_GEN)"
       >
-        World Generation
+        Level Generation
       </div>
       <div
         id="interactionButton"

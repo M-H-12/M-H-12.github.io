@@ -42,22 +42,21 @@ onUnmounted(() => {
       </div>
       <div :class="$style.bottomSegment">
         <div :class="$style.bodyText">
-          Residence is a passion project of mine that started several months ago. It began as a way
-          to expand my skills with Vue.js, as well as to take on a unique variety of programming
+          Residence is a project of mine that I started on several months ago. It began as a way to
+          expand my skills with Vue.js, as well as to take on a variety of complex programming
           challenges.
           <br />
           <br />
           <div :class="$style.lowerContent">
             <div :class="$style.textLower">
               Like many people, my introduction to programming came in my early teens through video
-              games. I was fascinated by how they worked, and hoped to create one of my own one day.
+              games. I was fascinated by how they worked, and hoped to create one of my own someday.
               Thinking back on this memory, I started designing the project, and gave it the working
-              title of "Residence".
+              title "Residence".
               <br />
               <br />
-              While the project is still very much in progress, it's come a long way from the
-              original idea, and has done more than just expand my programming knowledge and
-              expertise.
+              While the project is still in progress, it's come a long way from the original idea,
+              and has far exceeded my initial expectations.
             </div>
             <div :class="$style.imageContainer">
               <img

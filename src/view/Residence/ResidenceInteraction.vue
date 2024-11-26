@@ -48,7 +48,7 @@ onUnmounted(() => {
     <div :class="$style.rightBar">
       <div :class="$style.bodyText">
         <div :class="$style.secondSubTitle">Interaction</div>
-        Aside from world generation, one of the most important aspects of the game is user
+        Aside from level generation, one of the most important aspects of any game is user
         interaction. Currently, there are 2 main kinds of user interaction - movement, and
         opening/closing menus.
         <br />
@@ -56,13 +56,13 @@ onUnmounted(() => {
         <div :class="$style.secondSubTitle">Movement</div>
         Player movement is controlled by keys which are defined in the settings menu. By default,
         the keys are W, A, S, and D. Player movement is restricted by the walls of each room (i.e.
-        players stop moving if they walk into a wall), and if a player enters a doorway, they move
-        to the next room over. Additionally, users are not able to walk through objects, like
-        treasure chests.
+        players stop moving if they walk into a wall), and if a player enters a doorway they move to
+        the next room over. Additionally, users are not able to walk through objects, like treasure
+        chests.
         <br />
         <br />
         <div :class="$style.secondSubTitle">Menus</div>
-        Different menus can be opened either by using set keys (such as "Esc" for opening the user's
+        Different menus can be opened by either using set keys (such as "Esc" for the user's
         inventory), or by clicking on interactable objects (such as treasure chests).
       </div>
     </div>

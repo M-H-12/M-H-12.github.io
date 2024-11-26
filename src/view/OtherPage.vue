@@ -41,9 +41,8 @@ onUnmounted(() => {
     <div :class="$style.topTriangle"></div>
     <div :class="$style.titleText">Other</div>
     <div :class="$style.mainText">
-      While Residence is my primary passion project, as I mentioned before, it's still very much a
-      work-in-progress. One other project that I've been working on which is completed is this site!
-      It's written in Vue.js, and the code is public and available for viewing
+      While Residence is my primary project, I do have one other to show - this website! It's
+      written in Vue.js, fully unit tested, and the code is publicly available for viewing
       <a href="https://github.com/M-H-12/M-H-12.github.io" :class="$style.githubLink">here</a>.
       <br />
       <br />
