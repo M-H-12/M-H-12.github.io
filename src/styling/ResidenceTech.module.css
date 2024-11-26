@@ -196,9 +196,7 @@
   /*Styling to make hyperlinks the default colour in the Technology section*/
   a {
     color: #e5e1bd;
-    font:
-      min(2vh, 3.8vw) 'Yu Gothic',
-      sans-serif;
+    font: min(2vh, 3.8vw) sans-serif;
   }
 
   /*Styling for the header.*/
@@ -212,9 +210,7 @@
     width: 96%;
     padding: 2%;
     color: #e5e1bd;
-    font:
-      min(2vh, 3.8vw) 'Yu Gothic',
-      sans-serif;
+    font: min(2vh, 3.8vw) sans-serif;
   }
 
   /*Styling for the container that holds both the title and the sub-title text.*/
@@ -231,7 +227,7 @@
 
   /*Styling for the bottom left segment of the screen.*/
   .bottomLeftSegment {
-    height: 32.5vh;
+    height: 29.5vh;
     width: 100vw;
     background-color: #19062a;
     filter: drop-shadow(0 0 2rem #00000077);
@@ -247,7 +243,7 @@
 
   /*Styling for the right side of the screen.*/
   .rightSegment {
-    height: 53.5vh;
+    height: 56.5vh;
     width: 100vw;
     background-color: #363349;
     filter: drop-shadow(0 0 2rem #00000077);

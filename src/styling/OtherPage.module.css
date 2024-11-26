@@ -115,9 +115,7 @@
     height: 100vh;
     padding: 0 12.5%;
     transform: translateY(25%);
-    font:
-      min(5vw, 2.7vh) 'Segoe UI',
-      sans-serif;
+    font: min(5vw, 2.7vh) sans-serif;
   }
 
   /*Styling for the hyperlink to the github page.*/
