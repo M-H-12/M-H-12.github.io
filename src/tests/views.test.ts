@@ -125,6 +125,26 @@ it('Renders other screen when currentScreen global variable is set to "OTHER"', 
   wrapper.unmount()
 })
 
+it('Renders final screen when currentScreen global variable is set to "FINAL"', async () => {
+  const wrapper = mount(App)
+
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  currentScreen.value = ScreenType.FINAL
+
+  await flushPromises()
+
+  const ball = wrapper.find('#ball')
+
+  await flushPromises()
+
+  expect(ball).not.toBe(undefined)
+
+  wrapper.unmount()
+})
+
 it('Projects Intro screen says "Good Morning!" when loaded in the morning', async () => {
   vi.setSystemTime(new Date('2024-10-17T14:34:39Z'))
 

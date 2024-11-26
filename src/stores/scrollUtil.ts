@@ -16,7 +16,8 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
     RESIDENCE_TECH: MenuColour.LIGHT,
     RESIDENCE_GEN: MenuColour.LIGHT,
     RESIDENCE_INTERACTION: MenuColour.LIGHT,
-    OTHER: MenuColour.DARK
+    OTHER: MenuColour.DARK,
+    FINAL: MenuColour.LIGHT
   } as any
 
   /**
@@ -29,7 +30,8 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
     RESIDENCE_TECH: MenuColour.DARK,
     RESIDENCE_GEN: MenuColour.LIGHT,
     RESIDENCE_INTERACTION: MenuColour.LIGHT,
-    OTHER: MenuColour.DARK
+    OTHER: MenuColour.DARK,
+    FINAL: MenuColour.LIGHT
   } as any
 
   /**

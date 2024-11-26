@@ -2,7 +2,7 @@
 import { ScreenType } from '@/model/ScreenType'
 import { useScrollUtil } from '@/stores/scrollUtil'
 import { storeToRefs } from 'pinia'
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 
 /**
  * The store for the scrolling utility.
@@ -20,12 +20,20 @@ const { pagePosition } = storeToRefs(scrollUtil)
  * Contains the setup for the scrolling/swipe event listeners
  */
 onMounted(() => {
-  scrollUtil.setupScroll(ScreenType.OTHER, ScreenType.RESIDENCE_INTERACTION)
+  scrollUtil.setupScroll(ScreenType.FINAL, ScreenType.RESIDENCE_INTERACTION)
+})
+
+/**
+ * Code to run when the page is unmounted.
+ * Contains the removal of an event listener (cleanup).
+ */
+onUnmounted(() => {
+  scrollUtil.takedownScroll()
 })
 </script>
 
 <template>
-  <div :class="$style.mainSegment">
+  <div :class="$style.mainSegment" :style="{ top: `${pagePosition}vh` }">
     <div :class="$style.topTriangle"></div>
     <div :class="$style.titleText">Other</div>
     <div :class="$style.mainText">

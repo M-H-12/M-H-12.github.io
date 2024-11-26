@@ -12,6 +12,7 @@ import ResidenceInteraction from '@/view/Residence/ResidenceInteraction.vue'
 import OtherPage from '@/view/OtherPage.vue'
 import PageMenu from '@/components/PageMenu.vue'
 import BackgroundDimmer from '@/components/BackgroundDimmer.vue'
+import FinalPage from '@/view/FinalPage.vue'
 
 /**
  * The global variables for the app - kept in a pinia store.
@@ -37,7 +38,8 @@ const { currentScreen, dimmerPresent } = storeToRefs(globalVariables)
     <ResidenceInteraction
       v-else-if="currentScreen == ScreenType.RESIDENCE_INTERACTION"
     ></ResidenceInteraction>
-    <OtherPage v-else></OtherPage>
+    <OtherPage v-else-if="currentScreen == ScreenType.OTHER"></OtherPage>
+    <FinalPage v-else></FinalPage>
     <BackgroundDimmer v-if="dimmerPresent"></BackgroundDimmer>
     <PageMenu v-if="currentScreen != ScreenType.TITLE"></PageMenu>
   </div>

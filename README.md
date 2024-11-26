@@ -88,10 +88,12 @@ The following is a report of the current project test coverage according to Vite
 | &ensp;&ensp;ScreenType.ts            | 100     | 100      | 100     | 100     |
 | &ensp;src/stores                     | 100     | 100      | 100     | 100     |
 | &ensp;&ensp;globalVariables.ts       | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;ballUtil.ts              | 100     | 100      | 100     | 100     |
 | &ensp;&ensp;menuUtil.ts              | 100     | 100      | 100     | 100     |
 | &ensp;&ensp;scrollUtil.ts            | 100     | 100      | 100     | 100     |
 | &ensp;src/view                       | 100     | 100      | 100     | 100     |
 | &ensp;&ensp;AboutPage.vue            | 100     | 100      | 100     | 100     |
+| &ensp;&ensp;FinalPage.vue            | 100     | 100      | 100     | 100     |
 | &ensp;&ensp;MainTitle.vue            | 100     | 100      | 100     | 100     |
 | &ensp;&ensp;OtherPage.vue            | 100     | 100      | 100     | 100     |
 | &ensp;src/view/Residence             | 100     | 100      | 100     | 100     |

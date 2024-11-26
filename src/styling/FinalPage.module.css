@@ -1,0 +1,24 @@
+/*Styling for the outermost div in the view.*/
+.mainSegment {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100%;
+  min-height: 100%;
+  margin: 0rem;
+  background-color: #19062a;
+}
+
+/*Styling for the bouncing ball.*/
+.ball {
+  background-color: #e1ddba;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  filter: drop-shadow(0 0 0.5rem #000000e8);
+  cursor: pointer;
+}

@@ -5,6 +5,8 @@ import App from '@/App.vue'
 import { useGlobalVariables } from '@/stores/globalVariables'
 import { ScreenType } from '@/model/ScreenType'
 import { useMenuUtil } from '@/stores/menuUtil'
+import { useBallUtil } from '@/stores/ballUtil'
+import FinalPage from '@/view/FinalPage.vue'
 
 /**This testing file is used to test that the variables and functions within global stores work properly. */
 
@@ -316,6 +318,8 @@ it('Clicking on the hamburger menu opens the side menu', async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000))
 
   expect(menuPosition.value).toBeLessThanOrEqual(0)
+
+  wrapper.unmount()
 })
 
 it('Clicking on the hamburger menu twice only opens the side menu once', async () => {
@@ -343,6 +347,8 @@ it('Clicking on the hamburger menu twice only opens the side menu once', async (
   await new Promise((resolve) => setTimeout(resolve, 1000))
 
   expect(menuPosition.value).toBeLessThanOrEqual(0)
+
+  wrapper.unmount()
 })
 
 it('Clicking on the background dimmer when the menu is open closes it.', async () => {
@@ -377,6 +383,8 @@ it('Clicking on the background dimmer when the menu is open closes it.', async (
   await new Promise((resolve) => setTimeout(resolve, 1000))
 
   expect(menuPosition.value).toBeGreaterThanOrEqual(-20)
+
+  wrapper.unmount()
 })
 
 it('Clicking on the "Title" button in the side menu navigates to that page', async () => {
@@ -397,6 +405,8 @@ it('Clicking on the "Title" button in the side menu navigates to that page', asy
   await flushPromises()
 
   expect(wrapper.text()).toContain('Software')
+
+  wrapper.unmount()
 })
 
 it('Clicking on the "About" button in the side menu navigates to that page', async () => {
@@ -417,6 +427,8 @@ it('Clicking on the "About" button in the side menu navigates to that page', asy
   await flushPromises()
 
   expect(wrapper.text()).toContain('About')
+
+  wrapper.unmount()
 })
 
 it('Clicking on the "Residence" button in the side menu navigates to that page', async () => {
@@ -437,6 +449,8 @@ it('Clicking on the "Residence" button in the side menu navigates to that page',
   await flushPromises()
 
   expect(wrapper.text()).toContain('Residence')
+
+  wrapper.unmount()
 })
 
 it('Clicking on the "Tech and Summary" button in the side menu navigates to that page', async () => {
@@ -457,6 +471,8 @@ it('Clicking on the "Tech and Summary" button in the side menu navigates to that
   await flushPromises()
 
   expect(wrapper.text()).toContain('Summary')
+
+  wrapper.unmount()
 })
 
 it('Clicking on the "World Generation" button in the side menu navigates to that page', async () => {
@@ -477,6 +493,8 @@ it('Clicking on the "World Generation" button in the side menu navigates to that
   await flushPromises()
 
   expect(wrapper.text()).toContain('Generation')
+
+  wrapper.unmount()
 })
 
 it('Clicking on the "User Interaction" button in the side menu navigates to that page', async () => {
@@ -497,6 +515,8 @@ it('Clicking on the "User Interaction" button in the side menu navigates to that
   await flushPromises()
 
   expect(wrapper.text()).toContain('Interaction')
+
+  wrapper.unmount()
 })
 
 it('Clicking on the "Other" button in the side menu navigates to that page', async () => {
@@ -517,6 +537,8 @@ it('Clicking on the "Other" button in the side menu navigates to that page', asy
   await flushPromises()
 
   expect(wrapper.text()).toContain('Other')
+
+  wrapper.unmount()
 })
 
 it('Changing from landscape to portrait on the residence tech page will change the menu icon colour', async () => {
@@ -542,9 +564,175 @@ it('Changing from landscape to portrait on the residence tech page will change t
 
   await flushPromises()
 
-  console.log(getComputedStyle(menuTopLine.element))
-
   expect(getComputedStyle(menuTopLine.element).getPropertyValue('background-color')).toBe(
     'rgb(25, 6, 42)'
   )
+
+  wrapper.unmount()
+})
+
+it('Final page ball will enter screen correctly on load', async () => {
+  const wrapper = mount(App, { attachTo: document.body })
+
+  global.innerWidth = 1800
+  global.innerHeight = 1000
+
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  currentScreen.value = ScreenType.FINAL
+
+  await flushPromises()
+
+  //Wait 1 second for the ball to enter the screen.
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+
+  await flushPromises()
+
+  const ball = wrapper.find('#ball')
+
+  await flushPromises()
+
+  expect(
+    Number(getComputedStyle(ball.element).getPropertyValue('bottom').slice(0, -2))
+  ).toBeLessThan(global.innerHeight)
+
+  wrapper.unmount()
+})
+
+it('Throwing the ball quickly (x-direction) will still keep it on screen', async () => {
+  const wrapper = mount(App, { attachTo: document.body })
+
+  global.innerWidth = 1800
+  global.innerHeight = 1000
+
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  const ballUtil = useBallUtil()
+
+  currentScreen.value = ScreenType.FINAL
+
+  await flushPromises()
+
+  ballUtil.simulateMovement(0, 100)
+
+  await flushPromises()
+
+  //Wait 1 second to allow the ball to bounce a few times.
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+
+  await flushPromises()
+
+  const ball = wrapper.find('#ball')
+
+  expect(Number(getComputedStyle(ball.element).bottom.slice(0, -2))).toBeLessThan(
+    global.innerHeight
+  )
+
+  wrapper.unmount()
+})
+
+it('The ball will move with the mouse after being clicked on.', async () => {
+  const wrapper = mount(FinalPage, { attachTo: document.body })
+
+  global.innerWidth = 1800
+  global.innerHeight = 1000
+
+  const ballUtil = useBallUtil()
+
+  await flushPromises()
+
+  ballUtil.setBallPosition(400, 400)
+
+  const event = new MouseEvent('mousemove', {
+    clientX: 440,
+    clientY: global.innerHeight - 440,
+    bubbles: true,
+    cancelable: true
+  })
+
+  document.dispatchEvent(event)
+
+  await flushPromises()
+
+  document.getElementById('ball')?.click()
+
+  await flushPromises()
+
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+
+  await flushPromises()
+
+  const eventTwo = new MouseEvent('mousemove', {
+    clientX: 340,
+    clientY: 400,
+    bubbles: true,
+    cancelable: true
+  })
+
+  document.dispatchEvent(eventTwo)
+
+  await flushPromises()
+
+  const ball = wrapper.find('#ball')
+
+  expect(Number(getComputedStyle(ball.element).left.slice(0, -2))).toBe(300)
+
+  wrapper.unmount()
+})
+
+it('Dropping the ball slowly will result in it coming to a stop.', async () => {
+  const wrapper = mount(FinalPage, { attachTo: document.body })
+
+  global.innerWidth = 1800
+  global.innerHeight = 1000
+
+  const ballUtil = useBallUtil()
+
+  await flushPromises()
+
+  ballUtil.setBallPosition(2, 2)
+
+  const event = new MouseEvent('mousemove', {
+    clientX: 42,
+    clientY: global.innerHeight - 42,
+    bubbles: true,
+    cancelable: true
+  })
+
+  document.dispatchEvent(event)
+
+  await flushPromises()
+
+  document.getElementById('ball')?.click()
+
+  await flushPromises()
+
+  const eventTwo = new MouseEvent('mousemove', {
+    clientX: 41,
+    clientY: global.innerHeight - 41,
+    bubbles: true,
+    cancelable: true
+  })
+
+  document.dispatchEvent(eventTwo)
+
+  await flushPromises()
+
+  document.getElementById('mainBackingFinal')?.click()
+
+  /**Wait a bit for ball to come to a stop */
+  await new Promise((resolve) => setTimeout(resolve, 1500))
+
+  //Normally unit tests should not have 2 conditions, however,
+  //due to both accelerations needing to be 0 in order for the
+  //ball to be considered "stopped", I have added two expects
+  //in this case.
+  expect(ballUtil.xAcceleration).toBe(0)
+  expect(ballUtil.yAcceleration).toBe(0)
+
+  wrapper.unmount()
 })
