@@ -68,7 +68,7 @@ function getTimeGreeting() {
 </script>
 
 <template>
-  <div :class="$style.mainSegment" :style="{ top: `${pagePosition}vh` }">
+  <div class="main-segment-dark" :style="{ top: `${pagePosition}vh` }">
     <br />
     <div :class="$style.leftSegment">
       <div class="section-text">About</div>

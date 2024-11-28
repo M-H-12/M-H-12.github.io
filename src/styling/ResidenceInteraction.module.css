@@ -1,13 +1,3 @@
-/*Animation keyframes for the view's main fade-in.*/
-@keyframes fadeInMain {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 /*Animation keyframes for the left side's slide down.*/
 @keyframes slideDown {
   from {
@@ -16,23 +6,6 @@
   to {
     margin-top: 0vh;
   }
-}
-
-/*Styling for the outermost div in the view.*/
-.mainSegment {
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  box-sizing: border-box;
-  width: 100vw;
-  height: 100%;
-  min-height: 100%;
-  margin: 0rem;
-  background: url('@/assets/background.png');
-  animation-name: fadeInMain;
-  animation-duration: 1.5s;
-  animation-fill-mode: forwards;
 }
 
 /*Styling for screens with landscape orientation.*/

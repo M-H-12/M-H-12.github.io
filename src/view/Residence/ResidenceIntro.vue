@@ -33,7 +33,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div :class="$style.mainSegment" :style="{ top: `${pagePosition}vh` }">
+  <div class="main-segment-light" :style="{ top: `${pagePosition}vh` }">
     <div>
       <div :class="$style.titleContainer">
         <div :class="$style.additionalPadding">

@@ -37,7 +37,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div :class="$style.mainSegment" :style="{ top: `${mobile ? 0 : pagePosition}vh` }">
+  <div class="main-segment-light" :style="{ top: `${mobile ? 0 : pagePosition}vh` }">
     <div :class="$style.topTriangle"></div>
     <div :class="$style.titleText">Other</div>
     <div :class="$style.mainText">
