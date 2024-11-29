@@ -1,4 +1,4 @@
-/*Styling for the dark-coloured title text*/
+/*Styling for the light-coloured title text*/
 .titleText {
   position: absolute;
   font:
@@ -8,6 +8,12 @@
   color: #e5e1bd;
   text-decoration: underline;
   padding: 1vh 3vw;
+}
+
+/*Styling for the hyperlink to the github page.*/
+.githubLink {
+  color: #19062a;
+  font: inherit;
 }
 
 @media (orientation: landscape) {
@@ -42,14 +48,6 @@
     height: 100vh;
     padding: 0 25%;
     transform: translateY(30%);
-    font:
-      max(1.6vw, 2vh) 'Segoe UI',
-      sans-serif;
-  }
-
-  /*Styling for the hyperlink to the github page.*/
-  .githubLink {
-    color: #19062a;
     font:
       max(1.6vw, 2vh) 'Segoe UI',
       sans-serif;
@@ -89,13 +87,5 @@
     padding: 0 12.5%;
     transform: translateY(25%);
     font: min(5vw, 2.7vh) sans-serif;
-  }
-
-  /*Styling for the hyperlink to the github page.*/
-  .githubLink {
-    color: #19062a;
-    font:
-      min(5vw, 2.7vh) 'Segoe UI',
-      sans-serif;
   }
 }

@@ -31,25 +31,8 @@
   margin: 0.73rem;
 }
 
-/*Styling for the top line in the icon.*/
-.topLine {
-  position: absolute;
-  width: 38px;
-  height: 6px;
-  border-radius: 0.5rem;
-}
-
-/*Styling for the middle line in the icon.*/
-.middleLine {
-  position: absolute;
-  width: 38px;
-  height: 6px;
-  border-radius: 0.5rem;
-  top: 0.7rem;
-}
-
-/*Styling for the bottom line in the icon.*/
-.bottomLine {
+/*Generic styling for all 3 menu lines*/
+.line {
   position: absolute;
   width: 38px;
   height: 6px;

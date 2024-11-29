@@ -51,7 +51,7 @@ watch(count, () => {
   <div :class="$style.menuContainer">
     <div
       id="menuTopLine"
-      :class="$style.topLine"
+      :class="$style.line"
       :style="{
         backgroundColor: `${menuIconColour}`,
         transform: `rotate(-${lineAngle}deg)`,
@@ -59,14 +59,15 @@ watch(count, () => {
       }"
     ></div>
     <div
-      :class="$style.middleLine"
+      :class="$style.line"
       :style="{
         backgroundColor: `${menuIconColour}`,
-        transform: `rotate(${lineAngle}deg)`
+        transform: `rotate(${lineAngle}deg)`,
+        top: `0.7rem`
       }"
     ></div>
     <div
-      :class="$style.bottomLine"
+      :class="$style.line"
       :style="{
         backgroundColor: `${menuIconColour}`,
         transform: `rotate(${lineAngle}deg)`,

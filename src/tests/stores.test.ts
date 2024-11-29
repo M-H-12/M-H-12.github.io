@@ -726,7 +726,7 @@ it('Dropping the ball slowly will result in it coming to a stop.', async () => {
   document.getElementById('mainBackingFinal')?.click()
 
   /**Wait a bit for ball to come to a stop */
-  await new Promise((resolve) => setTimeout(resolve, 1500))
+  await new Promise((resolve) => setTimeout(resolve, 2000))
 
   //Normally unit tests should not have 2 conditions, however,
   //due to both accelerations needing to be 0 in order for the

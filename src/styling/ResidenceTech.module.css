@@ -1,45 +1,46 @@
-/*Animation keyframes to allow the right element to slide in from the right.*/
-@keyframes slideInRight {
-  from {
-    margin-left: 50vw;
-  }
-  to {
-    margin-left: 0vw;
-  }
+/*Styling for the dark-coloured sub-title text*/
+.subTitle {
+  font:
+    max(1.5rem, 3vw) 'Calibri',
+    sans-serif;
+  color: #291f31;
+  margin: auto;
+  text-align: center;
 }
 
-/*Animation keyframes to allow the bottom left element to slide in from the bottom.*/
-@keyframes slideInBottom {
-  from {
-    margin-top: 75vh;
-  }
-  to {
-    margin-top: 0vh;
-  }
+/*Styling to make hyperlinks the default colour in the Technology section*/
+a {
+  color: #e5e1bd;
+  font: inherit;
 }
 
-/*Animation keyframes to allow the bottom element to slide in from the right. (Mobile)*/
-@keyframes slideInRightMobile {
-  from {
-    margin-left: 100vw;
-  }
-  to {
-    margin-left: 0vw;
-  }
-}
-
-/*Animation keyframes to allow the top element to slide in from the left. (Mobile)*/
-@keyframes slideInLeftMobile {
-  from {
-    margin-left: -100vw;
-  }
-  to {
-    margin-left: 0vw;
-  }
+/*Styling for the header.*/
+h3 {
+  margin-bottom: 0.2rem;
 }
 
 /*Styling for the screen when it's in landscape orientation.*/
 @media (orientation: landscape) {
+  /*Animation keyframes to allow the right element to slide in from the right.*/
+  @keyframes slideInRight {
+    from {
+      margin-left: 50vw;
+    }
+    to {
+      margin-left: 0vw;
+    }
+  }
+
+  /*Animation keyframes to allow the bottom left element to slide in from the bottom.*/
+  @keyframes slideInBottom {
+    from {
+      margin-top: 75vh;
+    }
+    to {
+      margin-top: 0vh;
+    }
+  }
+
   /*Styling for the dark-coloured title text*/
   .titleText {
     font:
@@ -52,26 +53,8 @@
     margin: auto;
   }
 
-  /*Styling for the dark-coloured sub-title text*/
-  .subTitle {
-    font:
-      5vh 'Calibri',
-      sans-serif;
-    color: #291f31;
-    margin: auto;
-    text-align: center;
-  }
-
   .displayContainer {
     display: flex;
-  }
-
-  /*Styling to make hyperlinks the default colour in the Technology section*/
-  a {
-    color: #e5e1bd;
-    font:
-      2.4vh 'Yu Gothic',
-      sans-serif;
   }
 
   /*Styling for the main body text sections in the page.*/
@@ -129,10 +112,30 @@
 
 /*Styling for the screen when it's in portrait orientation.*/
 @media (orientation: portrait) {
+  /*Animation keyframes to allow the bottom element to slide in from the right. (Mobile)*/
+  @keyframes slideInRightMobile {
+    from {
+      margin-left: 100vw;
+    }
+    to {
+      margin-left: 0vw;
+    }
+  }
+
+  /*Animation keyframes to allow the top element to slide in from the left. (Mobile)*/
+  @keyframes slideInLeftMobile {
+    from {
+      margin-left: -100vw;
+    }
+    to {
+      margin-left: 0vw;
+    }
+  }
+
   /*Styling for the dark-coloured title text*/
   .titleText {
     font:
-      6vh 'Yu Gothic',
+      5.5vh 'Yu Gothic',
       sans-serif;
     font-weight: 500;
     color: #19062a;
@@ -141,29 +144,8 @@
     margin: auto;
   }
 
-  /*Styling for the dark-coloured sub-title text*/
-  .subTitle {
-    font:
-      3.2vh 'Calibri',
-      sans-serif;
-    color: #291f31;
-    margin: auto;
-    text-align: center;
-  }
-
   .displayContainer {
     display: block;
-  }
-
-  /*Styling to make hyperlinks the default colour in the Technology section*/
-  a {
-    color: #e5e1bd;
-    font: min(2vh, 3.8vw) sans-serif;
-  }
-
-  /*Styling for the header.*/
-  h3 {
-    margin-bottom: 0.2rem;
   }
 
   /*Styling for the main body text sections in the page.*/

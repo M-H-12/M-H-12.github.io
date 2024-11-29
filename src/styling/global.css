@@ -81,6 +81,15 @@ and see the closed menu.*/
   background-color: #19062a;
 }
 
+/*Styling for the dimmer when the menu is open.*/
+.dimmer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 4;
+}
+
 /*Styling for the main title page when in landscape orientation*/
 @media (orientation: landscape) {
   /*Styling for title text.*/

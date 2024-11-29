@@ -111,7 +111,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div id="mainBackingFinal" :class="$style.mainSegment" @click="userHeld = false"></div>
+  <div id="mainBackingFinal" class="main-segment-dark" @click="userHeld = false"></div>
   <div
     id="ball"
     :class="$style.ball"
