@@ -49,7 +49,6 @@ function setBallPosition(event: MouseEvent) {
       Math.min(window.innerHeight - event.clientY - 40, window.innerHeight - 80),
       0
     )
-    console.log(`(${xPos.value}, ${yPos.value})`)
   }
 }
 
