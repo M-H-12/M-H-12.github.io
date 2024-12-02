@@ -27,8 +27,7 @@
 /*Styling for the hamburger menu icon container when a user hovers over it with their mouse.*/
 .menuContainer:hover {
   cursor: pointer;
-  zoom: 1.05;
-  margin: 0.73rem;
+  transform: scale(1.05);
 }
 
 /*Generic styling for all 3 menu lines*/
