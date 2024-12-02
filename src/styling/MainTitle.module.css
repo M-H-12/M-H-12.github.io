@@ -86,15 +86,18 @@
 }
 
 /*Styling for the block behind the title text.*/
+/*The slide-in animation is delayed 0.4s to allow the page to fully load first.*/
 .nameBlock {
   z-index: 2;
   position: absolute;
   top: 35vh;
-  left: 0vw;
+  left: -75vw;
   height: 30vh;
   width: 70vw;
   background-color: #363349;
   filter: drop-shadow(0 0 0.8rem #00000077);
   animation-name: shift;
+  animation-fill-mode: forwards;
+  animation-delay: 0.4s;
   animation-duration: 1.5s;
 }
