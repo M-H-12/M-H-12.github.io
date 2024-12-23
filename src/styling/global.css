@@ -8,6 +8,16 @@
   }
 }
 
+/*Animation keyframes for fading in the drop-shadows. Improves performance.*/
+@keyframes fadeInShadows {
+  from {
+    filter: drop-shadow(0 0 1rem #00000000);
+  }
+  to {
+    filter: drop-shadow(0 0 1rem #00000077);
+  }
+}
+
 /*Styling for the main body of the site. Mostly used to set the background.*/
 body,
 html {
@@ -30,6 +40,22 @@ and see the closed menu.*/
   position: fixed;
   width: 100%;
   height: 100%;
+}
+
+/*Styling for elements with drop-shadows.*/
+.shadow {
+  position: absolute;
+  animation-name: fadeInShadows;
+  animation-fill-mode: forwards;
+  animation-delay: 1.8s;
+  animation-duration: 1.5s;
+  z-index: 1;
+}
+
+/*Styling for elements with no-shadows (currently). Used to improve scrolling performance by hiding drop-shadows*/
+.no-shadow {
+  position: absolute;
+  z-index: 1;
 }
 
 /*Styling for centred boxes of text.*/

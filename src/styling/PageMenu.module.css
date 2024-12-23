@@ -22,7 +22,7 @@
   position: absolute;
   width: 20rem;
   height: 100vh;
-  filter: drop-shadow(0 0 0.8rem #00000055);
+  filter: drop-shadow(0 0 1rem #00000077);
   z-index: 8;
 }
 

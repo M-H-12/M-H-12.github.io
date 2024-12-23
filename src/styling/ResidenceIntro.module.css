@@ -3,7 +3,6 @@
   .titleContainer {
     padding-top: 2vh;
     background-color: #19062a;
-    filter: drop-shadow(0 0 1rem #00000077);
     height: 20vh;
   }
   /*Styling for the body text of the Residence intro page.*/
@@ -66,7 +65,6 @@
   /*Container for the title at the top of the page.*/
   .titleContainer {
     background-color: #19062a;
-    filter: drop-shadow(0 0 1rem #00000077);
     height: 12vh;
   }
   /*Styling to add additional vertical padding for the title on mobile.*/
@@ -121,6 +119,5 @@
     top: 12vh;
     width: 100vw;
     height: 88vh;
-    filter: drop-shadow(0 0 1rem #00000077);
   }
 }

@@ -16,11 +16,18 @@
   width: 70vw;
   height: 100vh;
   background: url('@/assets/background.png');
-  filter: drop-shadow(0 0 1rem #00000077);
   z-index: 10;
   animation-name: slideInRight;
   animation-duration: 1.5s;
   animation-fill-mode: forwards;
+}
+
+/*Styling to get the drop-shadow to match it's child's position*/
+.shadowSizing {
+  right: 0vw;
+  top: 0vh;
+  width: 70vw;
+  height: 100vh;
 }
 
 /*Styling for the right, dark-coloured section of the screen.*/

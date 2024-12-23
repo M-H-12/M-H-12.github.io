@@ -16,6 +16,17 @@ const ballUtil = useBallUtil()
 const { xPos, yPos, previousX, previousY, xAcceleration, yAcceleration } = storeToRefs(ballUtil)
 
 /**
+ * The store for the scrolling utility.
+ */
+const scrollUtil = useScrollUtil()
+
+/**
+ * currentShadowStyle: A variable controlling the site's drop-shadows. Used for performance improvements
+ * on mid to low end devices.
+ */
+const { currentShadowStyle } = storeToRefs(scrollUtil)
+
+/**
  * Boolean indicating if the user has just released the ball.
  */
 const firstRelease = ref(false)
@@ -82,11 +93,6 @@ function initialBallMovement() {
 }
 
 /**
- * The store for the scrolling utility.
- */
-const scrollUtil = useScrollUtil()
-
-/**
  * Code to run when the page is mounted.
  * Contains the setup for the scrolling/swipe/mousemove event listeners,
  * and sets the initial ball movement interval.
@@ -113,8 +119,8 @@ onUnmounted(() => {
   <div id="mainBackingFinal" class="main-segment-dark" @click="userHeld = false"></div>
   <div
     id="ball"
-    :class="$style.ball"
-    :style="{ left: `${xPos}px`, bottom: `${yPos}px` }"
+    :class="[$style.ball, currentShadowStyle]"
+    :style="{ left: `${xPos}px`, bottom: `${yPos}px`, zIndex: 5 }"
     @click="userHeld = !userHeld"
   ></div>
 </template>
