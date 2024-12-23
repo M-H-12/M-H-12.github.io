@@ -10,10 +10,12 @@ import { onMounted, onUnmounted } from 'vue'
 const scrollUtil = useScrollUtil()
 
 /**
- * The position of the view - kept within the scroll util store
- * for code reuse.
+ * currentShadowStyle: A variable controlling the site's drop-shadows. Used for performance improvements
+ * on mid to low end devices.
+ *
+ * pagePosition: The page's position, in vh, with respect to the top of the screen.
  */
-const { pagePosition } = storeToRefs(scrollUtil)
+const { currentShadowStyle, pagePosition } = storeToRefs(scrollUtil)
 
 /**
  * Code to run when the page is mounted.
@@ -73,26 +75,28 @@ function getTimeGreeting() {
     <div :class="$style.leftSegment">
       <div class="section-text">About</div>
     </div>
-    <div :class="$style.rightSegment">
-      <div :class="$style.introParagraphs">
-        <div :class="$style.introParagraphsTitle">Good {{ getTimeGreeting() }}</div>
-        <br />
-        My name is Madison, and I'm a software developer. The majority of my development experience
-        lies in libraries and frameworks such as
-        <span :class="$style.vueJSText">Vue.js</span> and
-        <span :class="$style.reactText">React</span>, however, I've also had the opportunity to work
-        on projects in <span :class="$style.cSharpText">C#</span>,
-        <span :class="$style.swiftUIText">SwiftUI</span>,
-        <span :class="$style.javaText">Java</span>, and
-        <span :class="$style.pythonText">Python</span> (among a few others).
-        <br />
-        <br />
-        I'm always up for learning something new, and eager to try my hand at unique and challenging
-        projects.
-        <br />
-        <br />
-        Currently, I'm focused on one main passion project, which can be viewed on the following
-        pages.
+    <div :class="[$style.shadowSizing, currentShadowStyle]">
+      <div :class="$style.rightSegment">
+        <div :class="$style.introParagraphs">
+          <div :class="$style.introParagraphsTitle">Good {{ getTimeGreeting() }}</div>
+          <br />
+          My name is Madison, and I'm a software developer. The majority of my development
+          experience lies in libraries and frameworks such as
+          <span :class="$style.vueJSText">Vue.js</span> and
+          <span :class="$style.reactText">React</span>, however, I've also had the opportunity to
+          work on projects in <span :class="$style.cSharpText">C#</span>,
+          <span :class="$style.swiftUIText">SwiftUI</span>,
+          <span :class="$style.javaText">Java</span>, and
+          <span :class="$style.pythonText">Python</span> (among a few others).
+          <br />
+          <br />
+          I'm always up for learning something new, and eager to try my hand at unique and
+          challenging projects.
+          <br />
+          <br />
+          Currently, I'm focused on one main passion project, which can be viewed on the following
+          pages.
+        </div>
       </div>
     </div>
   </div>

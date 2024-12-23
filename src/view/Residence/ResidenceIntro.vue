@@ -10,10 +10,12 @@ import { onMounted, onUnmounted } from 'vue'
 const scrollUtil = useScrollUtil()
 
 /**
- * The position of the view - kept within the scroll util store
- * for code reuse.
+ * currentShadowStyle: A variable controlling the site's drop-shadows. Used for performance improvements
+ * on mid to low end devices.
+ *
+ * pagePosition: The page's position, in vh, with respect to the top of the screen.
  */
-const { pagePosition } = storeToRefs(scrollUtil)
+const { currentShadowStyle, pagePosition } = storeToRefs(scrollUtil)
 
 /**
  * Code to run when the page is mounted.
@@ -35,7 +37,7 @@ onUnmounted(() => {
 <template>
   <div class="main-segment-light" :style="{ top: `${pagePosition}vh` }">
     <div>
-      <div :class="$style.titleContainer">
+      <div :class="[$style.titleContainer, currentShadowStyle]" style="position: relative">
         <div :class="$style.additionalPadding">
           <div class="section-text">Residence</div>
         </div>
@@ -60,7 +62,8 @@ onUnmounted(() => {
             </div>
             <div :class="$style.imageContainer">
               <img
-                :class="$style.image"
+                :class="[$style.image, currentShadowStyle]"
+                style="position: relative"
                 src="@/assets/residenceIntro/titleImage.png"
                 alt="Menu screen for the 'Residence' project."
               />

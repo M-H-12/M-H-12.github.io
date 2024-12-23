@@ -10,10 +10,15 @@ import { onMounted, onUnmounted } from 'vue'
 const scrollUtil = useScrollUtil()
 
 /**
- * The position of the view - kept within the scroll util store
- * for code reuse.
+ * currentShadowStyle: A variable controlling the site's drop-shadows. Used for performance improvements
+ * on mid to low end devices.
+ *
+ * pagePosition: The page's position, in vh, with respect to the top of the screen.
+ *
+ * mobile: boolean value indicating if the user is on mobile.
+ *
  */
-const { pagePosition, mobile } = storeToRefs(scrollUtil)
+const { currentShadowStyle, pagePosition, mobile } = storeToRefs(scrollUtil)
 
 /**
  * Code to run when the page is mounted.
@@ -38,7 +43,7 @@ onUnmounted(() => {
 
 <template>
   <div class="main-segment-light" :style="{ top: `${mobile ? 0 : pagePosition}vh` }">
-    <div :class="$style.topTriangle"></div>
+    <div :class="[$style.topTriangle, currentShadowStyle]" style="z-index: 0"></div>
     <div :class="$style.titleText">Other</div>
     <div :class="$style.mainText">
       While Residence is my primary project, I do have one other to show - this website! It's
@@ -50,7 +55,7 @@ onUnmounted(() => {
       and wish to send me a message, please use the contact information that was provided with the
       link. Thank you!
     </div>
-    <div :class="$style.bottomTriangle"></div>
+    <div :class="[$style.bottomTriangle, currentShadowStyle]"></div>
   </div>
 </template>
 

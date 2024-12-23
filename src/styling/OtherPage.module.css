@@ -25,7 +25,6 @@
     border-top: 40vh solid #19062a;
     border-right: 50vw solid transparent;
     border-left: 0;
-    filter: drop-shadow(0 0 4rem #00000099);
   }
 
   /*Styling for the triangle in the bottom right corner.*/
@@ -37,7 +36,6 @@
     border-top: 0;
     border-right: 0;
     border-left: 50vw solid transparent;
-    filter: drop-shadow(0 0 4rem #00000099);
   }
 
   /*Styling for the text on the screen.*/
@@ -63,7 +61,6 @@
     border-top: 25vh solid #19062a;
     border-right: 55vw solid transparent;
     border-left: 0;
-    filter: drop-shadow(0 0 4rem #00000099);
   }
 
   /*Styling for the triangle in the bottom right corner.*/
@@ -75,7 +72,6 @@
     border-top: 0;
     border-right: 0;
     border-left: 55vw solid transparent;
-    filter: drop-shadow(0 0 4rem #00000099);
   }
 
   /*Styling for the text on the screen.*/

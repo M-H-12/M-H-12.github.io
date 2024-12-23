@@ -7,7 +7,6 @@
   border-bottom: 0;
   border-right: 70vw solid transparent;
   border-left: 0;
-  filter: drop-shadow(0 0 1rem #00000077);
 }
 
 /*Styling for the page when it's in landscape mode.*/
@@ -63,7 +62,6 @@
     border-bottom: 0;
     border-left: 75vw solid transparent;
     border-right: 0;
-    filter: drop-shadow(0 0 1rem #00000077);
   }
 
   /*Styling for the container which holds the level generation steps gif.*/
@@ -81,7 +79,6 @@
     max-height: 18vw;
     margin: auto;
     display: block;
-    filter: drop-shadow(0 0 2rem #00000099);
   }
 
   /*Styling for the "Steps" titles on the page.*/
@@ -173,7 +170,6 @@
     border-bottom: 0;
     border-left: 98vw solid transparent;
     border-right: 0;
-    filter: drop-shadow(0 0 1rem #00000077);
   }
 
   /*Styling for the container which holds the level generation steps gif.*/
@@ -191,7 +187,6 @@
     max-height: 22vh;
     margin: auto;
     display: block;
-    filter: drop-shadow(0 0 1rem #00000099);
   }
 
   /*Styling for the "Steps" titles on the page.*/

@@ -44,6 +44,11 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
    */
   const pagePosition = ref(0)
 
+  /**Indicates whether or not elements should have a drop-shadow.
+   *  'shadow' means they should, 'no-shadow' means they shouldn't.
+   * Used to improve scrolling performance on low-end devices. */
+  const currentShadowStyle = ref('shadow')
+
   /**
    * The input value for the closing animation. This is used to
    * position the div based on a parabolic function. This gives the
@@ -179,14 +184,17 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
       return
     }
     if (pagePosition.value == 0 && scrollingDown) {
+      currentShadowStyle.value = 'no-shadow'
       actionInProgress = true
       interval = setInterval(slideToNextPage, 8)
     } else if (!scrollingDown) {
+      currentShadowStyle.value = 'no-shadow'
       actionInProgress = true
       currentScreen.value = previousScreen.value
       refreshMenu(currentScreen.value)
       menuUtil.resetMenu()
       actionInProgress = false
+      currentShadowStyle.value = 'shadow'
     }
   }
 
@@ -224,6 +232,7 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
       menuUtil.resetMenu()
       currentScreen.value = nextScreen.value
       actionInProgress = false
+      currentShadowStyle.value = 'shadow'
     }
   }
 
@@ -240,5 +249,5 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
     }
   }
 
-  return { pagePosition, mobile, setupScroll, takedownScroll, refreshMenu }
+  return { currentShadowStyle, pagePosition, mobile, setupScroll, takedownScroll, refreshMenu }
 })

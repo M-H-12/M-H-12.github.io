@@ -10,10 +10,12 @@ import { onMounted, onUnmounted } from 'vue'
 const scrollUtil = useScrollUtil()
 
 /**
- * The position of the view - kept within the scroll util store
- * for code reuse.
+ * currentShadowStyle: A variable controlling the site's drop-shadows. Used for performance improvements
+ * on mid to low end devices.
+ *
+ * pagePosition: The page's position, in vh, with respect to the top of the screen.
  */
-const { pagePosition } = storeToRefs(scrollUtil)
+const { currentShadowStyle, pagePosition } = storeToRefs(scrollUtil)
 
 /**
  * Code to run when the page is mounted.
@@ -35,8 +37,8 @@ onUnmounted(() => {
 <template>
   <div class="main-segment-dark" :style="{ top: `${pagePosition}vh` }">
     <div :class="$style.additionalBacking">
-      <div :class="$style.leftBackingTriangle"></div>
-      <div :class="$style.rightBackingTriangle"></div>
+      <div :class="[$style.leftBackingTriangle, currentShadowStyle]" style="z-index: 0"></div>
+      <div :class="[$style.rightBackingTriangle, currentShadowStyle]" style="z-index: 0"></div>
       <div :class="$style.genSteps">
         <div :class="$style.genStepsTitle">Steps</div>
         I determined the dungeon needed 3 criteria in order to be effective:
@@ -121,7 +123,8 @@ onUnmounted(() => {
       <div :class="$style.gifBox">
         <img
           src="@/assets/residenceGen/diagram.gif"
-          :class="$style.gif"
+          :class="[$style.gif, currentShadowStyle]"
+          style="position: relative"
           alt="A gif showing the 9 steps detailed in the level generation process."
         />
       </div>
