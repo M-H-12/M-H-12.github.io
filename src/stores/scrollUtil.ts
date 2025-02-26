@@ -98,6 +98,12 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
   let interval: NodeJS.Timeout
 
   /**
+   * The speed for the interval - changes depending on the users's
+   * browser and hardware type.
+   */
+  const scrollSpeed = getScrollSpeed()
+
+  /**
    * The y-position of the user's initial touch.
    */
   let touchStartYPos = 0
@@ -106,6 +112,22 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
    * The y-position of the user's final touch.
    */
   let touchEndYPos = 0
+
+  /**
+   * This function is used to obtain the correct scroll interval time.
+   * - Firefox adds an additional delay, so its interval time needs to be very short (8ms).
+   * - The animation appears choppy on mobile devices if the interval is set too high, so
+   *   it must also be shorter (12ms).
+   * - Every other browser has an interval time of 15ms.
+   * @returns The interval in ms.
+   */
+  function getScrollSpeed() {
+    if (navigator.userAgent.toUpperCase().includes('MOBILE')) {
+      return 12
+    }
+
+    return navigator.userAgent.toUpperCase().includes('FIREFOX') ? 8 : 15
+  }
 
   /**
    * The function to set up all scrolling event listeners.
@@ -186,7 +208,7 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
     if (pagePosition.value == 0 && scrollingDown) {
       currentShadowStyle.value = 'no-shadow'
       actionInProgress = true
-      interval = setInterval(slideToNextPage, 8)
+      interval = setInterval(slideToNextPage, scrollSpeed)
     } else if (!scrollingDown) {
       currentShadowStyle.value = 'no-shadow'
       actionInProgress = true
@@ -249,5 +271,13 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
     }
   }
 
-  return { currentShadowStyle, pagePosition, mobile, setupScroll, takedownScroll, refreshMenu }
+  return {
+    currentShadowStyle,
+    pagePosition,
+    mobile,
+    scrollSpeed,
+    setupScroll,
+    takedownScroll,
+    refreshMenu
+  }
 })
