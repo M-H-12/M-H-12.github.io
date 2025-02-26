@@ -776,3 +776,69 @@ it('Swiping down on the other screen (mobile) results in the page not changing.'
 
   wrapper.unmount()
 })
+
+it('Using mobile will result in a scrollSpeed of 12ms.', async () => {
+  ;(navigator as any).__defineGetter__('userAgent', function () {
+    return 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Firefox/130.0.6214.63 Mobile Safari/537.36'
+  })
+
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  const scrollUtil = useScrollUtil()
+
+  currentScreen.value = ScreenType.TITLE
+
+  const wrapper = mount(App, { attachTo: document.body })
+
+  await flushPromises()
+
+  expect(scrollUtil.scrollSpeed).toBe(12)
+
+  wrapper.unmount()
+})
+
+it('Using non-mobile Firefox will result in a scrollSpeed of 8ms.', async () => {
+  ;(navigator as any).__defineGetter__('userAgent', function () {
+    return 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:132.0) Gecko/20100101 Firefox/132.0/EZp3618RGgX'
+  })
+
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  const scrollUtil = useScrollUtil()
+
+  currentScreen.value = ScreenType.TITLE
+
+  const wrapper = mount(App, { attachTo: document.body })
+
+  await flushPromises()
+
+  expect(scrollUtil.scrollSpeed).toBe(8)
+
+  wrapper.unmount()
+})
+
+it('Using non-mobile, non-Firefox browser will result in a scrollSpeed of 15ms.', async () => {
+  ;(navigator as any).__defineGetter__('userAgent', function () {
+    return 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.79 Safari/537.36'
+  })
+
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  const scrollUtil = useScrollUtil()
+
+  currentScreen.value = ScreenType.TITLE
+
+  const wrapper = mount(App, { attachTo: document.body })
+
+  await flushPromises()
+
+  expect(scrollUtil.scrollSpeed).toBe(15)
+
+  wrapper.unmount()
+})
