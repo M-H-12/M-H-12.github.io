@@ -11,20 +11,18 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        
+
       - name: Install Node
         uses: actions/setup-node@v4
-        with: 
+        with:
           node-version: 16
 
       - name: Install Dependencies
         run: |
-          cd M-H-12.github.io
           npm install
 
       - name: Build Project
         run: |
-          cd M-H-12.github.io
           npm run build
 
       - name: Upload Build Artifact
@@ -38,33 +36,31 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        
+
       - name: Install Node
         uses: actions/setup-node@v4
-        with: 
+        with:
           node-version: 16
-        
+
       - name: Install Dependencies
         run: |
-          cd M-H-12.github.io
           npm install
-          
+
       - name: Run Unit Tests
         run: |
-          cd M-H-12.github.io
           npm run test
-          
+
   deploy:
     needs: test
-    
+
     permissions:
       pages: write
       id-token: write
-      
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-      
+
     runs-on: ubuntu-latest
     steps:
       - name: Deploy Site
