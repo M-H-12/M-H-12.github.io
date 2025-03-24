@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "host": "vite --host",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "run-p type-check \"build-only {@}\" -- && cp robots.txt dist",
     "preview": "vite preview",
     "test": "vitest",
     "coverage": "vitest run --coverage",
