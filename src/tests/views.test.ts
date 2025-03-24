@@ -146,7 +146,7 @@ it('Renders final screen when currentScreen global variable is set to "FINAL"', 
 })
 
 it('Projects Intro screen says "Good Morning!" when loaded in the morning', async () => {
-  vi.setSystemTime(new Date('2024-10-17T14:34:39Z'))
+  vi.setSystemTime(new Date('2024-10-17T08:34:39Z'))
 
   const wrapper = mount(AboutPage)
 
@@ -154,7 +154,7 @@ it('Projects Intro screen says "Good Morning!" when loaded in the morning', asyn
 })
 
 it('Projects Intro screen says "Good Afternoon!" when loaded in the afternoon', async () => {
-  vi.setSystemTime(new Date('2024-10-17T20:34:39Z'))
+  vi.setSystemTime(new Date('2024-10-17T13:34:39Z'))
 
   const wrapper = mount(AboutPage)
 
@@ -162,7 +162,7 @@ it('Projects Intro screen says "Good Afternoon!" when loaded in the afternoon', 
 })
 
 it('Projects Intro screen says "Good Evening!" when loaded in the evening', async () => {
-  vi.setSystemTime(new Date('2024-10-17T02:34:39Z'))
+  vi.setSystemTime(new Date('2024-10-17T20:34:39Z'))
 
   const wrapper = mount(AboutPage)
 
