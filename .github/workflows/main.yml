@@ -1,0 +1,71 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 16
+
+      - name: Install Dependencies
+        run: |
+          cd M-H-12.github.io
+          npm install
+
+      - name: Build Project
+        run: |
+          cd M-H-12.github.io
+          npm run build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build #If the build fails, don't continue trying to deploy the site.
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 16
+        
+      - name: Install Dependencies
+        run: |
+          cd M-H-12.github.io
+          npm install
+          
+      - name: Run Unit Tests
+        run: |
+          cd M-H-12.github.io
+          npm run test
+          
+  deploy:
+    needs: test
+    
+    permissions:
+      pages: write
+      id-token: write
+      
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+      
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Site
+        uses: actions/deploy-pages@v4
