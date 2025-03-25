@@ -65,7 +65,7 @@ onUnmounted(() => {
                 :class="[$style.image, currentShadowStyle]"
                 style="position: relative"
                 src="@/assets/residenceIntro/titleImage.png"
-                alt="Menu screen for the 'Residence' project."
+                alt="An image of the main menu for the 'Residence' project."
               />
             </div>
           </div>
