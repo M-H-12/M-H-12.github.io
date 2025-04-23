@@ -59,8 +59,14 @@ export const useBallUtil = defineStore('ballUtil', () => {
    */
   function moveBallX() {
     const potentialResult = xPos.value + xAcceleration.value
-    if (potentialResult > window.innerWidth - 80 || potentialResult < 0) {
+    if (potentialResult > window.innerWidth - 80) {
       xAcceleration.value *= -1
+      xPos.value = window.innerWidth - 80
+      return
+    } else if (potentialResult < 0) {
+      xAcceleration.value *= -1
+      xPos.value = 0
+      return
     }
     xPos.value += xAcceleration.value
     xAcceleration.value *= xDecay

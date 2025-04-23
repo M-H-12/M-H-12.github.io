@@ -602,7 +602,7 @@ it('Final page ball will enter screen correctly on load', async () => {
   wrapper.unmount()
 })
 
-it('Throwing the ball quickly (x-direction) will still keep it on screen', async () => {
+it('Throwing the ball quickly (y-direction) will still keep it on screen', async () => {
   const wrapper = mount(App, { attachTo: document.body })
 
   global.innerWidth = 1800
@@ -632,6 +632,38 @@ it('Throwing the ball quickly (x-direction) will still keep it on screen', async
   expect(Number(getComputedStyle(ball.element).bottom.slice(0, -2))).toBeLessThan(
     global.innerHeight
   )
+
+  wrapper.unmount()
+})
+
+it('Throwing the ball quickly (x-direction) will still keep it on screen', async () => {
+  const wrapper = mount(App, { attachTo: document.body })
+
+  global.innerWidth = 1800
+  global.innerHeight = 1000
+
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  const ballUtil = useBallUtil()
+
+  currentScreen.value = ScreenType.FINAL
+
+  await flushPromises()
+
+  ballUtil.simulateMovement(200, 0)
+
+  await flushPromises()
+
+  //Wait 1 second to allow the ball to bounce a few times.
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+
+  await flushPromises()
+
+  const ball = wrapper.find('#ball')
+
+  expect(Number(getComputedStyle(ball.element).left.slice(0, -2))).toBeLessThan(global.innerWidth)
 
   wrapper.unmount()
 })
