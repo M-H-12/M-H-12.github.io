@@ -652,7 +652,7 @@ it('Throwing the ball quickly (x-direction) will still keep it on screen', async
 
   await flushPromises()
 
-  ballUtil.simulateMovement(200, 0)
+  ballUtil.simulateMovement(400, 0)
 
   await flushPromises()
 

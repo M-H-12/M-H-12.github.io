@@ -25,11 +25,7 @@ const { currentShadowStyle, pagePosition, mobile } = storeToRefs(scrollUtil)
  * Contains the setup for the scrolling/swipe event listeners
  */
 onMounted(() => {
-  if (mobile.value) {
-    scrollUtil.setupScroll(ScreenType.OTHER, ScreenType.RESIDENCE_INTERACTION)
-  } else {
-    scrollUtil.setupScroll(ScreenType.FINAL, ScreenType.RESIDENCE_INTERACTION)
-  }
+  scrollUtil.setupScroll(ScreenType.FINAL, ScreenType.RESIDENCE_INTERACTION)
 })
 
 /**
@@ -42,7 +38,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="main-segment-light" :style="{ top: `${mobile ? 0 : pagePosition}vh` }">
+  <div class="main-segment-light" :style="{ top: `${pagePosition}vh` }">
     <div :class="[$style.topTriangle, currentShadowStyle]" style="z-index: 0"></div>
     <div :class="$style.titleText">Other</div>
     <div :class="$style.mainText">
