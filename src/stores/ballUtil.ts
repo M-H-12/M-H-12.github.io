@@ -3,12 +3,18 @@ import { ref } from 'vue'
 
 export const useBallUtil = defineStore('ballUtil', () => {
   /**
+   * Boolean indicating if the user is currently
+   * holding the ball.
+   */
+  const userHeld = ref(false)
+
+  /**
    * The x position of the ball.
    */
   const xPos = ref(50)
 
   /**
-   * The y position of the ball.
+   * The y position of the ball. The ball starts slightly out of frame, and drops in.
    */
   const yPos = ref(window.innerHeight * 1.2)
 
@@ -127,6 +133,7 @@ export const useBallUtil = defineStore('ballUtil', () => {
   }
 
   return {
+    userHeld,
     xPos,
     yPos,
     previousX,

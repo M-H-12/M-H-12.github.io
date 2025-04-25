@@ -770,7 +770,7 @@ it('Dropping the ball slowly will result in it coming to a stop.', async () => {
   wrapper.unmount()
 })
 
-it('Swiping down on the other screen (mobile) results in the page not changing.', async () => {
+it('Throwing the ball on the final page (mobile) then immediately swiping down will not change the page.', async () => {
   const globalVariables = useGlobalVariables()
 
   const { currentScreen } = storeToRefs(globalVariables)
@@ -781,30 +781,69 @@ it('Swiping down on the other screen (mobile) results in the page not changing.'
 
   mobile.value = true
 
-  currentScreen.value = ScreenType.OTHER
+  currentScreen.value = ScreenType.FINAL
 
   const wrapper = mount(App, { attachTo: document.body })
 
   await flushPromises()
 
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+
   const startEvent = new TouchEvent('touchstart', {
+    changedTouches: [{ screenY: 300, screenX: 300 } as any]
+  }) as any
+
+  const moveEvent = new TouchEvent('touchmove', {
+    bubbles: true,
+    cancelable: true,
+    touches: [
+      {
+        identifier: Date.now(),
+        target: document.body,
+        clientX: 500,
+        clientY: 500,
+        pageX: 500,
+        pageY: 500
+      } as any as Touch
+    ]
+  })
+
+  const endEvent = new TouchEvent('touchend', {
+    changedTouches: [{ screenY: 300, screenX: 300 } as any]
+  }) as any
+
+  const ball = wrapper.find('#ball')
+
+  ball.element.dispatchEvent(startEvent)
+
+  await flushPromises()
+
+  document.body.dispatchEvent(moveEvent)
+
+  await flushPromises()
+
+  ball.element.dispatchEvent(endEvent)
+
+  await flushPromises()
+
+  const startSwipeEvent = new TouchEvent('touchstart', {
     changedTouches: [{ screenY: 200 } as any]
   }) as any
 
-  document.dispatchEvent(startEvent)
+  document.dispatchEvent(startSwipeEvent)
 
-  const endEvent = new TouchEvent('touchend', {
+  const endSwipeEvent = new TouchEvent('touchend', {
     changedTouches: [{ screenY: 300 } as any]
   }) as any
 
-  document.dispatchEvent(endEvent)
+  document.dispatchEvent(endSwipeEvent)
 
   //Wait 3 seconds for the scroll animation to finish.
   await new Promise((resolve) => setTimeout(resolve, 3000))
 
   await flushPromises()
 
-  expect(wrapper.text().includes('Other')).toBe(true)
+  expect(wrapper.text().includes('Vue.js')).toBe(false)
 
   wrapper.unmount()
 })
