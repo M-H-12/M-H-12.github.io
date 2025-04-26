@@ -602,7 +602,7 @@ it('Final page ball will enter screen correctly on load', async () => {
   wrapper.unmount()
 })
 
-it('Throwing the ball quickly (x-direction) will still keep it on screen', async () => {
+it('Throwing the ball quickly (y-direction) will still keep it on screen', async () => {
   const wrapper = mount(App, { attachTo: document.body })
 
   global.innerWidth = 1800
@@ -632,6 +632,38 @@ it('Throwing the ball quickly (x-direction) will still keep it on screen', async
   expect(Number(getComputedStyle(ball.element).bottom.slice(0, -2))).toBeLessThan(
     global.innerHeight
   )
+
+  wrapper.unmount()
+})
+
+it('Throwing the ball quickly (x-direction) will still keep it on screen', async () => {
+  const wrapper = mount(App, { attachTo: document.body })
+
+  global.innerWidth = 1800
+  global.innerHeight = 1000
+
+  const globalVariables = useGlobalVariables()
+
+  const { currentScreen } = storeToRefs(globalVariables)
+
+  const ballUtil = useBallUtil()
+
+  currentScreen.value = ScreenType.FINAL
+
+  await flushPromises()
+
+  ballUtil.simulateMovement(400, 0)
+
+  await flushPromises()
+
+  //Wait 1 second to allow the ball to bounce a few times.
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+
+  await flushPromises()
+
+  const ball = wrapper.find('#ball')
+
+  expect(Number(getComputedStyle(ball.element).left.slice(0, -2))).toBeLessThan(global.innerWidth)
 
   wrapper.unmount()
 })
@@ -738,7 +770,7 @@ it('Dropping the ball slowly will result in it coming to a stop.', async () => {
   wrapper.unmount()
 })
 
-it('Swiping down on the other screen (mobile) results in the page not changing.', async () => {
+it('Throwing the ball on the final page (mobile) then immediately swiping down will not change the page.', async () => {
   const globalVariables = useGlobalVariables()
 
   const { currentScreen } = storeToRefs(globalVariables)
@@ -749,30 +781,69 @@ it('Swiping down on the other screen (mobile) results in the page not changing.'
 
   mobile.value = true
 
-  currentScreen.value = ScreenType.OTHER
+  currentScreen.value = ScreenType.FINAL
 
   const wrapper = mount(App, { attachTo: document.body })
 
   await flushPromises()
 
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+
   const startEvent = new TouchEvent('touchstart', {
+    changedTouches: [{ screenY: 300, screenX: 300 } as any]
+  }) as any
+
+  const moveEvent = new TouchEvent('touchmove', {
+    bubbles: true,
+    cancelable: true,
+    touches: [
+      {
+        identifier: Date.now(),
+        target: document.body,
+        clientX: 500,
+        clientY: 500,
+        pageX: 500,
+        pageY: 500
+      } as any as Touch
+    ]
+  })
+
+  const endEvent = new TouchEvent('touchend', {
+    changedTouches: [{ screenY: 300, screenX: 300 } as any]
+  }) as any
+
+  const ball = wrapper.find('#ball')
+
+  ball.element.dispatchEvent(startEvent)
+
+  await flushPromises()
+
+  document.body.dispatchEvent(moveEvent)
+
+  await flushPromises()
+
+  ball.element.dispatchEvent(endEvent)
+
+  await flushPromises()
+
+  const startSwipeEvent = new TouchEvent('touchstart', {
     changedTouches: [{ screenY: 200 } as any]
   }) as any
 
-  document.dispatchEvent(startEvent)
+  document.dispatchEvent(startSwipeEvent)
 
-  const endEvent = new TouchEvent('touchend', {
+  const endSwipeEvent = new TouchEvent('touchend', {
     changedTouches: [{ screenY: 300 } as any]
   }) as any
 
-  document.dispatchEvent(endEvent)
+  document.dispatchEvent(endSwipeEvent)
 
   //Wait 3 seconds for the scroll animation to finish.
   await new Promise((resolve) => setTimeout(resolve, 3000))
 
   await flushPromises()
 
-  expect(wrapper.text().includes('Other')).toBe(true)
+  expect(wrapper.text().includes('Vue.js')).toBe(false)
 
   wrapper.unmount()
 })

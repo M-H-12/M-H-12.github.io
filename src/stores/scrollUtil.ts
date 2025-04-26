@@ -4,6 +4,7 @@ import { useGlobalVariables } from '@/stores/globalVariables'
 import { ScreenType } from '@/model/ScreenType'
 import { MenuColour } from '@/model/MenuColour'
 import { useMenuUtil } from './menuUtil'
+import { useBallUtil } from './ballUtil'
 
 export const useScrollUtil = defineStore('scrollUtil', () => {
   /**
@@ -68,6 +69,15 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
   const previousScreen = ref(ScreenType.TITLE)
 
   /**
+   * Boolean value used to determine if the user can scroll.
+   * Only applies in the case where a user is on mobile, and
+   * they have just released the ball on the final page. There
+   * is a slight delay before setting this value to true to
+   * prevent unwanted scrolling.
+   */
+  const canScroll = ref(true)
+
+  /**
    * The global variables for the app - kept in a pinia store.
    */
   const globalVariables = useGlobalVariables()
@@ -84,6 +94,16 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
    * Utilities relating to the opening/closing of the side menu.
    */
   const menuUtil = useMenuUtil()
+
+  /**
+   * BallUtil used to control the ball's movement.
+   */
+  const ballUtil = useBallUtil()
+
+  /**
+   * Global ref used to determine if the user is holding the ball.
+   */
+  const { userHeld } = storeToRefs(ballUtil)
 
   /**
    * Boolean value indicating if a user is on mobile.
@@ -179,10 +199,15 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
   }
 
   /**
-   * The function to determine id a user has stopped touching the screen (for mobile, used in event listener).
+   * The function to determine if a user has stopped touching the screen
+   * (for mobile, used in event listener).
    * @param e The user's touch event.
    */
   function endTouch(e: TouchEvent) {
+    if (!canScroll.value) {
+      return
+    }
+
     touchEndYPos = e.changedTouches[0].screenY
     mobile.value = true
 
@@ -197,7 +222,7 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
   }
 
   /**
-   * The function called by the onwheel event. This function
+   * The function called when the user scrolls/swipes. This function
    * sets the interval if it hasn't been set already.
    * @param scrollingDown Used to indicate if the user is scrolling down.
    */
@@ -276,6 +301,7 @@ export const useScrollUtil = defineStore('scrollUtil', () => {
     pagePosition,
     mobile,
     scrollSpeed,
+    canScroll,
     setupScroll,
     takedownScroll,
     refreshMenu

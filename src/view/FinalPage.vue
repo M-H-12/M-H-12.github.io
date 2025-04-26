@@ -11,9 +11,11 @@ import { onMounted, onUnmounted, ref } from 'vue'
 const ballUtil = useBallUtil()
 
 /**
- * Global refs used to control & set the ball's position, previous position, and acceleration.
+ * Global refs used to control & set the ball's position, previous position, acceleration,
+ * and status regarding whether the user is holding the ball.
  */
-const { xPos, yPos, previousX, previousY, xAcceleration, yAcceleration } = storeToRefs(ballUtil)
+const { xPos, yPos, previousX, previousY, xAcceleration, yAcceleration, userHeld } =
+  storeToRefs(ballUtil)
 
 /**
  * The store for the scrolling utility.
@@ -23,19 +25,15 @@ const scrollUtil = useScrollUtil()
 /**
  * currentShadowStyle: A variable controlling the site's drop-shadows. Used for performance improvements
  * on mid to low end devices.
+ * mobile: A boolean value indicating if the user is on mobile.
+ * canScroll: A boolean value indicating if the user is currently able to scroll.
  */
-const { currentShadowStyle } = storeToRefs(scrollUtil)
+const { currentShadowStyle, mobile, canScroll } = storeToRefs(scrollUtil)
 
 /**
  * Boolean indicating if the user has just released the ball.
  */
 const firstRelease = ref(false)
-
-/**
- * Boolean indicating if the user is currently
- * holding the ball.
- */
-const userHeld = ref(false)
 
 /**
  * The interval that the ball's movement runs on.
@@ -46,20 +44,31 @@ let interval: NodeJS.Timeout
  * Function used to set the ball's position when the user is holding it.
  *
  * The ball's position is confined to the borders of the screen, even if the user moves their mouse to the very edge.
- * @param event The mouse movement event.
+ * @param event The mouse/touch movement event.
  */
-function setBallPosition(event: MouseEvent) {
+function setBallPosition(event: MouseEvent | TouchEvent) {
+  var userPosX
+  var userPosY
+
+  if (mobile.value) {
+    userPosX = (event as TouchEvent).touches[0].clientX - 40
+    userPosY = (event as TouchEvent).touches[0].clientY + 40
+    if (userHeld.value) {
+      canScroll.value = false
+    }
+  } else {
+    userPosX = (event as MouseEvent).clientX - 40
+    userPosY = (event as MouseEvent).clientY + 40
+  }
+
   if (userHeld.value) {
     firstRelease.value = true
 
     previousX.value = xPos.value
     previousY.value = yPos.value
 
-    xPos.value = Math.max(Math.min(event.clientX - 40, window.innerWidth - 80), 0)
-    yPos.value = Math.max(
-      Math.min(window.innerHeight - event.clientY - 40, window.innerHeight - 80),
-      0
-    )
+    xPos.value = Math.max(Math.min(userPosX, window.innerWidth - 80), 0)
+    yPos.value = Math.max(Math.min(window.innerHeight - userPosY, window.innerHeight - 80), 0)
   }
 }
 
@@ -93,6 +102,19 @@ function initialBallMovement() {
 }
 
 /**
+ * Function used to delay the user scrolling after dropping the
+ * ball (while on mobile). A 400ms delay is used to prevent
+ * accidental scrolling while the user is trying to throw the
+ * ball.
+ */
+function delayBallDropMobile() {
+  userHeld.value = false
+  setTimeout(() => {
+    canScroll.value = true
+  }, 400)
+}
+
+/**
  * Code to run when the page is mounted.
  * Contains the setup for the scrolling/swipe/mousemove event listeners,
  * and sets the initial ball movement interval.
@@ -101,6 +123,7 @@ onMounted(() => {
   scrollUtil.setupScroll(ScreenType.FINAL, ScreenType.OTHER)
   interval = setInterval(initialBallMovement, 30)
   addEventListener('mousemove', setBallPosition)
+  addEventListener('touchmove', setBallPosition)
 })
 
 /**
@@ -112,6 +135,7 @@ onUnmounted(() => {
   scrollUtil.takedownScroll()
   clearInterval(interval)
   removeEventListener('mousemove', setBallPosition)
+  removeEventListener('touchmove', setBallPosition)
 })
 </script>
 
@@ -122,6 +146,8 @@ onUnmounted(() => {
     :class="[$style.ball, currentShadowStyle]"
     :style="{ left: `${xPos}px`, bottom: `${yPos}px`, zIndex: 5 }"
     @click="userHeld = !userHeld"
+    @touchstart="userHeld = true"
+    @touchend="delayBallDropMobile"
   ></div>
 </template>
 
